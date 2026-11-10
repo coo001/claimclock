@@ -57,12 +57,23 @@ test('default sample replays a real Bifrost stale-fact run with official dated t
   const normalized = normalizeResult(sample);
   assert.equal(normalized.mode, 'recorded-live');
   const at = (evalDate) => evaluateClaim(normalized.claims[0], { evalDate, cycles: DEFAULT_CYCLES, authoredDate: normalized.authoredDate, resultCollectedAt: normalized.collectedAt });
-  // Every saved item was collected on 2026-11-10, so none is available in 2024 views, even for 2023/2024 events.
-  for (const evalDate of ['2024-02-01', '2024-10-21', '2024-10-22']) {
+  // Wayback captures are the collection dates: v20.9.0 captured 2023-10-25 18:10:12 UTC, schedule.json 2024-07-15
+  // 14:09:15 UTC (effective 2024-10-22). Only the Tavily item (collected 2026-11-10) stays hidden before today.
+  const before = at('2023-10-24');
+  assert.equal(before.relation, INSUFFICIENT);
+  assert.equal(before.hiddenEvidenceCount, 3);
+  for (const evalDate of ['2023-10-25', '2024-02-01', '2024-10-21']) {
     const v = at(evalDate);
-    assert.equal(v.relation, INSUFFICIENT, evalDate);
-    assert.deepEqual(v.evidence, [], evalDate);
-    assert.equal(v.hiddenEvidenceCount, 3, evalDate);
+    assert.equal(v.relation, SUPPORT, evalDate);
+    assert.deepEqual(v.evidence.map((e) => e.id), ['historical-node20-lts'], evalDate);
+    assert.equal(v.hiddenEvidenceCount, 2, evalDate);
+    assert.equal(v.independentSources, 0, evalDate);
+  }
+  for (const evalDate of ['2024-10-22', '2025-06-01', '2026-11-09']) {
+    const v = at(evalDate);
+    assert.equal(v.relation, REFUTE, evalDate);
+    assert.equal(v.latestDate, '2024-10-22', evalDate);
+    assert.equal(v.hiddenEvidenceCount, 1, evalDate);
     assert.equal(v.independentSources, 0, evalDate);
   }
   const current = at('2026-11-10');
@@ -78,10 +89,12 @@ test('evidence provenance: recorded live is external search, fixture and timelin
   assert.equal(ev.find((e) => e.id === 'historical-node20-lts').origin, ORIGIN_HUMAN);
   assert.equal(ev.find((e) => e.id === 'official-node20-eol').origin, ORIGIN_HUMAN);
   for (const claim of normalizeResult(NODE).claims) for (const e of claim.evidence) assert.equal(e.origin, ORIGIN_HUMAN, e.id);
-  // Corrected manual Node v20.9.0 evidence: event date stays 2023-10-24, actual collection 2026-11-10.
+  // Corrected manual Node v20.9.0 evidence: event date stays 2023-10-24, Wayback capture 2023-10-25 18:10:12 UTC.
   const manual = ev.find((e) => e.id === 'historical-node20-lts');
   assert.equal(manual.date, '2023-10-24');
-  assert.equal(manual.collectedAt, '2026-11-10');
+  assert.equal(manual.collectedAt, '2023-10-25T18:10:12Z');
+  assert.match(manual.url, /^https:\/\/web\.archive\.org\/web\/20231025181012\//);
+  assert.match(ev.find((e) => e.id === 'official-node20-eol').url, /^https:\/\/web\.archive\.org\/web\/20240715140915\//);
   // Defaults by mode, and explicit origin is preserved.
   const base = { authoredDate: '2025-01-01', collectedAt: '2025-01-02T00:00:00.000Z' };
   const claim = (evidence) => [{ id: 'c1', text: 'x', relation: 'support', evidence }];
@@ -108,7 +121,7 @@ test('human-added evidence decides relation/date but is excluded from independen
   assert.match(html, /\b1 independent source\b/);
   assert.doesNotMatch(html, /3 independent sources/);
   assert.match(html, /External search \(Tavily\)/);
-  assert.match(html, /Human-added · not counted as an independent source/);
+  assert.match(html, /Archived source \(Wayback, captured 2024-07-15\)/);
   assert.match(html, /2 human-added \(not counted\)/);
 });
 

@@ -20,9 +20,9 @@ Voice: "The default sample is a stored record from a real run through a local Bi
 
 **0:40–1:05 — Time controls**
 
-Screen: move the evaluation date back to 2024-10-22, then forward to 2026-11-10; point at the hidden-evidence note and the evidence provenance badges.
+Screen: move the evaluation date to 2024-10-21 (Supported), then 2024-10-22 (Refuted), then forward to 2026-11-10; point at the hidden-evidence note and the evidence provenance badges.
 
-Voice: "Evidence only counts from the day it was actually collected. All of this evidence was collected in November 2026, so a 2024 view shows insufficient evidence instead of pretending we knew then. Today the answer is refuted: the official schedule moved Node.js 20 to Maintenance LTS on October 22, 2024, and its EOL was April 30, 2026. Only the Tavily result counts as an independent source; human-added items are labeled and not counted."
+Voice: "Evidence only counts from the day it was actually available. On October 21, 2024 the claim is supported by a web archive capture of the Node.js 20.9.0 announcement. From October 22, 2024 it is refuted: an archived copy of the official release schedule, captured in July 2024, says Node.js 20 moves to Maintenance LTS that day. Today the Tavily result adds the April 30, 2026 end of life. Only the Tavily result counts as an independent source; the archived items are labeled human-added and not counted."
 
 **1:05–1:25 — Score and calendar**
 
@@ -47,4 +47,4 @@ Voice: "Run it locally with your own keys for live analysis. Keys stay on the se
 Before recording, check:
 
 - The on-screen UI is English. Confirm the actual sample text and selected dates match the narration.
-- The default sample is a real stored Bifrost stale-fact run; replaying it must make no new external calls. The v8 cover now shows 2024-10-22 as Insufficient evidence and 2026-11-10 as Refuted. Confirm the selected dates and current screen before recording.
+- The default sample is a real stored Bifrost stale-fact run; replaying it must make no new external calls. The v9 cover shows 2023-10-25 Supported, 2024-10-22 Refuted and 2026-11-10 Refuted, matching the slider. Confirm the selected dates and current screen before recording.

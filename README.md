@@ -1,10 +1,12 @@
 # ClaimClock
 
-ClaimClock is a prototype stale-answer detector that re-checks an old answer claim by claim. Tavily finds current evidence, and in live mode a local Bifrost gateway relays the Gemini calls. The public sample mode works without any API key, and all date and re-check-cycle changes are computed in the browser.
+ClaimClock re-checks an old answer claim by claim and shows whether each claim still holds, with the evidence, its dates and when to look again. Tavily finds current evidence, and a local Bifrost gateway relays the Gemini calls. The public demo replays stored runs and needs no API key.
 
-> The browser UI and pitch deck are in English. The default Node.js sample replays a real stored Bifrost run. The pre-registered operating-path evaluation has 15 Node.js claims; results and limitations are below. Repository: https://github.com/coo001/claimclock · demo: https://coo001.github.io/claimclock/. The demo is a build of commit `ce6c2c5`; the evidence-provenance, date-gating, static direct-input and batch-queue changes described below were made after that commit and are not in the demo until it is redeployed.
->
-> `ClaimClock_pitch_v7.pptx` shows the earlier behaviour, in which the default sample changed from Supported (2024-10-21) to Refuted (2024-10-22). Under the corrected date gating every evidence item in that sample was collected on 2026-11-10, so both 2024 dates now show Insufficient evidence and only 2026-11-10 shows Refuted.
+**Demo:** https://coo001.github.io/claimclock/ · **Repository:** https://github.com/coo001/claimclock
+
+![The default Node.js sample on 2024-10-21 (Supported) and 2024-10-22 (Refuted)](docs/claimclock-demo.png)
+
+*The default sample, "Node.js 20.x is currently in Active LTS.", as the evaluation date moves from 2024-10-21 to 2024-10-22. Both items are Internet Archive (Wayback) captures: the v20.9.0 announcement captured 2023-10-25 and the official release schedule captured 2024-07-15.*
 
 ## Quick start (no keys needed)
 
@@ -19,11 +21,28 @@ Open `http://127.0.0.1:5173` in a browser. Pick a sample, then move the evaluati
 
 **Typing your own paragraph.** A paragraph is shown with a result only when it exactly matches (after whitespace normalization) the text of a stored example. Matching the recorded real run replays that run's stored output; matching a fixed example shows its human-labeled example data and says it is not AI output. Any other paragraph gets no result. On the static demo (GitHub Pages) there is no backend, so the page says that no live analysis is possible there, that the paragraph was not analyzed or sent anywhere, and that live analysis requires a local install and your own API keys. With the local server but no keys configured, the page reports that live mode is not configured.
 
-**Evidence as of the evaluation date.** An evidence item is used for an evaluation date only when both its event/publication date (if it has one) and its collection date are on or before that date; it becomes available on the later of the two. If an item has no collection time, the collection time of the enclosing result is used. An item with no defensible availability date is excluded. As a result, sources collected in 2026 are hidden in 2024 views even when they describe 2023 or 2024 events. In the default sample all three items were collected on 2026-11-10, so 2024-10-21 and 2024-10-22 both show Insufficient evidence and 2026-11-10 shows Refuted. A saved Gemini fix suggestion is shown only from its generation date onward; if that date is unknown, it is hidden with a short note.
+**Evidence as of the evaluation date.** An evidence item is used for an evaluation date only when both its event/publication date (if it has one) and its collection date are on or before that date; it becomes available on the later of the two. If an item has no collection time, the collection time of the enclosing result is used. An item with no defensible availability date is excluded. As a result, sources collected in 2026 are hidden in 2024 views even when they describe 2023 or 2024 events. In the default sample the two Wayback items are available from their capture-based dates (2023-10-25 and 2024-10-22) and the Tavily item from 2026-11-10, so 2024-10-21 shows Supported, 2024-10-22 shows Refuted and 2026-11-10 shows Refuted with one independent source. A saved Gemini fix suggestion is shown only from its generation date onward; if that date is unknown, it is hidden with a short note.
 
-**Evidence provenance.** Each evidence item carries a visible badge. Items from recorded or local live runs are `External search (Tavily)`. Items in the fixed examples and the manually added timeline items are `Human-added`: they can still decide the relation and the date, but they are not counted as independent sources and do not lower the source-count component C. On 2026-11-10 the default sample therefore shows 1 independent source (the Tavily result), not 3. The manually added official Node.js v20.9.0 announcement keeps its 2023-10-24 publication date; its actual collection date is 2026-11-10. The Node.js schedule marks 2024-10-22 as the start of Maintenance LTS; the separate v20 EOL date is 2026-04-30. The page-update date is never used as the event date.
+**Evidence provenance.** Each evidence item carries a visible badge. Items from recorded or local live runs are `External search (Tavily)`. Items in the fixed examples and the manually added timeline items are `Human-added`: they can still decide the relation and the date, but they are not counted as independent sources and do not lower the source-count component C. On 2026-11-10 the default sample therefore shows 1 independent source (the Tavily result), not 3. The manually added official Node.js v20.9.0 announcement keeps its 2023-10-24 publication date; its collection date is the Wayback capture time, 2023-10-25 18:10:12 UTC, and the schedule item's is 2024-07-15 14:09:15 UTC. They show an `Archived source (Wayback)` badge. The Node.js schedule marks 2024-10-22 as the start of Maintenance LTS; the separate v20 EOL date is 2026-04-30. The page-update date is never used as the event date.
 
 **Browser-local batch recheck queue.** The "Batch recheck queue" panel has explicit buttons to save the current result, load all fixed examples for a demo, recheck stored records, remove one record and clear the queue. Nothing is saved automatically. Records stay in this browser's `localStorage` (versioned key `claimclock.batchQueue.v1`, at most 20 records) and are never uploaded. Batch recheck only recomputes status and priority from the evidence saved with each record, using the current evaluation date and cycles; it fetches no new evidence and never edits saved answers or evidence. Rows are sorted by highest claim score (descending), then title and id, and show the title, highest score, claim count and status counts; **Open** loads a record into the single-answer view. Unreadable or full storage is reported on the page instead of failing. The pure logic is in `lib/queue.js`.
+
+## Status notes
+
+- The browser UI and the pitch deck (`ClaimClock_pitch_v9.pptx`) are in English. The default Node.js sample replays a real stored Bifrost run. The pre-registered operating-path evaluation has 15 Node.js claims; results and limitations are below.
+- The Pages demo is built from `main` by the manual `pages.yml` workflow. Changes on `main` appear there only after that workflow is run again.
+- Older decks (`ClaimClock_pitch_v7` and `v8`) are kept only as history; `v9` is current.
+
+## Wayback evidence in the default sample
+
+The default sample shows the claim as true at first and false after Node.js 20 left Active LTS. This needs evidence that existed at the time, so two Internet Archive captures are added to the sample as human-added evidence. Their capture times are used as collection times; the date rules are unchanged.
+
+| Evidence | Wayback capture (UTC) | Takes effect |
+|---|---|---|
+| Node.js v20.9.0 announcement: "The 20.x release line now moves into Active LTS" | 2023-10-25 18:10:12 (`https://web.archive.org/web/20231025181012/https://nodejs.org/en/blog/release/v20.9.0`) | 2023-10-25 (event 2023-10-24) |
+| Official `schedule.json`: v20 `maintenance` is 2024-10-22 | 2024-07-15 14:09:15 (`https://web.archive.org/web/20240715140915/https://raw.githubusercontent.com/nodejs/Release/main/schedule.json`) | 2024-10-22 (event date) |
+
+Both URLs were found with the Wayback CDX API and their text was read back from the captures. The slider therefore shows Insufficient evidence on 2023-10-24, Supported from 2023-10-25 to 2024-10-21, and Refuted from 2024-10-22. Archived items are human-added: they decide the relation and date but are not counted as independent sources. The Tavily result (collected 2026-11-10) appears only from that date, so the independent-source count is 0 until then and 1 on 2026-11-10.
 
 ## Recorded real runs
 
@@ -65,7 +84,7 @@ Bifrost is an open-source gateway you can run yourself. That does not make the G
 
 ## Sample data and limits
 
-- Node.js 20.9.0 official release announcement and the Node.js releases table. The announcement states the codename Iron and the Active LTS period, and its publication date is 2023-10-24. The releases table's `Last updated` 2026-03-24 is a page-update date, not the EOL event date, so its evidence date is null. All evidence in this example was collected on 2026-11-09, so none of it appears in evaluations before that date, and the collection date is not treated as the date the fact occurred. All of it is human-added. Sources: https://nodejs.org/en/blog/release/v20.9.0 and https://nodejs.org/en/about/previous-releases
+- Node.js 20.9.0 official release announcement and the Node.js releases table. The announcement states the codename Iron and the Active LTS period, and its publication date is 2023-10-24. The releases table's `Last updated` 2026-03-24 is a page-update date, not the EOL event date, so its evidence date is null. All evidence in this fixed example was collected on 2026-11-09 (the default recorded sample was collected on 2026-11-10, apart from its two Wayback items), so none of it appears in evaluations before that date, and the collection date is not treated as the date the fact occurred. All of it is human-added. Sources: https://nodejs.org/en/blog/release/v20.9.0 and https://nodejs.org/en/about/previous-releases
 - A sample based on public Python 3.12 documentation (the answer text is a synthetic sentence written for the demo): https://docs.python.org/3/whatsnew/3.12.html
 - ExampleCloud is a fully synthetic service and has no sources.
 
@@ -84,11 +103,11 @@ All page assets, module imports and data fetches use relative paths (`./…`), s
 Destinations:
 
 - Repository: https://github.com/coo001/claimclock
-- Demo: https://coo001.github.io/claimclock/ (a build of commit `ce6c2c5`; later changes appear only after the next deployment)
+- Demo: https://coo001.github.io/claimclock/ (built from `main` by the manual Pages workflow; run it again after new commits)
 
 ## Verification
 
-Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; what each one checks is listed below. `ClaimClock_pitch_v7.pptx` has eight English slides and three real app captures taken before the date-gating correction. Every slide was rendered and visually inspected with macOS Quick Look; PowerPoint and LibreOffice were not used.
+Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; what each one checks is listed below. `ClaimClock_pitch_v9.pptx` has nine English slides with real app captures from the current build (Supported on 2024-10-21, Refuted on 2024-10-22, the 2026-11-10 evidence view and the batch queue). Every slide was rendered and visually inspected with macOS Quick Look; PowerPoint and LibreOffice were not used.
 
 `npm run build` copies `public/` and `lib/` into `dist/`. The local server also serves `/live-run.json` statically.
 
@@ -104,9 +123,9 @@ The following constraints remain; they are not presented as completed work.
 
 - The N=15 operating-path evaluation is small and specific to Node.js release-status and codename claims; three of eight status shifts were mislabeled. It is not a general performance benchmark.
 - Semantic-cache hit rate and savings were not measured because no Valkey/Redis runtime was reachable at `127.0.0.1:6379`.
-- The static demo replays stored records. Live inference requires local credentials and a local gateway; no keys, Bifrost data/configuration, or gateway binary are included in the repository. The Pages demo is a build of commit `ce6c2c5` and does not yet include the provenance, date-gating, static direct-input and batch-queue changes.
+- The static demo replays stored records. Live inference requires local credentials and a local gateway; no keys, Bifrost data/configuration, or gateway binary are included in the repository. The Pages demo shows the commit that was last deployed; newer commits on `main` appear only after the Pages workflow is run again.
 - The batch queue only rescores evidence already saved with each record. It does not find new evidence, so a stored record cannot become fresher than its saved evidence.
 
 ## Technology and AI use
 
-A plain Node.js HTTP server and browser JavaScript. The live AI feature passes Gemini calls through a local Bifrost gateway and uses Tavily for search. Claude Code assisted development. Bifrost itself is Apache-2.0 open source; each dependency's license and API terms must be followed separately. The recorded real runs include earlier direct calls, an earlier six-sample Bifrost demonstration, and the separate 15-case operating-path evaluation above. The latter used a Bifrost virtual key with Gemini-generated queries sent unchanged to Tavily; its result, retries and usage counters are recorded in the linked JSON files.
+A plain Node.js HTTP server and browser JavaScript. The live AI feature passes Gemini calls through a local Bifrost gateway and uses Tavily for search. AI coding agents assisted development. Bifrost itself is Apache-2.0 open source; each dependency's license and API terms must be followed separately. The recorded real runs include earlier direct calls, an earlier six-sample Bifrost demonstration, and the separate 15-case operating-path evaluation above. The latter used a Bifrost virtual key with Gemini-generated queries sent unchanged to Tavily; its result, retries and usage counters are recorded in the linked JSON files.

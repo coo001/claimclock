@@ -49,7 +49,7 @@
           <label for="evaldate">Evaluation date: <output id="evaldate-out" for="evaldate"></output></label>
           <input type="range" id="evaldate" min="0" max="0" step="1" aria-describedby="evaldate-range evaldate-rule">
           <div class="small muted range-ends" id="evaldate-range"></div>
-          <p class="small note" id="evaldate-rule"><strong>Evidence as of this date:</strong> an item counts only when both its event/publication date and its collection date are on or before the evaluation date. Items collected in 2026 stay hidden in earlier views, even when they describe earlier events. A saved fix suggestion appears only from its generation date onward. Human-added evidence is labeled and never counted as an independent source.</p>
+          <p class="small note" id="evaldate-rule"><strong>Evidence as of this date:</strong> an item counts only when both its event/publication date and its collection date are on or before the evaluation date. Items collected after the evaluation date stay hidden, even when they describe earlier events. A saved fix suggestion appears only from its generation date onward. Human-added evidence is labeled and never counted as an independent source.</p>
         </div>
         <fieldset class="cycles">
           <legend>Recheck cycle by claim type (days)</legend>
