@@ -32,3 +32,10 @@ test('relative fetch targets resolve under the /claimclock/ base path', () => {
   assert.equal(new URL('./api/status', base).pathname, '/claimclock/api/status');
   assert.equal(new URL('./lib/fixtures.js', base).pathname, '/claimclock/lib/fixtures.js');
 });
+
+test('static hosting without a backend says no live analysis is possible and how to get it', () => {
+  const js = read('public/app.js');
+  // Pages returns a non-JSON 404 for ./api/status; that path must not fall through to /api/verify.
+  assert.match(js, /if \(!status\) \{[\s\S]*?No live analysis is possible on this page[\s\S]*?local install and your own API keys[\s\S]*?return;/);
+  assert.match(js, /typeof body\.liveReady === 'boolean'/);
+});

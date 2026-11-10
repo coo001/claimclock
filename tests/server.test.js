@@ -40,6 +40,7 @@ test('static JS, CSS and fixture modules are served', async () => {
     ['/lib/scoring.js', /javascript/],
     ['/lib/schema.js', /javascript/],
     ['/lib/render.js', /javascript/],
+    ['/lib/queue.js', /javascript/],
   ]) {
     const res = await fetch(base + p);
     assert.equal(res.status, 200, p);

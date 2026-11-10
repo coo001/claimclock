@@ -2,6 +2,7 @@ import { FIXTURES } from './lib/fixtures.js';
 import { normalizeResult, matchFixture } from './lib/schema.js';
 import { computeView, buildIcs, DEFAULT_CYCLES, CLAIM_TYPES, addDays, daysBetween, isValidDate, displayLabel, DATE_UNKNOWN } from './lib/scoring.js';
 import { renderResult, selectNote, replayNote, displayTitle } from './lib/render.js';
+import { loadQueue, saveQueue, addRecords, removeRecord, findRecord, emptyQueue, recheckQueue, renderQueue, QUEUE_CAP } from './lib/queue.js';
 
 const $ = (id) => document.getElementById(id);
 const fixtures = FIXTURES.map(normalizeResult);
@@ -11,7 +12,86 @@ function localToday() {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
-const state = { result: null, evalDate: null, cycles: { ...DEFAULT_CYCLES }, today: localToday(), ics: '' };
+const state = { result: null, evalDate: null, cycles: { ...DEFAULT_CYCLES }, today: localToday(), ics: '', queue: emptyQueue() };
+
+// Browser-local batch queue. Uses only localStorage: no fetch, and stored answers/evidence are never edited.
+const storage = (() => { try { return window.localStorage; } catch { return null; } })();
+
+function setQueueMessage(text, kind = 'info') {
+  const el = $('queue-message');
+  el.className = `message ${kind}`;
+  el.textContent = text;
+}
+
+function renderQueuePanel() {
+  const evalDate = state.evalDate ?? state.today;
+  $('queue-list').innerHTML = renderQueue(recheckQueue(state.queue, { evalDate, cycles: state.cycles, today: state.today }), { evalDate });
+}
+
+function commitQueue(next, okText) {
+  const saved = saveQueue(storage, next);
+  if (!saved.ok) {
+    setQueueMessage(saved.error, 'error');
+    return;
+  }
+  state.queue = next;
+  renderQueuePanel();
+  setQueueMessage(okText, 'ok');
+}
+
+function addToQueue(results) {
+  const { queue, added, existing, full } = addRecords(state.queue, results, localToday());
+  const parts = [`Added ${added} record(s).`];
+  if (existing) parts.push(`${existing} already in the queue (left unchanged).`);
+  if (full) parts.push(`${full} not added: the queue is limited to ${QUEUE_CAP} records.`);
+  if (!added) {
+    setQueueMessage(parts.join(' '), full ? 'warn' : 'info');
+    return;
+  }
+  commitQueue(queue, parts.join(' '));
+}
+
+function initQueue() {
+  const loaded = loadQueue(storage);
+  state.queue = loaded.queue;
+  if (loaded.error) setQueueMessage(loaded.error, 'warn');
+  renderQueuePanel();
+  $('queue-save').addEventListener('click', () => {
+    if (!state.result) {
+      setQueueMessage('Nothing to save: show a result first (choose an example or press Recheck).', 'warn');
+      return;
+    }
+    addToQueue([state.result]);
+  });
+  $('queue-demo').addEventListener('click', () => addToQueue(fixtures));
+  $('queue-recheck').addEventListener('click', () => {
+    renderQueuePanel();
+    setQueueMessage(`Rechecked ${state.queue.records.length} stored record(s) at evaluation date ${state.evalDate ?? state.today} from their saved evidence. No new evidence was fetched.`, 'ok');
+  });
+  $('queue-clear').addEventListener('click', () => commitQueue(emptyQueue(), 'Cleared the queue in this browser.'));
+  $('queue-list').addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-queue-action]');
+    if (!btn) return;
+    const record = findRecord(state.queue, btn.dataset.id);
+    if (!record) return;
+    if (btn.dataset.queueAction === 'remove') {
+      commitQueue(removeRecord(state.queue, record.id), 'Removed one record from the queue.');
+      return;
+    }
+    try {
+      const result = normalizeResult(record.result);
+      const keepDate = state.evalDate ?? state.today;
+      $('answer').value = result.answerText;
+      $('authored').value = result.authoredDate;
+      if (fixtures.some((f) => f.id === result.id)) $('example').value = result.id;
+      load(result, keepDate);
+      setMessage(`Opened “${displayTitle(result).replace(/[<>&]/g, '')}” from the batch queue. Its saved evidence is shown; nothing new was fetched.`, 'ok');
+      $('results').focus();
+    } catch {
+      setQueueMessage('This record could not be opened.', 'error');
+    }
+  });
+}
 
 function setMessage(html, kind = 'info') {
   const el = $('message');
@@ -40,18 +120,21 @@ function update() {
   $('ics-preview').textContent = state.ics;
 }
 
-function load(result) {
+// preferredDate (optional): keep this evaluation date, clamped to the record's slider range. Defaults to today.
+function load(result, preferredDate = null) {
   state.result = result;
   const start = result.authoredDate;
   const end = start > state.today ? start : state.today;
   const max = daysBetween(start, end);
+  let evalDate = end;
+  if (preferredDate && isValidDate(preferredDate)) evalDate = preferredDate < start ? start : preferredDate > end ? end : preferredDate;
   const slider = $('evaldate');
   slider.min = '0';
   slider.max = String(max);
-  slider.value = String(max);
-  state.evalDate = end;
+  slider.value = String(daysBetween(start, evalDate));
+  state.evalDate = evalDate;
   $('evaldate-range').textContent = `Range: ${start} (answer date) to ${end} (today)`;
-  const html = renderResult(result, computeView(result, { evalDate: end, cycles: state.cycles, today: state.today }));
+  const html = renderResult(result, computeView(result, { evalDate, cycles: state.cycles, today: state.today }));
   $('meta').innerHTML = html.meta;
   $('runlog').innerHTML = html.runLog;
   showResults(true);
@@ -84,20 +167,28 @@ async function verify() {
   }
   // Not a fixture: never present cached evidence for edited text.
   state.result = null;
-  showResults(false, '<p>This paragraph does not match any fixed example, so no cached result is shown.</p>');
+  showResults(false, '<p>This paragraph does not exactly match any stored example or recorded run, so no result is shown. Nothing was analyzed.</p>');
   if (!isValidDate(authoredDate)) {
     setMessage('Enter the date the answer was written.', 'warn');
     return;
   }
-  setMessage('Checking the local backend’s live mode settings… (your paragraph has not been sent yet)');
-  let status;
+  setMessage('Checking whether a local live backend is available… (your paragraph has not been sent)');
+  let status = null;
   try {
-    status = await (await fetch('./api/status')).json();
+    const res = await fetch('./api/status', { cache: 'no-store' });
+    const body = res.ok ? await res.json() : null;
+    if (body && typeof body.liveReady === 'boolean') status = body;
   } catch {
-    status = { liveReady: false, problems: ['Cannot connect to the local backend'] };
+    status = null;
+  }
+  if (!status) {
+    // Static hosting (e.g. GitHub Pages): there is no backend, so no analysis can run here.
+    setMessage('<strong>No live analysis is possible on this page.</strong> This static demo has no backend: your paragraph was not analyzed and was not sent anywhere, and no result is shown. Only paragraphs that exactly match a stored example or recorded run can be displayed. Live analysis of new text requires a local install and your own API keys (see “Local live mode” in the README).', 'warn');
+    return;
   }
   if (!status.liveReady) {
-    setMessage(`<strong>No live analysis was run.</strong> Analyzing a paragraph that differs from the fixed examples requires a local install and your own free API keys (see “Local live mode” in the README). Current status: ${status.problems.map((p) => `<code>${p.replace(/[<>&]/g, '')}</code>`).join(', ')}. The fixed examples remain available.`, 'warn');
+    const problems = Array.isArray(status.problems) ? status.problems : [];
+    setMessage(`<strong>No live analysis was run.</strong> Analyzing a paragraph that differs from the stored examples requires a local install and your own API keys (see “Local live mode” in the README). Current status: ${problems.map((p) => `<code>${String(p).replace(/[<>&]/g, '')}</code>`).join(', ') || 'live mode not configured'}. The stored examples remain available.`, 'warn');
     return;
   }
   setMessage('Running local live analysis (Tavily · Bifrost→Gemini, sequential)…');
@@ -240,6 +331,7 @@ function init() {
   });
   buildCycleInputs();
   selectExample(fixtures[0].id);
+  initQueue();
   loadRecordedRun();
 }
 

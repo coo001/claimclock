@@ -24,6 +24,7 @@ const STATIC = new Map([
   ['/lib/schema.js', ['lib/schema.js', 'text/javascript; charset=utf-8']],
   ['/lib/render.js', ['lib/render.js', 'text/javascript; charset=utf-8']],
   ['/lib/fixtures.js', ['lib/fixtures.js', 'text/javascript; charset=utf-8']],
+  ['/lib/queue.js', ['lib/queue.js', 'text/javascript; charset=utf-8']],
 ]);
 const MAX_BODY = 20000;
 const MAX_TEXT = 5000;

@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="field">
-        <label for="answer">Answer paragraph (pasting an example's original text replays its cached result)</label>
+        <label for="answer">Answer paragraph (only text that exactly matches a stored example or recorded run shows a result here)</label>
         <textarea id="answer" rows="5" spellcheck="false"></textarea>
       </div>
       <div class="actions">
@@ -47,8 +47,9 @@
         <h2 id="controls-h">2. Adjust the date and recheck cycles <span class="small muted">(computed in the browser · no network calls)</span></h2>
         <div class="field">
           <label for="evaldate">Evaluation date: <output id="evaldate-out" for="evaldate"></output></label>
-          <input type="range" id="evaldate" min="0" max="0" step="1" aria-describedby="evaldate-range">
+          <input type="range" id="evaldate" min="0" max="0" step="1" aria-describedby="evaldate-range evaldate-rule">
           <div class="small muted range-ends" id="evaldate-range"></div>
+          <p class="small note" id="evaldate-rule"><strong>Evidence as of this date:</strong> an item counts only when both its event/publication date and its collection date are on or before the evaluation date. Items collected in 2026 stay hidden in earlier views, even when they describe earlier events. A saved fix suggestion appears only from its generation date onward. Human-added evidence is labeled and never counted as an independent source.</p>
         </div>
         <fieldset class="cycles">
           <legend>Recheck cycle by claim type (days)</legend>
@@ -84,6 +85,19 @@
       </section>
     </div>
     <div id="empty" class="panel empty" hidden></div>
+
+    <section class="panel" aria-labelledby="queue-h" id="queue">
+      <h2 id="queue-h">Batch recheck queue <span class="small muted">(stored only in this browser)</span></h2>
+      <p class="small note">Saved records stay in this browser's local storage (up to 20) and are never uploaded. Nothing is saved unless you press a save or load button. Batch recheck only recomputes status and priority from the evidence already saved with each record, at the current evaluation date and cycles. It fetches no new evidence and never edits saved answers or evidence.</p>
+      <div class="actions">
+        <button type="button" id="queue-save">Save current result</button>
+        <button type="button" id="queue-demo">Load all fixed examples (demo)</button>
+        <button type="button" id="queue-recheck" class="primary">Recheck stored records</button>
+        <button type="button" id="queue-clear">Clear queue</button>
+      </div>
+      <div id="queue-message" class="message" role="status" aria-live="polite"></div>
+      <div id="queue-list"></div>
+    </section>
 
     <section class="panel" aria-labelledby="recorded-h">
       <h2 id="recorded-h">Real API run records</h2>
