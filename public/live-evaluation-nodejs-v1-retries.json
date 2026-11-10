@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "nodejs-release-schedule-time-drift-v1",
+  "note": "Recovery records for retries and runner failures. No prompt changes; see main evaluation file for the current per-case result.",
+  "attempts": [
+    {
+      "attempt": 2,
+      "caseId": "stale-v24-active-lts",
+      "recoveredFromBifrostGatewayLogs": true,
+      "reason": "The runner raised a ReferenceError after runLive completed and before serializing its result. The exact extract/judge outputs and judge evidence input were recovered from the local Bifrost logs; Tavily response title and published_date were not retained.",
+      "startedAt": "2026-11-10 07:58:39.027764+00:00",
+      "executionPath": "Tavily basic search + Gemini via Bifrost virtual key",
+      "generatedQuery": "Node.js release schedule v24 LTS",
+      "executedQuery": "Node.js release schedule v24 LTS",
+      "queryUnchanged": true,
+      "modelLabel": "Supported",
+      "goldLabel": "Refuted",
+      "matched": false,
+      "judgmentSuccessful": true,
+      "claimText": "Node.js v24.x is currently in Active LTS.",
+      "evidenceSources": [
+        {
+          "id": "42d2d4-00",
+          "url": "http://nodesource.com/blog/nodejs-24-becomes-lts",
+          "contentLength": 1055
+        },
+        {
+          "id": "2c101f-01",
+          "url": "https://hidekazu-konishi.com/entry/nodejs_release_and_eol_timeline.html",
+          "contentLength": 572
+        },
+        {
+          "id": "40d62a-02",
+          "url": "https://www.herodevs.com/blog-posts/node-js-end-of-life-dates-you-should-be-aware-of",
+          "contentLength": 1200
+        }
+      ],
+      "citation": {
+        "evidenceId": "40d62a-02",
+        "url": "https://www.herodevs.com/blog-posts/node-js-end-of-life-dates-you-should-be-aware-of",
+        "quote": "Node.js 24 is the Active LTS line",
+        "exactQuotePresent": true
+      },
+      "bifrost": {
+        "requestAttempts": 3,
+        "successfulResponses": 2,
+        "totalTokens": 1558,
+        "promptTokens": 1405,
+        "completionTokens": 153,
+        "requests": [
+          {
+            "step": "extract",
+            "status": "success",
+            "httpStatus": null,
+            "promptTokens": 105,
+            "completionTokens": 63,
+            "totalTokens": 168,
+            "latencyMs": 3925,
+            "at": "2026-11-10 07:58:39.027764+00:00"
+          },
+          {
+            "step": "judge",
+            "status": "error",
+            "httpStatus": 503,
+            "promptTokens": 0,
+            "completionTokens": 0,
+            "totalTokens": 0,
+            "latencyMs": 965,
+            "at": "2026-11-10 07:58:44.789708+00:00"
+          },
+          {
+            "step": "judge",
+            "status": "success",
+            "httpStatus": null,
+            "promptTokens": 1300,
+            "completionTokens": 90,
+            "totalTokens": 1390,
+            "latencyMs": 1181,
+            "at": "2026-11-10 07:58:45.760066+00:00"
+          }
+        ]
+      },
+      "rawModelOutputs": {
+        "extract": "{\n  \"claims\": [\n    {\n      \"text\": \"Node.js v24.x is currently in Active LTS.\",\n      \"type\": \"버전\",\n      \"query\": \"Node.js release schedule v24 LTS\"\n    }\n  ]\n}",
+        "judge": "{\n  \"judgements\": [\n    {\n      \"claim_id\": \"c1\",\n      \"relation\": \"support\",\n      \"citations\": [\n        {\n          \"evidence_id\": \"40d62a-02\",\n          \"quote\": \"Node.js 24 is the Active LTS line\"\n        }\n      ]\n    }\n  ]\n}"
+      }
+    }
+  ]
+}

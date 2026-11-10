@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "nodejs-release-schedule-time-drift-v1",
+  "mode": "pilot-before-active-rate-limit",
+  "actualExternalRun": true,
+  "evaluationAsOf": "2026-11-10",
+  "preregisteredCases": "live-evaluation-nodejs-v1-preregistered.json",
+  "promptAndRules": "existing lib/live.js EXTRACT_SYSTEM + JUDGE_SYSTEM + FIX_SYSTEM; unchanged",
+  "executionPath": "Tavily basic search + Gemini through local Bifrost v2.5.0 virtual key",
+  "queryMode": "The extraction model generated the Tavily query; the exact query body was forwarded unchanged.",
+  "startedAt": "2026-11-10T07:33:57.427Z",
+  "finishedAt": "2026-11-10T07:34:08.094Z",
+  "plannedSamples": 15,
+  "completedSamples": 1,
+  "changedSinceAuthoringCount": 8,
+  "changedSinceAuthoringFraction": 0.5333333333333333,
+  "matched": 1,
+  "accuracy": 1,
+  "byClass": {
+    "Supported": {
+      "n": 0,
+      "matched": 0,
+      "agreement": null
+    },
+    "Refuted": {
+      "n": 1,
+      "matched": 1,
+      "agreement": 1
+    },
+    "Insufficient evidence": {
+      "n": 0,
+      "matched": 0,
+      "agreement": null
+    }
+  },
+  "newTavilyCalls": 1,
+  "previouslyDocumentedTavilyCalls": 19,
+  "cumulativeTavilyCalls": 20,
+  "bifrostRequestAttempts": 3,
+  "bifrostSuccessfulResponses": 3,
+  "totalReportedTokens": 1784,
+  "promptTokens": 1610,
+  "completionTokens": 174,
+  "note": "Gold labels and source schedule entries were frozen before these calls. Claims are one-sentence time-drift tests: 8 were true on their authorship date and became false by evaluation date; 7 codename facts remain true. No prompt tuning or query override.",
+  "results": [
+    {
+      "id": "stale-v10-active-lts",
+      "input": "Node.js v10.x is currently in Active LTS.",
+      "authoredDate": "2018-10-30",
+      "evaluationAsOf": "2026-11-10",
+      "goldLabel": "Refuted",
+      "goldAtAuthorDate": "Supported",
+      "changedSinceAuthoring": true,
+      "transitionDate": "2020-05-19",
+      "currentState": "End-of-Life",
+      "goldBasis": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v10",
+        "scheduleEntry": {
+          "start": "2018-04-24",
+          "lts": "2018-10-30",
+          "maintenance": "2020-05-19",
+          "end": "2021-04-30",
+          "codename": "Dubnium"
+        },
+        "reason": "The official schedule records lts=2018-10-30 and maintenance=2020-05-19; the answer was true on its date, but Active LTS ended at the maintenance transition."
+      },
+      "modelLabel": "Refuted",
+      "rawModelLabel": "반박",
+      "matched": true,
+      "executionPath": "bifrost-virtual-key",
+      "generatedQueries": [
+        "Node.js v10.x Active LTS schedule release date"
+      ],
+      "executedQueries": [
+        "Node.js v10.x Active LTS schedule release date"
+      ],
+      "queryAudit": [
+        {
+          "generatedQuery": "Node.js v10.x Active LTS schedule release date",
+          "sentQuery": "Node.js v10.x Active LTS schedule release date",
+          "exactMatch": true,
+          "usedSiteOperator": false,
+          "containsUrl": false
+        }
+      ],
+      "tavilyAttempts": 1,
+      "run": {
+        "id": "live-1794296037428",
+        "mode": "live",
+        "title": "Your answer (local live analysis)",
+        "authoredDate": "2018-10-30",
+        "answerText": "Node.js v10.x is currently in Active LTS.",
+        "source": {
+          "status": "USER_INPUT",
+          "url": null,
+          "publishedDate": null,
+          "publishedDateText": "",
+          "note": "User input is not stored or logged by the server."
+        },
+        "collectedAt": "2026-11-10T07:33:57.428Z",
+        "collectionMethod": "Tavily basic search + Gemini judgment through Bifrost",
+        "claims": [
+          {
+            "id": "c1",
+            "text": "Node.js v10.x is currently in Active LTS",
+            "type": "버전",
+            "relation": "반박",
+            "relationNote": "",
+            "evidence": [
+              {
+                "id": "370bdf-00",
+                "url": "https://hidekazu-konishi.com/entry/nodejs_release_and_eol_timeline.html",
+                "title": "Node.js Release and EOL Timeline - LTS Schedule, Active LTS and Maintenance, and End-of-Life Dates | hidekazu-konishi.com",
+                "quote": "As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)",
+                "stance": "반박",
+                "citationOk": true,
+                "date": "2026-07-24",
+                "dateBasis": "Date appears verbatim in the cited source text.",
+                "collectedAt": "2026-11-10T07:34:01.297Z"
+              }
+            ],
+            "fix": "As of 2026-07-24, Node.js v10.x is not in Active LTS; the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)"
+          }
+        ],
+        "runLog": {
+          "note": "Local live run (app limits: 5 Gemini calls · 8 Tavily calls · sequential · no retries on 429)",
+          "externalCalls": true,
+          "counts": {
+            "gemini": 3,
+            "tavily": 1
+          },
+          "tavily": [
+            {
+              "query": "Node.js v10.x Active LTS schedule release date",
+              "topic": "general",
+              "collectedAt": "2026-11-10T07:34:01.297Z",
+              "results": [
+                {
+                  "url": "https://hidekazu-konishi.com/entry/nodejs_release_and_eol_timeline.html",
+                  "title": "Node.js Release and EOL Timeline - LTS Schedule, Active LTS and Maintenance, and End-of-Life Dates | hidekazu-konishi.com",
+                  "published_date": null,
+                  "contentExcerpt": "| 2017-05-30 | Node.js 8 \"Carbon\" is released (entering Active LTS on 2017-10-31). Node.js 8 introduced broad async/await support in production and became the LTS line of 2017-2018. Source: Node.js v8.0.0 released. |\n| 2018-04-24 | Node.js 10 \"Dubnium\" is released (entering Active LTS on 2018-10-30)"
+                },
+                {
+                  "url": "https://www.herodevs.com/blog-posts/node-js-end-of-life-dates-you-should-be-aware-of",
+                  "title": "Node.js Version Support: EOL Dates and Latest Releases (July 2026)",
+                  "published_date": null,
+                  "contentExcerpt": "Node.js 24 is the Active LTS line (EOL April 30, 2028) and Node.js 22 is in Maintenance LTS (EOL April 30, 2027). Node.js 26, released in May 2026, is the Current line and is scheduled to enter LTS in October 2026.\n\n#### Why should I avoid odd-numbered Node.js versions in production?\n\nOdd-numbered r"
+                },
+                {
+                  "url": "https://nodejsdesignpatterns.com/blog/nodejs-release-schedule-changes",
+                  "title": "Node.js is changing its release schedule and version numbers",
+                  "published_date": null,
+                  "contentExcerpt": "5. Support windows stay familiar: LTS is still around 30 months, with roughly 36 months from first release to end of life.\n6. It starts in October 2026. Node.js 26 is the last release under the old model, and Node.js 27 is the first under the new one. [...] The Node.js project just announced the fir"
+                }
+              ]
+            }
+          ],
+          "gemini": [
+            {
+              "step": "extract",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 1395,
+              "usage": {
+                "prompt_tokens": 105,
+                "prompt_tokens_details": {
+                  "text_tokens": 105,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 41,
+                "total_tokens": 146
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"authored_date\":\"2018-10-30\",\"answer\":\"Node.js v10.x is currently in Active LTS.\"}"
+                  }
+                ]
+              },
+              "output": "{\"claims\":[{\"text\":\"Node.js v10.x is currently in Active LTS\",\"type\":\"버전\",\"query\":\"Node.js v10.x Active LTS schedule release date\"}]}"
+            },
+            {
+              "step": "judge",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 1306,
+              "usage": {
+                "prompt_tokens": 1414,
+                "prompt_tokens_details": {
+                  "text_tokens": 1414,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 75,
+                "total_tokens": 1489
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"Node.js v10.x is currently in Active LTS\"}],\"evidence\":[{\"id\":\"370bdf-00\",\"claim_id\":\"c1\",\"url\":\"https://hidekazu-konishi.com/entry/nodejs_release_and_eol_timeline.html\",\"content\":\"| 2017-05-30 | Node.js 8 \\\"Carbon\\\" is released (entering Active LTS on 2017-10-31). Node.js 8 introduced broad async/await support in production and became the LTS line of 2017-2018. Source: Node.js v8.0.0 released. |\\n| 2018-04-24 | Node.js 10 \\\"Dubnium\\\" is released (entering Active LTS on 2018-10-30). Source: Node.js v10.0.0 released. | [...] Only even-numbered major versions are promoted to Long Term Support (LTS). As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS), while Node.js 26 is the current Current release and is scheduled to become Active LTS on 2026-10-28. Odd-numbered versions (such as 23 and 25) never become LTS. Note that from Node.js 27 the odd/even distinction is being retired and every major will become LTS.  \\n\\n### How long is a Node.js LTS version supported? [...] Facts in this article were verified against nodejs.org and the nodejs/Release schedule as of 2026-07-24. Release dates, LTS transition dates, and end-of-life dates are taken from the official Node.js Releases page and the machine-readable schedule published by the Node.js Release Working Group; dates that are still in the future are labeled as scheduled an\"},{\"id\":\"e13258-01\",\"claim_id\":\"c1\",\"url\":\"https://www.herodevs.com/blog-posts/node-js-end-of-life-dates-you-should-be-aware-of\",\"content\":\"Node.js 24 is the Active LTS line (EOL April 30, 2028) and Node.js 22 is in Maintenance LTS (EOL April 30, 2027). Node.js 26, released in May 2026, is the Current line and is scheduled to enter LTS in October 2026.\\n\\n#### Why should I avoid odd-numbered Node.js versions in production?\\n\\nOdd-numbered releases (19, 21, 23, 25) never enter LTS. They stay Current for six months and then go straight to EOL, so they receive no long-term security support. Use even-numbered LTS lines for production. [...] | Version | Release Date | Entered LTS | End of Life | Status |\\n ---  --- \\n| Node.js 26 | May 5, 2026 | Oct 28, 2026(planned) | Apr 30, 2029 | Current |\\n| Node.js 25 | Oct 15, 2025 | N/A (odd) | Jun 1, 2026 | EOL |\\n| Node.js 24 | May 6, 2025 | Oct 28, 2025 | Apr 30, 2028 | Active LTS |\\n| Node.js 23 | Oct 16, 2024 | N/A (odd) | Jun 1, 2025 | EOL |\\n| Node.js 22 | Apr 24, 2024 | Oct 29, 2024 | Apr 30, 2027 | Maintenance LTS |\\n| Node.js 21 | Oct 17, 2023 | N/A (odd) | Jun 1, 2024 | EOL | [...] Current (6 months): The active development line. New features, APIs, and improvements land here. Both even and odd majors start as Current.\\n Active LTS (12 months): Even-numbered releases only. Focus shif\"},{\"id\":\"d0fba3-02\",\"claim_id\":\"c1\",\"url\":\"https://nodejsdesignpatterns.com/blog/nodejs-release-schedule-changes\",\"content\":\"5. Support windows stay familiar: LTS is still around 30 months, with roughly 36 months from first release to end of life.\\n6. It starts in October 2026. Node.js 26 is the last release under the old model, and Node.js 27 is the first under the new one. [...] The Node.js project just announced the first big change to its release schedule in about ten years. Starting in October 2026, Node.js moves from two major releases a year to one, version numbers will start lining up with the calendar year, every release becomes LTS, and there is a brand new Alpha channel for early testing. [...] Node.js 26 (the last under the old model):\\n\\n| Milestone | Date |\\n --- |\\n| Released | April 2026 |\\n| Enters LTS | October 2026 |\\n| Maintenance | October 2027 |\\n| End of Life | April 2029 |\\n\\nNode.js 27 (the first under the new model):\\n\\n| Milestone | Date |\\n --- |\\n| Alpha begins | October 2026 |\\n| Released (27.0.0) | April 2027 |\\n| Enters LTS | October 2027 |\\n| End of Life | April 2030 |\"}]}"
+                  }
+                ]
+              },
+              "output": "{\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"refute\",\"citations\":[{\"evidence_id\":\"370bdf-00\",\"quote\":\"As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)\"}]}]}",
+              "citationCheck": [
+                {
+                  "claim_id": "c1",
+                  "evidence_id": "370bdf-00",
+                  "quote": "As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)",
+                  "passed": true
+                }
+              ]
+            },
+            {
+              "step": "fix:c1",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 5490,
+              "usage": {
+                "prompt_tokens": 91,
+                "prompt_tokens_details": {
+                  "text_tokens": 91,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 58,
+                "total_tokens": 149
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Rewrite the refuted claim so it matches the cited evidence. Return JSON only: {\"fix\":\"...\"}. Do not add facts that are not in the evidence."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"claim\":\"Node.js v10.x is currently in Active LTS\",\"evidence\":[\"As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)\"]}"
+                  }
+                ]
+              },
+              "output": "{\"fix\":\"As of 2026-07-24, Node.js v10.x is not in Active LTS; the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)\"}"
+            }
+          ],
+          "errors": []
+        }
+      }
+    }
+  ],
+  "excludedFromEvaluation": true,
+  "exclusionReason": "The rate limit was not attached to the virtual key when this first preregistered case ran. Its result is retained for audit, but the N=15 evaluation will rerun this case after the policy is active."
+}

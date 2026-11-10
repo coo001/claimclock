@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClaimClock — Recheck stale answers</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip" href="#results">Skip to results</a>
+  <header class="top">
+    <div class="wrap">
+      <h1>ClaimClock</h1>
+      <p class="tagline">Checks whether the claims in an old answer still hold, and calculates when each one should be rechecked.</p>
+      <p class="mode-banner" id="mode-banner">Public mode · stored examples only · no external API calls</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel" aria-labelledby="input-h">
+      <h2 id="input-h">1. Enter an answer</h2>
+      <div class="row">
+        <div class="field">
+          <label for="example">Choose an example</label>
+          <select id="example"></select>
+        </div>
+        <div class="field">
+          <label for="authored">Answer written on</label>
+          <input type="date" id="authored" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="answer">Answer paragraph (pasting an example's original text replays its cached result)</label>
+        <textarea id="answer" rows="5" spellcheck="false"></textarea>
+      </div>
+      <div class="actions">
+        <button type="button" id="verify" class="primary">Recheck</button>
+        <button type="button" id="copy">Copy paragraph</button>
+      </div>
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+    </section>
+
+    <div id="results" tabindex="-1">
+      <section class="panel" id="meta" aria-labelledby="meta-title"></section>
+
+      <section class="panel" aria-labelledby="controls-h" id="controls">
+        <h2 id="controls-h">2. Adjust the date and recheck cycles <span class="small muted">(computed in the browser · no network calls)</span></h2>
+        <div class="field">
+          <label for="evaldate">Evaluation date: <output id="evaldate-out" for="evaldate"></output></label>
+          <input type="range" id="evaldate" min="0" max="0" step="1" aria-describedby="evaldate-range">
+          <div class="small muted range-ends" id="evaldate-range"></div>
+        </div>
+        <fieldset class="cycles">
+          <legend>Recheck cycle by claim type (days)</legend>
+          <div id="cycle-inputs" class="cycle-grid"></div>
+          <button type="button" id="reset-cycles">Reset to defaults</button>
+        </fieldset>
+      </section>
+
+      <section class="panel" aria-labelledby="summary-h">
+        <h2 id="summary-h">3. Status summary</h2>
+        <div id="summary" aria-live="polite"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="timeline-h">
+        <h2 id="timeline-h">4. Timeline</h2>
+        <div id="timeline"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="claims-h">
+        <h2 id="claims-h">5. Results by claim <span class="small muted">The score is a recheck priority (0–100), not a probability of truth</span></h2>
+        <div id="claims"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="ics-h">
+        <h2 id="ics-h">6. Recheck schedule (ICS)</h2>
+        <button type="button" id="ics-download">Download ICS</button>
+        <details><summary>Show ICS contents</summary><pre id="ics-preview"></pre></details>
+      </section>
+
+      <section class="panel" aria-labelledby="log-h">
+        <h2 id="log-h">7. Run log</h2>
+        <div id="runlog"></div>
+      </section>
+    </div>
+    <div id="empty" class="panel empty" hidden></div>
+
+    <section class="panel" aria-labelledby="recorded-h">
+      <h2 id="recorded-h">Real API run records</h2>
+      <div id="recorded-run" aria-live="polite"><p>Loading the real direct-call run record. Each record states whether it went through Bifrost.</p></div>
+    </section>
+
+    <section class="panel" aria-labelledby="live-h">
+      <h2 id="live-h">Local live mode (optional)</h2>
+      <p>To analyze any answer of your own, run this repository on your computer and configure your own Tavily key and a local Bifrost gateway (Gemini provider). Keys are read only from the server's <code>.env</code> and are never sent to the browser. See the README for detailed steps.</p>
+      <p class="small muted">Path: browser → local backend → Tavily / local backend → Bifrost (localhost) → Gemini · per input, at most 5 Gemini calls and 8 Tavily calls</p>
+    </section>
+  </main>
+  <footer class="wrap small muted">ClaimClock MVP · stored run records and public/synthetic examples · no external calls from this page · no sound</footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

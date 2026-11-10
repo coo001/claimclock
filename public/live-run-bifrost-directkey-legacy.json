@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "mode": "recorded-live",
+  "actualExternalRun": true,
+  "model": "gemini-3.5-flash-lite",
+  "valkeyUsed": false,
+  "semanticCacheEnabled": false,
+  "executionPath": "bifrost-gemini",
+  "bifrostVersion": "v2.5.0",
+  "provider": "gemini",
+  "requestCount": 1,
+  "responseModel": "gemini-3.5-flash-lite",
+  "output": "{\n  \"status\": \"bifrost-ok\"\n}",
+  "usage": {
+    "prompt_tokens": 19,
+    "prompt_tokens_details": {
+      "text_tokens": 19,
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens": 15,
+    "total_tokens": 34
+  },
+  "diagnostics": {
+    "initialFailure": {
+      "httpStatus": 401,
+      "error": "virtual key is required. Provide a virtual key via the x-bf-vk header."
+    },
+    "resolution": "local client.allow_direct_keys=true; x-bf-direct-key enabled; provider key passed via header, value omitted"
+  },
+  "recordCreatedAt": "2026-11-10T01:51:38.325Z"
+}

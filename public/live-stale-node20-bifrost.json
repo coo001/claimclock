@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "mode": "recorded-live-stale-node20-bifrost",
+  "actualExternalRun": true,
+  "executionPath": "Tavily basic search used the Gemini-generated query; Gemini extraction, judgment, and repair used Bifrost v2.5.0 with virtual-key auth and direct-key bypass disabled",
+  "startedAt": "2026-11-10T07:01:31.227Z",
+  "finishedAt": "2026-11-10T07:01:44.973Z",
+  "tavilyCalls": 1,
+  "bifrostCalls": 4,
+  "run": {
+    "id": "live-1794294091230",
+    "mode": "live",
+    "title": "입력한 답변 (로컬 실시간 분석)",
+    "authoredDate": "2023-10-24",
+    "answerText": "Node.js 20.x is currently in Active LTS.",
+    "source": {
+      "status": "USER_INPUT",
+      "url": null,
+      "publishedDate": null,
+      "publishedDateText": "",
+      "note": "사용자 입력은 서버에 저장·로그되지 않습니다."
+    },
+    "collectedAt": "2026-11-10T07:01:31.230Z",
+    "collectionMethod": "Tavily basic 검색 + Bifrost 경유 Gemini 판정",
+    "claims": [
+      {
+        "id": "c1",
+        "text": "Node.js 20.x is currently in Active LTS.",
+        "type": "버전",
+        "relation": "반박",
+        "relationNote": "",
+        "evidence": [
+          {
+            "id": "d47d36-02",
+            "url": "https://www.herodevs.com/blog-posts/node-js-end-of-life-dates-you-should-be-aware-of",
+            "title": "Node.js Version Support: EOL Dates and Latest Releases (July 2026)",
+            "quote": "| Node.js 20 | EOL (Apr 30, 2026) | Upgrade to 22/24, or adopt NES |",
+            "stance": "반박",
+            "citationOk": true,
+            "date": "2026-04-30",
+            "dateBasis": "Date appears verbatim in the cited source text.",
+            "collectedAt": "2026-11-10T07:01:41.029Z"
+          }
+        ],
+        "fix": "Node.js 20 has an End of Life date of April 30, 2026."
+      }
+    ],
+    "runLog": {
+      "note": "로컬 실시간 실행 (앱 상한: Gemini 5회 · Tavily 8회 · 순차 · 429 재시도 없음)",
+      "externalCalls": true,
+      "counts": {
+        "gemini": 4,
+        "tavily": 1
+      },
+      "tavily": [
+        {
+          "query": "Node.js 20 release schedule LTS status",
+          "topic": "general",
+          "collectedAt": "2026-11-10T07:01:41.029Z",
+          "results": [
+            {
+              "url": "https://hidekazu-konishi.com/entry/nodejs_release_and_eol_timeline.html",
+              "title": "Node.js Release and EOL Timeline - LTS Schedule, Active LTS and Maintenance, and End-of-Life Dates | hidekazu-konishi.com",
+              "published_date": null,
+              "contentExcerpt": "| 2023-04-18 | Node.js 20 \"Iron\" is released (entering Active LTS on 2023-10-24). Node.js 20 became one of the most widely deployed LTS lines in the project's history. Source: Node.js v20.0.0 released. |\n| 2023-04-30 | Node.js 14 \"Fermium\" reaches End-of-Life. Source: Node.js Releases (nodejs.org). "
+            },
+            {
+              "url": "https://gorbe.io/posts/nodejs/release-schedule",
+              "title": "Node.js Release Schedule · G⌬RBE",
+              "published_date": null,
+              "contentExcerpt": "| 14.x | End-of-Life | Fermium | 2020-04-21 | 2020-10-27 | 2021-10-19 | 2023-04-30 |\n| 15.x | End-of-Life | 2020-10-20  2021-06-01 |\n| 16.x | End-of-Life | Gallium | 2021-04-20 | 2021-10-26 | 2022-10-18 | 2023-09-11 |\n| 17.x | End-of-Life | 2021-10-19  2022-06-01 |\n| 18.x | Maintenance | Hydrogen | "
+            },
+            {
+              "url": "https://www.herodevs.com/blog-posts/node-js-end-of-life-dates-you-should-be-aware-of",
+              "title": "Node.js Version Support: EOL Dates and Latest Releases (July 2026)",
+              "published_date": null,
+              "contentExcerpt": "| Version Range | Status | Recommended Action |\n --- \n| Node.js 26 | Current | Fine for testing; move to LTS for production |\n| Node.js 24 | Active LTS | Supported; recommended upgrade target |\n| Node.js 22 | Maintenance LTS (EOL Apr 2027) | Supported; good upgrade target |\n| Node.js 21, 23, 25 (odd"
+            }
+          ]
+        }
+      ],
+      "gemini": [
+        {
+          "step": "extract",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 7023,
+          "usage": {
+            "prompt_tokens": 105,
+            "prompt_tokens_details": {
+              "text_tokens": 105,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 39,
+            "total_tokens": 144
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+              },
+              {
+                "role": "user",
+                "content": "{\"authored_date\":\"2023-10-24\",\"answer\":\"Node.js 20.x is currently in Active LTS.\"}"
+              }
+            ]
+          },
+          "output": "{\"claims\":[{\"text\":\"Node.js 20.x is currently in Active LTS.\",\"type\":\"버전\",\"query\":\"Node.js 20 release schedule LTS status\"}]}"
+        },
+        {
+          "step": "judge",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 1406,
+          "usage": {
+            "prompt_tokens": 1431,
+            "prompt_tokens_details": {
+              "text_tokens": 1431,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 74,
+            "total_tokens": 1505
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+              },
+              {
+                "role": "user",
+                "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"Node.js 20.x is currently in Active LTS.\"}],\"evidence\":[{\"id\":\"e44679-00\",\"claim_id\":\"c1\",\"url\":\"https://hidekazu-konishi.com/entry/nodejs_release_and_eol_timeline.html\",\"content\":\"| 2023-04-18 | Node.js 20 \\\"Iron\\\" is released (entering Active LTS on 2023-10-24). Node.js 20 became one of the most widely deployed LTS lines in the project's history. Source: Node.js v20.0.0 released. |\\n| 2023-04-30 | Node.js 14 \\\"Fermium\\\" reaches End-of-Life. Source: Node.js Releases (nodejs.org). | [...] Node.js 20 \\\"Iron\\\" reached End-of-Life on 2026-04-30. Node.js 18 \\\"Hydrogen\\\" reached End-of-Life on 2025-04-30, and Node.js 22 \\\"Jod\\\" is scheduled to reach End-of-Life on 2027-04-30. The exact EOL date for every major is listed in the per-version table above; the values come from the official Node.js Releases schedule.  \\n\\n### Why are odd-numbered Node.js versions not recommended for production? [...] | 2026-04-30 | Node.js 20 \\\"Iron\\\" reaches End-of-Life. Because Node.js 20 was so widely deployed, its EOL left a large installed base needing to move to Node.js 22 or 24. Source: Node.js Releases (nodejs.org). |\\n| 2026-05-05 | Node.js 26 is released as the new Current line (scheduled to enter Active LTS on 2026-10-28). Node.js 26 is the last major to follow the existing odd/even model. Source: Node.js v26.0.0 released. |\"},{\"id\":\"01f489-01\",\"claim_id\":\"c1\",\"url\":\"https://gorbe.io/posts/nodejs/release-schedule\",\"content\":\"| 14.x | End-of-Life | Fermium | 2020-04-21 | 2020-10-27 | 2021-10-19 | 2023-04-30 |\\n| 15.x | End-of-Life | 2020-10-20  2021-06-01 |\\n| 16.x | End-of-Life | Gallium | 2021-04-20 | 2021-10-26 | 2022-10-18 | 2023-09-11 |\\n| 17.x | End-of-Life | 2021-10-19  2022-06-01 |\\n| 18.x | Maintenance | Hydrogen | 2022-04-19 | 2022-10-25 | 2023-10-18 | 2025-04-30 |\\n| 19.x | End-of-Life | 2022-10-18  2023-06-01 |\\n| 20.x | LTS | Iron | 2023-04-18 | 2023-10-24 | 2024-10-22 | 2026-04-30 |\"},{\"id\":\"d47d36-02\",\"claim_id\":\"c1\",\"url\":\"https://www.herodevs.com/blog-posts/node-js-end-of-life-dates-you-should-be-aware-of\",\"content\":\"| Version Range | Status | Recommended Action |\\n --- \\n| Node.js 26 | Current | Fine for testing; move to LTS for production |\\n| Node.js 24 | Active LTS | Supported; recommended upgrade target |\\n| Node.js 22 | Maintenance LTS (EOL Apr 2027) | Supported; good upgrade target |\\n| Node.js 21, 23, 25 (odd) | EOL | Move to an even-numbered LTS immediately |\\n| Node.js 20 | EOL (Apr 30, 2026) | Upgrade to 22/24, or adopt NES |\\n| Node.js 18 | EOL (Apr 30, 2025) | Upgrade to 22/24, or adopt NES | [...] Odd-numbered releases (19, 21, 23, 25) never enter LTS. They stay Current for six months and then go straight to EOL, which is why they are unsuitable for production. Even-numbered releases (18, 20, 22, 24, 26) get the full LTS treatment and roughly three years of total support from initial release to EOL. For any system you intend to run longer than a quarter, an even-numbered LTS line is the only sensible choice.\\n\\n‍\\n\\n## Complete Node.js Version Timeline [...] The only fully supported lines today are Node.js 26 (Current), 24 (Active LTS), and 22 (Maintenance LTS). Everything else is end-of-life.\\n\\n‍\\n\\n## Versions Reaching EOL Next: What to Watch\\n\\n### Node.js 20 End of Life\\n\\nNode.js 20 reached en\"}]}"
+              }
+            ]
+          },
+          "output": "{\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"refute\",\"citations\":[{\"evidence_id\":\"d47d36-02\",\"quote\":\"| Node.js 20 | EOL (Apr 30, 2026) | Upgrade to 22/24, or adopt NES |\"}]}]}",
+          "citationCheck": [
+            {
+              "claim_id": "c1",
+              "evidence_id": "d47d36-02",
+              "quote": "| Node.js 20 | EOL (Apr 30, 2026) | Upgrade to 22/24, or adopt NES |",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "step": "fix:c1",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 2533,
+          "usage": {
+            "prompt_tokens": 89,
+            "prompt_tokens_details": {
+              "text_tokens": 89,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 28,
+            "total_tokens": 117
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "Rewrite the refuted claim so it matches the cited evidence. Return JSON only: {\"fix\":\"...\"}. Do not add facts that are not in the evidence."
+              },
+              {
+                "role": "user",
+                "content": "{\"claim\":\"Node.js 20.x is currently in Active LTS.\",\"evidence\":[\"| Node.js 20 | EOL (Apr 30, 2026) | Upgrade to 22/24, or adopt NES |\"]}"
+              }
+            ]
+          },
+          "output": "{\"fix\":\"Node.js 20 has an End of Life date of April 30, 2026.\"}"
+        }
+      ],
+      "errors": []
+    }
+  },
+  "goldBasis": {
+    "historical": {
+      "url": "https://nodejs.org/en/blog/release/v20.9.0",
+      "publishedDate": "2023-10-24",
+      "quote": "The 20.x release line now moves into \"Active LTS\""
+    },
+    "current": {
+      "url": "https://nodejs.org/en/about/previous-releases",
+      "observedAt": "2026-11-10",
+      "quote": "v20 | Iron | Apr 17, 2023 | Mar 24, 2026 | EOL",
+      "eventDate": null,
+      "note": "The official releases table marks v20 EOL; 2026-03-24 is page-updated metadata, not the event date."
+    },
+    "humanCurrentLabel": "반박",
+    "transition": {
+      "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+      "effectiveDate": "2024-10-22",
+      "quote": "\"v20\":{\"start\":\"2023-04-18\",\"lts\":\"2023-10-24\",\"maintenance\":\"2024-10-22\",\"end\":\"2026-04-30\",\"codename\":\"Iron\"}",
+      "note": "Active LTS ended and Maintenance LTS began on 2024-10-22; EOL was later, 2026-04-30."
+    }
+  }
+}

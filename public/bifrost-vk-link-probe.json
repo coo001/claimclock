@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "mode": "integration-probe-failed-not-evaluation",
+  "actualExternalRun": false,
+  "executionPath": "Bifrost v2.5.0 virtual-key config probe",
+  "directKeyBypassEnabled": false,
+  "attemptedCases": [
+    "support-py312-distutils",
+    "support-node20-lts-transition",
+    "refute-node20-codename",
+    "refute-py312-distutils-retained",
+    "insufficient-node-download-size",
+    "insufficient-py312-user-count"
+  ],
+  "bifrostRequests": 12,
+  "tavilyCalls": 0,
+  "geminiProviderCalls": 0,
+  "error": "HTTP 400: no keys found for provider: gemini and model: gemini-3.5-flash-lite",
+  "resolution": "virtual-key provider_configs omitted the configured Gemini provider key ID; linked DB key ID to a new temporary virtual key. This is a setup probe, not scored evidence."
+}

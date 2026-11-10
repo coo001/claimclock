@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "mode": "recorded-live",
+  "actualExternalRun": true,
+  "model": "gemini-3.5-flash-lite",
+  "valkeyUsed": false,
+  "semanticCacheEnabled": false,
+  "executionPath": "gemini-direct",
+  "provider": "Google AI Studio (direct)",
+  "requestCount": 1,
+  "responseModel": "gemini-3.5-flash-lite",
+  "output": "{\"status\":\"direct-ok\"}",
+  "usage": {
+    "promptTokenCount": 17,
+    "candidatesTokenCount": 7,
+    "totalTokenCount": 24,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 17
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "recordCreatedAt": "2026-11-10T01:51:38.326Z"
+}

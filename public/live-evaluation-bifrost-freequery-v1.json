@@ -1,0 +1,1175 @@
+{
+  "schemaVersion": 1,
+  "mode": "recorded-live-evaluation-bifrost-freequery",
+  "actualExternalRun": true,
+  "promptVersion": "existing lib/live.js EXTRACT_SYSTEM + JUDGE_SYSTEM, unmodified",
+  "executionPath": "Bifrost v2.5.0 with virtual key; direct-key bypass disabled",
+  "startedAt": "2026-11-10T02:11:22.614Z",
+  "finishedAt": "2026-11-10T02:11:44.964Z",
+  "newTavilyCalls": 6,
+  "previouslyDocumentedTavilyCalls": 11,
+  "cumulativeTavilyCalls": 17,
+  "totalSamples": 6,
+  "matched": 6,
+  "accuracy": 1,
+  "byClass": {
+    "지지": {
+      "n": 2,
+      "matched": 2,
+      "agreement": 1
+    },
+    "반박": {
+      "n": 2,
+      "matched": 2,
+      "agreement": 1
+    },
+    "근거 부족": {
+      "n": 2,
+      "matched": 2,
+      "agreement": 1
+    }
+  },
+  "note": "Fresh claims; labels fixed from direct inspection of official original URLs before run. The evaluation transport wrapper sent each original claim sentence as Tavily query; Gemini-generated candidate queries are retained separately in run.runLog.tavily[].generatedQuery. Sent queries contain no site: or answer URLs. Insufficient means official page examined does not establish the specified quantitative claim, not a claim of objective falsity. This new set is separate from live-evaluation-pre.json; no prompt/rule tuning.",
+  "results": [
+    {
+      "id": "support-py312-distutils",
+      "input": "Python 3.12 removed the distutils package from the standard library.",
+      "authoredDate": "2026-01-15",
+      "goldLabel": "지지",
+      "goldBasis": {
+        "url": "https://docs.python.org/3/whatsnew/3.12.html",
+        "quote": "the `distutils` package has been removed from the standard library",
+        "reason": "Python 3.12 official What’s New page directly says the package was removed."
+      },
+      "modelLabel": "지지",
+      "matched": true,
+      "executionPath": "bifrost-virtual-key",
+      "queryMode": "input claim text sent directly; no site: filter, answer URL, or domain; model-generated candidate retained separately",
+      "executedQueries": [
+        "Python 3.12 removed the distutils package from the standard library."
+      ],
+      "run": {
+        "id": "live-1794276682616",
+        "mode": "live",
+        "title": "입력한 답변 (로컬 실시간 분석)",
+        "authoredDate": "2026-01-15",
+        "answerText": "Python 3.12 removed the distutils package from the standard library.",
+        "source": {
+          "status": "USER_INPUT",
+          "url": null,
+          "publishedDate": null,
+          "publishedDateText": "",
+          "note": "사용자 입력은 서버에 저장·로그되지 않습니다."
+        },
+        "collectedAt": "2026-11-10T02:11:22.616Z",
+        "collectionMethod": "Tavily basic 검색 + Bifrost 경유 Gemini 판정",
+        "claims": [
+          {
+            "id": "c1",
+            "text": "Python 3.12 removed the distutils package from the standard library.",
+            "type": "버전",
+            "relation": "지지",
+            "relationNote": "",
+            "evidence": [
+              {
+                "id": "ee32c7-00",
+                "url": "https://docs.python.org/3/library/distutils.html",
+                "title": "distutils — Building and installing Python modules — Python 3.15.2 documentation",
+                "quote": "It was removed in Python 3.12 after being deprecated in Python 3.10.",
+                "stance": "지지",
+                "citationOk": true,
+                "date": null,
+                "dateBasis": "published_date 없음, 인용 원문에 날짜 없음",
+                "collectedAt": "2026-11-10T02:11:25.639Z"
+              }
+            ],
+            "fix": null
+          }
+        ],
+        "runLog": {
+          "note": "로컬 실시간 실행 (앱 상한: Gemini 5회 · Tavily 8회 · 순차 · 429 재시도 없음)",
+          "externalCalls": true,
+          "counts": {
+            "gemini": 2,
+            "tavily": 1
+          },
+          "tavily": [
+            {
+              "query": "Python 3.12 removed the distutils package from the standard library.",
+              "topic": "general",
+              "collectedAt": "2026-11-10T02:11:25.639Z",
+              "results": [
+                {
+                  "url": "https://docs.python.org/3/library/distutils.html",
+                  "title": "distutils — Building and installing Python modules — Python 3.15.2 documentation",
+                  "published_date": null,
+                  "contentExcerpt": "This module is no longer part of the Python standard library. It was removed in Python 3.12 after being deprecated in Python 3.10. The removal was decided in PEP 632, which has migration advice.\n\nThe last version of Python that provided the `distutils` module was Python 3.11.\n\n#### Previous topic\n\n`"
+                },
+                {
+                  "url": "https://forum.glyphsapp.com/t/no-module-named-distutils-version/28326",
+                  "title": "No module named 'distutils.version' - Scripting - Glyphs Forum",
+                  "published_date": null,
+                  "contentExcerpt": "“The entire distutils package is deprecated, to be removed in Python 3.12. Its functionality for specifying package builds has already been completely replaced by third-party packages setuptools and packaging, and most other commonly used APIs are available elsewhere in the standard library (such as"
+                },
+                {
+                  "url": "https://peps.python.org/pep-0632",
+                  "title": "PEP 632 – Deprecate distutils module | peps.python.org",
+                  "published_date": null,
+                  "contentExcerpt": "After Python 3.12 is started and when the CPython build process no longer depends on distutils being in the standard library, the entire `Lib/distutils` directory and `Lib/test/test_distutils.py` file will be removed from the repository.\n\nOther references to distutils will be cleaned up. As of Pytho"
+                },
+                {
+                  "url": "https://news.ycombinator.com/item?id=26159509",
+                  "title": "> The entire distutils package is deprecated, to be removed in Python 3.12. Wait... | Hacker News",
+                  "published_date": null,
+                  "contentExcerpt": "Wait, what?\n\n says:\n\n> Setuptools has recently integrated a complete copy of distutils and is no longer dependent on the standard library . Pip has been silently replacing distutils with setuptools when installing packages for a long time already, and the distutils documentation has stated that it i"
+                },
+                {
+                  "url": "https://medium.com/@syeasar.kuet/pythons-distutils-is-gone-in-ubuntu-24-04-and-a-simple-workaround-5d859dde465b",
+                  "title": "Python’s distutils is Gone in Ubuntu 24.04? (and a Simple Workaround)",
+                  "published_date": null,
+                  "contentExcerpt": "It turns out that with Python 3.12 on Ubuntu 24.04, the distutils module has been completely removed from the system packages, and the python3-distutils package is no longer available in the APT repositories. Many older Python libraries like GPUtil still depend on distutils, causing this issue."
+                }
+              ],
+              "generatedQuery": "Python 3.12 release notes distutils removed",
+              "querySource": "input-claim-text"
+            }
+          ],
+          "gemini": [
+            {
+              "step": "extract",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 957,
+              "usage": {
+                "prompt_tokens": 107,
+                "prompt_tokens_details": {
+                  "text_tokens": 107,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 67,
+                "total_tokens": 174
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"authored_date\":\"2026-01-15\",\"answer\":\"Python 3.12 removed the distutils package from the standard library.\"}"
+                  }
+                ]
+              },
+              "output": "{\n  \"claims\": [\n    {\n      \"text\": \"Python 3.12 removed the distutils package from the standard library.\",\n      \"type\": \"버전\",\n      \"query\": \"Python 3.12 release notes distutils removed\"\n    }\n  ]\n}"
+            },
+            {
+              "step": "judge",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 1078,
+              "usage": {
+                "prompt_tokens": 1404,
+                "prompt_tokens_details": {
+                  "text_tokens": 1404,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 56,
+                "total_tokens": 1460
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"Python 3.12 removed the distutils package from the standard library.\"}],\"evidence\":[{\"id\":\"ee32c7-00\",\"claim_id\":\"c1\",\"url\":\"https://docs.python.org/3/library/distutils.html\",\"content\":\"This module is no longer part of the Python standard library. It was removed in Python 3.12 after being deprecated in Python 3.10. The removal was decided in PEP 632, which has migration advice.\\n\\nThe last version of Python that provided the `distutils` module was Python 3.11.\\n\\n#### Previous topic\\n\\n`crypt` — Function to check Unix passwords\\n\\n#### Next topic\\n\\n`imghdr` — Determine the type of an image\\n\\n### This page\\n\\n Report a bug\\n Improve this page\\n Show source\\n\\n### Navigation [...] ### Navigation\\n\\n index\\n modules |\\n next |\\n previous |\\n Python »\\n 3.15.2 documentation »\\n The Python standard library »\\n Removed Modules »\\n `distutils` — Building and installing Python modules\\n |\\n |\\n\\n# `distutils` — Building and installing Python modules¶\\n\\nDeprecated since version 3.10, removed in version 3.12.\"},{\"id\":\"afdb89-01\",\"claim_id\":\"c1\",\"url\":\"https://forum.glyphsapp.com/t/no-module-named-distutils-version/28326\",\"content\":\"“The entire distutils package is deprecated, to be removed in Python 3.12. Its functionality for specifying package builds has already been completely replaced by third-party packages setuptools and packaging, and most other commonly used APIs are available elsewhere in the standard library (such as platform, shutil, subprocess or sysconfig). There are no plans to migrate any other functionality from distutils, and applications that are using other functions should plan to make private copies [...] If that’s the case (sounds plausible indeed) then DrawBot needs an update. Maybe open an issue in their repo?\\n\\nGlyphs is not yet using Python 3.12 I believe, but it will eventually. Which Python version is written in the Glyphs preferences?\\n\\n@Mark Correct, but just checking Glyphs’ 11.6 and distutils have been removed there also based on the Readme.\\n\\nI finally had time to look into this. Can you update the drawbot plugin and see if it works now.\\n\\nThanks a lot Georg. It seems it is working now.\"},{\"id\":\"2a141b-02\",\"claim_id\":\"c1\",\"url\":\"https://peps.python.org/pep-0632\",\"content\":\"After Python 3.12 is started and when the CPython build process no longer depends on distutils being in the standard library, the entire `Lib/distutils` directory and `Lib/test/test_distutils.py` file will be removed from the repository.\\n\\nOther references to distutils will be cleaned up. As of Python 3.9’s initial release, the following modules have references in code or comments: [...] In Python 3.12, distutils will no longer be installed by \\n```\\nmake\\ninstall\\n```\\n or any of the first-party distribution. Third-party redistributors should no longer include distutils in their bundles or repositories.\\n\\nThis PEP makes no specification on migrating the parts of the CPython build process that currently use distutils. Depending on contributions, this migration may occur at any time. [...] ## Abstract\\n\\nThe distutils module ( has for a long time recommended using the setuptools package ( instead. Setuptools has recently integrated a complete copy of distutils and is no longer dependent on the standard library ( Pip has been silently replacing distutils with setuptools when installing packages for a long time already, and the distutils documentation has stated that it is being phased out sin\"},{\"id\":\"c6c765-03\",\"claim_id\":\"c1\",\"url\":\"https://news.ycombinator.com/item?id=26159509\",\"content\":\"Wait, what?\\n\\n says:\\n\\n> Setuptools has recently integrated a complete copy of distutils and is no longer dependent on the standard library . Pip has been silently replacing distutils with setuptools when installing packages for a long time already, and the distutils documentation has stated that it is being phased out since 2014 (or earlier). It is time to remove it from the standard library. [...] Help?\\n\\n says:\\n\\n> Setuptools has recently integrated a complete copy of distutils and is no longer dependent on the standard library . Pip has been silently replacing distutils with setuptools when installing packages for a long time already, and the distutils documentation has stated that it is being phased out since 2014 (or earlier). It is time to remove it from the standard library.\\n\\nOh, okay. My package already requires setuptools for setup(), though it then uses distutils for the rest. [...] to execute the standard setup.py. In any case, as per PEP 517, you can define your own custom packaging backend using the build-backend value in the [build-system] table. | |\"},{\"id\":\"e082bb-04\",\"claim_id\":\"c1\",\"url\":\"https://medium.com/@syeasar.kuet/pythons-distutils-is-gone-in-ubuntu-24-04-and-a-simple-workaround-5d859dde465b\",\"content\":\"It turns out that with Python 3.12 on Ubuntu 24.04, the distutils module has been completely removed from the system packages, and the python3-distutils package is no longer available in the APT repositories. Many older Python libraries like GPUtil still depend on distutils, causing this issue.\"}]}"
+                  }
+                ]
+              },
+              "output": "{\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support\",\"citations\":[{\"evidence_id\":\"ee32c7-00\",\"quote\":\"It was removed in Python 3.12 after being deprecated in Python 3.10.\"}]}]}",
+              "citationCheck": [
+                {
+                  "claim_id": "c1",
+                  "evidence_id": "ee32c7-00",
+                  "quote": "It was removed in Python 3.12 after being deprecated in Python 3.10.",
+                  "passed": true
+                }
+              ]
+            }
+          ],
+          "errors": []
+        }
+      },
+      "queryAudit": [
+        {
+          "generatedQuery": "Python 3.12 release notes distutils removed",
+          "sentQuery": "Python 3.12 removed the distutils package from the standard library.",
+          "source": "input-claim-text override"
+        }
+      ]
+    },
+    {
+      "id": "support-node20-lts-transition",
+      "input": "Node.js v20.9.0 moved the Node.js 20.x line into Active LTS.",
+      "authoredDate": "2026-01-15",
+      "goldLabel": "지지",
+      "goldBasis": {
+        "url": "https://nodejs.org/en/blog/release/v20.9.0",
+        "quote": "The 20.x release line now moves into \"Active LTS\"",
+        "reason": "Official Node.js v20.9.0 release announcement directly states the LTS transition."
+      },
+      "modelLabel": "지지",
+      "matched": true,
+      "executionPath": "bifrost-virtual-key",
+      "queryMode": "input claim text sent directly; no site: filter, answer URL, or domain; model-generated candidate retained separately",
+      "executedQueries": [
+        "Node.js v20.9.0 moved the Node.js 20.x line into Active LTS."
+      ],
+      "run": {
+        "id": "live-1794276686719",
+        "mode": "live",
+        "title": "입력한 답변 (로컬 실시간 분석)",
+        "authoredDate": "2026-01-15",
+        "answerText": "Node.js v20.9.0 moved the Node.js 20.x line into Active LTS.",
+        "source": {
+          "status": "USER_INPUT",
+          "url": null,
+          "publishedDate": null,
+          "publishedDateText": "",
+          "note": "사용자 입력은 서버에 저장·로그되지 않습니다."
+        },
+        "collectedAt": "2026-11-10T02:11:26.719Z",
+        "collectionMethod": "Tavily basic 검색 + Bifrost 경유 Gemini 판정",
+        "claims": [
+          {
+            "id": "c1",
+            "text": "Node.js v20.9.0 moved the Node.js 20.x line into Active LTS.",
+            "type": "버전",
+            "relation": "지지",
+            "relationNote": "",
+            "evidence": [
+              {
+                "id": "fa39b0-00",
+                "url": "https://github.com/nodejs/nodejs.org/blob/main/apps/site/pages/en/blog/release/v20.9.0.md",
+                "title": "nodejs.org/apps/site/pages/en/blog/release/v20.9.0.md at main · nodejs/nodejs.org · GitHub",
+                "quote": "This release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into \"Active LTS\" and will remain so until October 2024.",
+                "stance": "지지",
+                "citationOk": true,
+                "date": null,
+                "dateBasis": "published_date 없음, 인용 원문에 날짜 없음",
+                "collectedAt": "2026-11-10T02:11:28.892Z"
+              }
+            ],
+            "fix": null
+          }
+        ],
+        "runLog": {
+          "note": "로컬 실시간 실행 (앱 상한: Gemini 5회 · Tavily 8회 · 순차 · 429 재시도 없음)",
+          "externalCalls": true,
+          "counts": {
+            "gemini": 2,
+            "tavily": 1
+          },
+          "tavily": [
+            {
+              "query": "Node.js v20.9.0 moved the Node.js 20.x line into Active LTS.",
+              "topic": "general",
+              "collectedAt": "2026-11-10T02:11:28.892Z",
+              "results": [
+                {
+                  "url": "https://github.com/nodejs/nodejs.org/blob/main/apps/site/pages/en/blog/release/v20.9.0.md",
+                  "title": "nodejs.org/apps/site/pages/en/blog/release/v20.9.0.md at main · nodejs/nodejs.org · GitHub",
+                  "published_date": null,
+                  "contentExcerpt": "This release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into \"Active LTS\" and will remain so until October 2024. After that time, it will move into \"Maintenance\" until end of life in April 2026.\n\n### Known issue"
+                },
+                {
+                  "url": "https://nodejs.org/en/blog/release/v20.9.0",
+                  "title": "Node.js — Node.js 20.9.0 (LTS)",
+                  "published_date": null,
+                  "contentExcerpt": "Skip to content\n\n# Node.js 20.9.0 (LTS)\n\nRL\n\nRichard Lau\n\nNode.js 20.9.0 (LTS)\n\n## 2023-10-24, Version 20.9.0 'Iron' (LTS), @richardlau\n\n### Notable Changes\n\nThis release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into "
+                },
+                {
+                  "url": "https://devblogs.microsoft.com/azure-sdk/announcing-the-end-of-support-for-node-js-20-x-in-the-azure-sdk-for-javascript",
+                  "title": "Announcing the end of support for Node.js 20.x in the Azure SDK for JavaScript - Azure SDK Blog",
+                  "published_date": null,
+                  "contentExcerpt": "Node.js has a well-defined release schedule, with each even-numbered version enjoying an Active LTS period followed by a Maintenance LTS period before eventually reaching end-of-life. Once a Node.js version moves out of Maintenance, it no longer receives bug fixes or security updates. To ensure we’r"
+                },
+                {
+                  "url": "https://endoflife.date/nodejs",
+                  "title": "Node.js | endoflife.date",
+                  "published_date": null,
+                  "contentExcerpt": "Major Node.js versions enter Current release status for six months, which gives library authors time to add support for them. After six months, releases after 26 move to Active LTS status and are ready for general use. LTS release status is “long-term support”, which typically guarantees that critic"
+                },
+                {
+                  "url": "https://www.reddit.com/r/node/comments/1dl6fm2/how_does_node_lts_work",
+                  "title": "How does Node LTS work : r/node",
+                  "published_date": null,
+                  "contentExcerpt": "BehindTheMath\n\n•2y ago\n\nYes.\n\nMore replies\n\nMore replies\n\n[deleted]\n\n•2y ago• Edited 2y ago\n\nLTS means long time support version 20 is the LTS version while 20.X just means it got patched with a non-breaking change. In case about the change beeing a minor and not a hotfix is because it's not a criti"
+                }
+              ],
+              "generatedQuery": "Node.js v20.9.0 Active LTS release changelog",
+              "querySource": "input-claim-text"
+            }
+          ],
+          "gemini": [
+            {
+              "step": "extract",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 767,
+              "usage": {
+                "prompt_tokens": 116,
+                "prompt_tokens_details": {
+                  "text_tokens": 116,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 55,
+                "total_tokens": 171
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"authored_date\":\"2026-01-15\",\"answer\":\"Node.js v20.9.0 moved the Node.js 20.x line into Active LTS.\"}"
+                  }
+                ]
+              },
+              "output": "{\"claims\":[{\"text\":\"Node.js v20.9.0 moved the Node.js 20.x line into Active LTS.\",\"type\":\"버전\",\"query\":\"Node.js v20.9.0 Active LTS release changelog\"}]}"
+            },
+            {
+              "step": "judge",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 946,
+              "usage": {
+                "prompt_tokens": 1783,
+                "prompt_tokens_details": {
+                  "text_tokens": 1783,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 91,
+                "total_tokens": 1874
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"Node.js v20.9.0 moved the Node.js 20.x line into Active LTS.\"}],\"evidence\":[{\"id\":\"fa39b0-00\",\"claim_id\":\"c1\",\"url\":\"https://github.com/nodejs/nodejs.org/blob/main/apps/site/pages/en/blog/release/v20.9.0.md\",\"content\":\"This release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into \\\"Active LTS\\\" and will remain so until October 2024. After that time, it will move into \\\"Maintenance\\\" until end of life in April 2026.\\n\\n### Known issue\"},{\"id\":\"27b876-01\",\"claim_id\":\"c1\",\"url\":\"https://nodejs.org/en/blog/release/v20.9.0\",\"content\":\"Skip to content\\n\\n# Node.js 20.9.0 (LTS)\\n\\nRL\\n\\nRichard Lau\\n\\nNode.js 20.9.0 (LTS)\\n\\n## 2023-10-24, Version 20.9.0 'Iron' (LTS), @richardlau\\n\\n### Notable Changes\\n\\nThis release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into \\\"Active LTS\\\" and will remain so until October 2024. After that time, it will move into \\\"Maintenance\\\" until end of life in April 2026.\\n\\n### Known issue [...] PreviousNode.js 21.2.0 (Current)NextNode.js 21.1.0 (Current) [...] G8ZlcRqZXTXTVmEvUmtg1qAyQq1zo3lwFP2o6CNHagoXv5iLlv/xSbC7IaKE+Mv1CP44lE9ynVy83i68SxKJJsfgsFK0hK8a+P2o6CNHagoXv5iLlv/xSbC7IaKE+Mv1CP44lE9ynVy83i68SxKJJsfgsFK0hK8a+m4o4kRfvnnEV7BSjchp8NRRAR9qMbbFLR0NJF+l+WnDzMyewcrD1BptdPjrOck3dm4o4kRfvnnEV7BSjchp8NRRAR9qMbbFLR0NJF+l+WnDzMyewcrD1BptdPjrOck3dLtDoOe8w2hLyTasHyATg9apqQeG2x4EI/oaR9vSYrstRc7OtGcDYoJN3+GvSrL3DLtDoOe8w2hLyTasHyATg9apqQeG2x4EI/oaR9vSYrstRc7OtGcDYoJN3+GvSrL3D\"},{\"id\":\"5f3525-02\",\"claim_id\":\"c1\",\"url\":\"https://devblogs.microsoft.com/azure-sdk/announcing-the-end-of-support-for-node-js-20-x-in-the-azure-sdk-for-javascript\",\"content\":\"Node.js has a well-defined release schedule, with each even-numbered version enjoying an Active LTS period followed by a Maintenance LTS period before eventually reaching end-of-life. Once a Node.js version moves out of Maintenance, it no longer receives bug fixes or security updates. To ensure we’re providing up-to-date and secure libraries, we routinely drop support for Node.js versions that reached end-of-life. [...] For more information on maintenance and support policies, see the Azure SDK support policy and the Azure SDK for JavaScript support policy.\\n\\n## What should you do?\\n\\nTo ensure you’re using a supported version of Node.js, we recommend upgrading to the latest Active LTS version. You can find the latest LTS version of Node.js on the Node.js website.\\n\\n### Category\\n\\n Azure SDK\\n\\n### Topics\\n\\n azure-sdk\\n javascript\\n js\\n typescript\\n\\n### Share\\n\\n## Author\\n\\nMinh-Anh Phan\\n\\nMinh-Anh Phan [...] April 6th, 2026\\n\\ncelebrate1 reaction\\n\\n# Announcing the end of support for Node.js 20.x in the Azure SDK for JavaScript\\n\\nMinh-Anh Phan\\n\\nAfter July 9, 2026, the Azure SDK for JavaScript will no longer support Node.js 20.x, which reaches end-of-life on April 30, 2026. We encourage you to upgrad\"},{\"id\":\"50287c-03\",\"claim_id\":\"c1\",\"url\":\"https://endoflife.date/nodejs\",\"content\":\"Major Node.js versions enter Current release status for six months, which gives library authors time to add support for them. After six months, releases after 26 move to Active LTS status and are ready for general use. LTS release status is “long-term support”, which typically guarantees that critical bugs will be fixed for a total of 30 months. Production applications should only use Active LTS or Maintenance LTS releases.\"},{\"id\":\"1a952f-04\",\"claim_id\":\"c1\",\"url\":\"https://www.reddit.com/r/node/comments/1dl6fm2/how_does_node_lts_work\",\"content\":\"BehindTheMath\\n\\n•2y ago\\n\\nYes.\\n\\nMore replies\\n\\nMore replies\\n\\n[deleted]\\n\\n•2y ago• Edited 2y ago\\n\\nLTS means long time support version 20 is the LTS version while 20.X just means it got patched with a non-breaking change. In case about the change beeing a minor and not a hotfix is because it's not a critical update.\\n\\nSo you need to update regulary for security reasons, but you can be sure nothing will break by doing the update. That's what LTS is meant to do in all languages and packages.\\n\\nEdit: [...] Best \\n   Top \\n   New \\n   Controversial \\n   Old \\n   Q&A \\n\\n# Comments Section\\n\\n version.\\n\\nAt the time of writing: v20.15.0 is the latest release for v20.x LTS (iron) according to \\n\\nEdit: fixed semantics\\n\\n Reply  Share \\n\\n, some prefer a bit more lag and do active with a then bigger jump every October (20), but you can go for older ”maintencance” (18, until May next year) if the code is fragile or unmaintained and just want to hope it keeps ticking\\n\\nImage 5: u/BehindTheMath avatar [...] Edit:\\n\\n> So question is, 20.13 still an LTS?\\n\\nNot really, it is outdated and possibly a security risk, but updating to a recent 20.x.x won't break stuff. LTS just means they support and provide patches for a lon\"}]}"
+                  }
+                ]
+              },
+              "output": "{\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support\",\"citations\":[{\"evidence_id\":\"fa39b0-00\",\"quote\":\"This release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into \\\"Active LTS\\\" and will remain so until October 2024.\"}]}]}",
+              "citationCheck": [
+                {
+                  "claim_id": "c1",
+                  "evidence_id": "fa39b0-00",
+                  "quote": "This release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into \"Active LTS\" and will remain so until October 2024.",
+                  "passed": true
+                }
+              ]
+            }
+          ],
+          "errors": []
+        }
+      },
+      "queryAudit": [
+        {
+          "generatedQuery": "Node.js v20.9.0 Active LTS release changelog",
+          "sentQuery": "Node.js v20.9.0 moved the Node.js 20.x line into Active LTS.",
+          "source": "input-claim-text override"
+        }
+      ]
+    },
+    {
+      "id": "refute-node20-codename",
+      "input": "The codename of Node.js 20 is Argon.",
+      "authoredDate": "2026-01-15",
+      "goldLabel": "반박",
+      "goldBasis": {
+        "url": "https://nodejs.org/en/about/previous-releases",
+        "quote": "| [v20](/en/download/archive/v20.20.2) | Iron |",
+        "reason": "Official Node.js releases table identifies v20 as Iron, contradicting Argon."
+      },
+      "modelLabel": "반박",
+      "matched": true,
+      "executionPath": "bifrost-virtual-key",
+      "queryMode": "input claim text sent directly; no site: filter, answer URL, or domain; model-generated candidate retained separately",
+      "executedQueries": [
+        "The codename of Node.js 20 is Argon."
+      ],
+      "run": {
+        "id": "live-1794276689839",
+        "mode": "live",
+        "title": "입력한 답변 (로컬 실시간 분석)",
+        "authoredDate": "2026-01-15",
+        "answerText": "The codename of Node.js 20 is Argon.",
+        "source": {
+          "status": "USER_INPUT",
+          "url": null,
+          "publishedDate": null,
+          "publishedDateText": "",
+          "note": "사용자 입력은 서버에 저장·로그되지 않습니다."
+        },
+        "collectedAt": "2026-11-10T02:11:29.839Z",
+        "collectionMethod": "Tavily basic 검색 + Bifrost 경유 Gemini 판정",
+        "claims": [
+          {
+            "id": "c1",
+            "text": "The codename of Node.js 20 is Argon.",
+            "type": "버전",
+            "relation": "반박",
+            "relationNote": "",
+            "evidence": [
+              {
+                "id": "da19a8-00",
+                "url": "https://nodejs.org/en/about/previous-releases",
+                "title": "Node.js — Node.js Releases",
+                "quote": "| v20 | Iron |  |  | EOL |  |",
+                "stance": "반박",
+                "citationOk": true,
+                "date": null,
+                "dateBasis": "published_date 없음, 인용 원문에 날짜 없음",
+                "collectedAt": "2026-11-10T02:11:32.241Z"
+              }
+            ],
+            "fix": "The codename of Node.js 20 is Iron."
+          }
+        ],
+        "runLog": {
+          "note": "로컬 실시간 실행 (앱 상한: Gemini 5회 · Tavily 8회 · 순차 · 429 재시도 없음)",
+          "externalCalls": true,
+          "counts": {
+            "gemini": 3,
+            "tavily": 1
+          },
+          "tavily": [
+            {
+              "query": "The codename of Node.js 20 is Argon.",
+              "topic": "general",
+              "collectedAt": "2026-11-10T02:11:32.241Z",
+              "results": [
+                {
+                  "url": "https://nodejs.org/en/about/previous-releases",
+                  "title": "Node.js — Node.js Releases",
+                  "published_date": null,
+                  "contentExcerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v27   |  | Alpha |  |\n| v26 | Lithium |  |  | LTS |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   | "
+                },
+                {
+                  "url": "https://en.wikipedia.org/wiki/Node.js",
+                  "title": "Node.js - Wikipedia",
+                  "published_date": null,
+                  "contentExcerpt": "| Release | Status | Code name | Release date | Maintenance end |\n ---  --- \n| Unsupported: 0.10.x | Unsupported: End-of-Life | 2013-03-11 | 2016-10-31 |\n| Unsupported: 0.12.x | Unsupported: End-of-Life | 2015-02-06 | 2016-12-31 |\n| Unsupported: 4.x | Unsupported: End-of-Life | Argon | 2015-09-08 | "
+                },
+                {
+                  "url": "https://www.herodevs.com/blog-posts/node-js-20-goes-eol-how-to-stay-secure-without-a-full-migration",
+                  "title": "Node.js 20 Goes EOL: How to Stay Secure Without a Full Migration",
+                  "published_date": null,
+                  "contentExcerpt": "Node.js 20 \"Iron\" was an exceptional LTS release. It introduced a stable built-in test runner, a new Permission Model for runtime access control, significant V8 engine performance improvements, and native ARM64 Windows support, making it an attractive long-term foundation for enterprise applications"
+                },
+                {
+                  "url": "https://openjsf.org/blog/node-js-20-now-available",
+                  "title": "Node.js 20 Now Available | OpenJS Foundation",
+                  "published_date": null,
+                  "contentExcerpt": "Node.js 20 is now available! Highlights include the new Node.js experimental Permission Model, synchronous import.meta.resolve, a stable test\\_runner module, updates of the V8 JavaScript engine to 11.3, single executable apps, Ada to 2.0, and more. [...] ### Updated V8 JavaScript engine to 11.3\n\nThe"
+                },
+                {
+                  "url": "https://aws.amazon.com/blogs/compute/node-js-20-x-runtime-now-available-in-aws-lambda",
+                  "title": "Node.js 20.x runtime now available in AWS Lambda | AWS Compute Blog",
+                  "published_date": null,
+                  "contentExcerpt": "You can now develop AWS Lambda functions using the Node.js 20 runtime. This Node.js version is in active LTS status and ready for general use. To use this new version, specify a runtime parameter value of `nodejs20.x` when creating or updating functions or by using the appropriate container base ima"
+                }
+              ],
+              "generatedQuery": "Node.js 20 codename",
+              "querySource": "input-claim-text"
+            }
+          ],
+          "gemini": [
+            {
+              "step": "extract",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 742,
+              "usage": {
+                "prompt_tokens": 104,
+                "prompt_tokens_details": {
+                  "text_tokens": 104,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 36,
+                "total_tokens": 140
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"authored_date\":\"2026-01-15\",\"answer\":\"The codename of Node.js 20 is Argon.\"}"
+                  }
+                ]
+              },
+              "output": "{\"claims\":[{\"text\":\"The codename of Node.js 20 is Argon.\",\"type\":\"버전\",\"query\":\"Node.js 20 codename\"}]}"
+            },
+            {
+              "step": "judge",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 797,
+              "usage": {
+                "prompt_tokens": 1735,
+                "prompt_tokens_details": {
+                  "text_tokens": 1735,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 52,
+                "total_tokens": 1787
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"The codename of Node.js 20 is Argon.\"}],\"evidence\":[{\"id\":\"da19a8-00\",\"claim_id\":\"c1\",\"url\":\"https://nodejs.org/en/about/previous-releases\",\"content\":\"| Node.js | Codename | First released | Last updated | Status |\\n ---  --- \\n| v27   |  | Alpha |  |\\n| v26 | Lithium |  |  | LTS |  |\\n| v25   |  | EOL |  |\\n| v24 | Krypton |  |  | LTS |  |\\n| v23   |  | EOL |  |\\n| v22 | Jod |  |  | LTS |  |\\n| v21   |  | EOL |  |\\n| v20 | Iron |  |  | EOL |  |\\n| v19   |  | EOL |  |\\n| v18 | Hydrogen |  |  | EOL |  |\\n| v17   |  | EOL |  |\\n| v16 | Gallium |  |  | EOL |  |\\n| v15   |  | EOL |  |\\n| v14 | Fermium |  |  | EOL |  |\\n| v13   |  | EOL |  | [...] | v12 | Erbium |  |  | EOL |  |\\n| v11   |  | EOL |  |\\n| v10 | Dubnium |  |  | EOL |  |\\n| v9   |  | EOL |  |\\n| v8 | Carbon |  |  | EOL |  |\\n| v7   |  | EOL |  |\\n| v6 | Boron |  |  | EOL |  |\\n| v5   |  | EOL |  |\\n| v4 | Argon |  |  | EOL |  |\\n| v0   |  | EOL |  |\"},{\"id\":\"c2f82d-01\",\"claim_id\":\"c1\",\"url\":\"https://en.wikipedia.org/wiki/Node.js\",\"content\":\"| Release | Status | Code name | Release date | Maintenance end |\\n ---  --- \\n| Unsupported: 0.10.x | Unsupported: End-of-Life | 2013-03-11 | 2016-10-31 |\\n| Unsupported: 0.12.x | Unsupported: End-of-Life | 2015-02-06 | 2016-12-31 |\\n| Unsupported: 4.x | Unsupported: End-of-Life | Argon | 2015-09-08 | 2018-04-30 |\\n| Unsupported: 5.x | Unsupported: End-of-Life | 2015-10-29 | 2016-06-30 |\\n| Unsupported: 6.x | Unsupported: End-of-Life | Boron | 2016-04-26 | 2019-04-30 |\"},{\"id\":\"a76c4c-02\",\"claim_id\":\"c1\",\"url\":\"https://www.herodevs.com/blog-posts/node-js-20-goes-eol-how-to-stay-secure-without-a-full-migration\",\"content\":\"Node.js 20 \\\"Iron\\\" was an exceptional LTS release. It introduced a stable built-in test runner, a new Permission Model for runtime access control, significant V8 engine performance improvements, and native ARM64 Windows support, making it an attractive long-term foundation for enterprise applications. Its 30-month LTS lifecycle made it a natural choice for teams that prioritize stability, contributing to its broad adoption in production environments worldwide.\\n\\nShare via: [...] Node.js 20 was one of the most widely adopted LTS releases in the history of the runtime. It includes a stable built-in test runner, a permission model for fine-grained resource access control, V8 engine v11.3 performance improvements, and ARM64 Windows support. [...] Node.js 20 is reaching end-of-life on April 30, 2026,  and the clock is ticking for thousands of organizations that depend on it to power their production applications. After this date, the Node.js open-source project will no longer provide official releases, security patches, or vulnerability fixes for this version. To maintain security posture and operational continuity, organizations must act now: either transition to specialized Node.js 20 s\"},{\"id\":\"d33500-03\",\"claim_id\":\"c1\",\"url\":\"https://openjsf.org/blog/node-js-20-now-available\",\"content\":\"Node.js 20 is now available! Highlights include the new Node.js experimental Permission Model, synchronous import.meta.resolve, a stable test\\\\_runner module, updates of the V8 JavaScript engine to 11.3, single executable apps, Ada to 2.0, and more. [...] ### Updated V8 JavaScript engine to 11.3\\n\\nThe V8 engine is what powers Node.js. It parses and runs your JavaScript inside a Node environment. Node.js follows updates to the V8 JavaScript engine closely.\\n\\nThis version includes 5 new features:\\n\\n String.prototype.isWellFormed and toWellFormed\\n Methods that change Array and TypedArray by copy\\n Resizable ArrayBuffer and growable SharedArrayBuffer\\n RegExp v flag with set notation + properties of strings\\n WebAssembly Tail Call\\n\\n### Stable Test Runner [...] Node.js 20 is the “Current” release for the next six months and incorporates the newest features. For organizations and individuals looking to implement Node.js 20, now is a good time to test and prototype. Node.js 20 will enter long-term support (LTS) in October and be ready for full production deployments. Full release schedule here.\"},{\"id\":\"50b80e-04\",\"claim_id\":\"c1\",\"url\":\"https://aws.amazon.com/blogs/compute/node-js-20-x-runtime-now-available-in-aws-lambda\",\"content\":\"You can now develop AWS Lambda functions using the Node.js 20 runtime. This Node.js version is in active LTS status and ready for general use. To use this new version, specify a runtime parameter value of `nodejs20.x` when creating or updating functions or by using the appropriate container base image.\\n\\n`nodejs20.x` [...] This blog post highlights important changes to the Node.js runtime, notable Node.js language updates, and how you can use the new Node.js 20 runtime in your serverless applications.\\n\\n## Node.js 20 runtime updates\\n\\n### Changes to Root CA certificate loading [...] With this release, Lambda customers can take advantage of new Node.js 20 language features, including:\\n\\n`keepAlive`\\n`globalThis.crypto`\\n\\nFor a detailed overview of Node.js 20 language features, see the Node.js 20 release blog post and the Node.js 20 changelog.\\n\\n### Performance considerations\"}]}"
+                  }
+                ]
+              },
+              "output": "{\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"refute\",\"citations\":[{\"evidence_id\":\"da19a8-00\",\"quote\":\"| v20 | Iron |  |  | EOL |  |\"}]}]}",
+              "citationCheck": [
+                {
+                  "claim_id": "c1",
+                  "evidence_id": "da19a8-00",
+                  "quote": "| v20 | Iron |  |  | EOL |  |",
+                  "passed": true
+                }
+              ]
+            },
+            {
+              "step": "fix:c1",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 667,
+              "usage": {
+                "prompt_tokens": 68,
+                "prompt_tokens_details": {
+                  "text_tokens": 68,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 18,
+                "total_tokens": 86
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Rewrite the refuted claim so it matches the cited evidence. Return JSON only: {\"fix\":\"...\"}. Do not add facts that are not in the evidence."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"claim\":\"The codename of Node.js 20 is Argon.\",\"evidence\":[\"| v20 | Iron |  |  | EOL |  |\"]}"
+                  }
+                ]
+              },
+              "output": "{\"fix\": \"The codename of Node.js 20 is Iron.\"}"
+            }
+          ],
+          "errors": []
+        }
+      },
+      "queryAudit": [
+        {
+          "generatedQuery": "Node.js 20 codename",
+          "sentQuery": "The codename of Node.js 20 is Argon.",
+          "source": "input-claim-text override"
+        }
+      ]
+    },
+    {
+      "id": "refute-py312-distutils-retained",
+      "input": "Python 3.12 retained distutils in the standard library.",
+      "authoredDate": "2026-01-15",
+      "goldLabel": "반박",
+      "goldBasis": {
+        "url": "https://docs.python.org/3/whatsnew/3.12.html",
+        "quote": "the `distutils` package has been removed from the standard library",
+        "reason": "Official Python 3.12 page says distutils was removed, contradicting retained."
+      },
+      "modelLabel": "반박",
+      "matched": true,
+      "executionPath": "bifrost-virtual-key",
+      "queryMode": "input claim text sent directly; no site: filter, answer URL, or domain; model-generated candidate retained separately",
+      "executedQueries": [
+        "Python 3.12 retained distutils in the standard library."
+      ],
+      "run": {
+        "id": "live-1794276693706",
+        "mode": "live",
+        "title": "입력한 답변 (로컬 실시간 분석)",
+        "authoredDate": "2026-01-15",
+        "answerText": "Python 3.12 retained distutils in the standard library.",
+        "source": {
+          "status": "USER_INPUT",
+          "url": null,
+          "publishedDate": null,
+          "publishedDateText": "",
+          "note": "사용자 입력은 서버에 저장·로그되지 않습니다."
+        },
+        "collectedAt": "2026-11-10T02:11:33.706Z",
+        "collectionMethod": "Tavily basic 검색 + Bifrost 경유 Gemini 판정",
+        "claims": [
+          {
+            "id": "c1",
+            "text": "Python 3.12 retained distutils in the standard library.",
+            "type": "버전",
+            "relation": "반박",
+            "relationNote": "",
+            "evidence": [
+              {
+                "id": "6bfa8d-02",
+                "url": "https://docs.python.org/3/library/distutils.html",
+                "title": "distutils — Building and installing Python modules — Python 3.15.2 documentation",
+                "quote": "This module is no longer part of the Python standard library. It was removed in Python 3.12 after being deprecated in Python 3.10.",
+                "stance": "반박",
+                "citationOk": true,
+                "date": null,
+                "dateBasis": "published_date 없음, 인용 원문에 날짜 없음",
+                "collectedAt": "2026-11-10T02:11:36.262Z"
+              }
+            ],
+            "fix": "Python 3.12 removed distutils from the standard library."
+          }
+        ],
+        "runLog": {
+          "note": "로컬 실시간 실행 (앱 상한: Gemini 5회 · Tavily 8회 · 순차 · 429 재시도 없음)",
+          "externalCalls": true,
+          "counts": {
+            "gemini": 3,
+            "tavily": 1
+          },
+          "tavily": [
+            {
+              "query": "Python 3.12 retained distutils in the standard library.",
+              "topic": "general",
+              "collectedAt": "2026-11-10T02:11:36.262Z",
+              "results": [
+                {
+                  "url": "https://fedoraproject.org/wiki/Changes/Python3.12",
+                  "title": "Changes/Python3.12 - Fedora Project Wiki",
+                  "published_date": null,
+                  "contentExcerpt": "For many years distutils module was providing support for building and installing additional modules into a Python installation. Since Python 3.10 distutils package is deprecated, and will be removed in Python 3.12. Its functionality for specifying package builds has already been completely replaced"
+                },
+                {
+                  "url": "https://peps.pythondiscord.com/pep-0632",
+                  "title": "PEP 632 – Deprecate distutils module | peps.pythondiscord.com",
+                  "published_date": null,
+                  "contentExcerpt": "After Python 3.12 is started and when the CPython build process no longer depends on distutils being in the standard library, the entire `Lib/distutils` directory and `Lib/test/test_distutils.py` file will be removed from the repository.\n\nOther references to distutils will be cleaned up. As of Pytho"
+                },
+                {
+                  "url": "https://docs.python.org/3/library/distutils.html",
+                  "title": "distutils — Building and installing Python modules — Python 3.15.2 documentation",
+                  "published_date": null,
+                  "contentExcerpt": "This module is no longer part of the Python standard library. It was removed in Python 3.12 after being deprecated in Python 3.10. The removal was decided in PEP 632, which has migration advice.\n\nThe last version of Python that provided the `distutils` module was Python 3.11.\n\n#### Previous topic\n\n`"
+                },
+                {
+                  "url": "https://software.codidact.com/posts/291340",
+                  "title": "Why does `distutils` seem to be missing or broken? Isn't it part of the standard library?",
+                  "published_date": null,
+                  "contentExcerpt": "However, in Python 3.12, circumstances can combine to create a very annoying problem. Pip tries to use build isolation when it installs from source, meaning that it creates a separate virtual environment for the installation process (so that, for example, the setup process can use specific versions "
+                },
+                {
+                  "url": "https://pydevtools.com/handbook/reference/distutils",
+                  "title": "distutils: Python's Original Build System | pydevtools",
+                  "published_date": null,
+                  "contentExcerpt": "The limitations were felt most acutely in scientific computing. NumPy had to override nearly all of distutils to support Fortran, C++, and Cython, producing a parallel fork (`numpy.distutils`) that became a long-running maintenance burden. NumPy has since migrated to meson-python.\n\n## Deprecation an"
+                }
+              ],
+              "generatedQuery": "Python 3.12 distutils standard library",
+              "querySource": "input-claim-text"
+            }
+          ],
+          "gemini": [
+            {
+              "step": "extract",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 756,
+              "usage": {
+                "prompt_tokens": 105,
+                "prompt_tokens_details": {
+                  "text_tokens": 105,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 39,
+                "total_tokens": 144
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"authored_date\":\"2026-01-15\",\"answer\":\"Python 3.12 retained distutils in the standard library.\"}"
+                  }
+                ]
+              },
+              "output": "{\"claims\":[{\"text\":\"Python 3.12 retained distutils in the standard library.\",\"type\":\"버전\",\"query\":\"Python 3.12 distutils standard library\"}]}"
+            },
+            {
+              "step": "judge",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 805,
+              "usage": {
+                "prompt_tokens": 1592,
+                "prompt_tokens_details": {
+                  "text_tokens": 1592,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 69,
+                "total_tokens": 1661
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"Python 3.12 retained distutils in the standard library.\"}],\"evidence\":[{\"id\":\"df0163-00\",\"claim_id\":\"c1\",\"url\":\"https://fedoraproject.org/wiki/Changes/Python3.12\",\"content\":\"For many years distutils module was providing support for building and installing additional modules into a Python installation. Since Python 3.10 distutils package is deprecated, and will be removed in Python 3.12. Its functionality for specifying package builds has already been completely replaced by third-party packages setuptools and packaging, and most other commonly used APIs are available elsewhere in the standard library (such as platform, shutil, subprocess or sysconfig). [...] 1 Python 3.12\\n  + 1.1 Summary\\n  + 1.2 Owner\\n  + 1.3 Current status\\n  + 1.4 Detailed Description\\n    - 1.4.1 Important dates and plan\\n    - 1.4.2 Notes from the previous upgrade\\n  + 1.5 Benefit to Fedora\\n  + 1.6 Scope\\n  + 1.7 Upgrade/compatibility impact\\n    - 1.7.1 The Python standard library distutils module will be removed\\n    - 1.7.2 pathfix.py tool will be removed\\n  + 1.8 How To Test\\n  + 1.9 User Experience\\n  + 1.10 Dependencies\\n  + 1.11 Contingency Plan\\n  + 1.12 Documentation [...] ### The Python standard library distutils module will be removed\"},{\"id\":\"b54a69-01\",\"claim_id\":\"c1\",\"url\":\"https://peps.pythondiscord.com/pep-0632\",\"content\":\"After Python 3.12 is started and when the CPython build process no longer depends on distutils being in the standard library, the entire `Lib/distutils` directory and `Lib/test/test_distutils.py` file will be removed from the repository.\\n\\nOther references to distutils will be cleaned up. As of Python 3.9’s initial release, the following modules have references in code or comments: [...] In Python 3.12, distutils will no longer be installed by `make install` or any of the first-party distribution. Third-party redistributors should no longer include distutils in their bundles or repositories.\\n\\nThis PEP makes no specification on migrating the parts of the CPython build process that currently use distutils. Depending on contributions, this migration may occur at any time. [...] Historically, setuptools has extended distutils using subclassing and monkeypatching, but has now taken a copy of the underlying code. (#id12) As a result, the second last major dependency on distutils is gone and there is no need to keep it in the standard library.\"},{\"id\":\"6bfa8d-02\",\"claim_id\":\"c1\",\"url\":\"https://docs.python.org/3/library/distutils.html\",\"content\":\"This module is no longer part of the Python standard library. It was removed in Python 3.12 after being deprecated in Python 3.10. The removal was decided in PEP 632, which has migration advice.\\n\\nThe last version of Python that provided the `distutils` module was Python 3.11.\\n\\n#### Previous topic\\n\\n`crypt` — Function to check Unix passwords\\n\\n#### Next topic\\n\\n`imghdr` — Determine the type of an image\\n\\n### This page\\n\\n Report a bug\\n Improve this page\\n Show source\\n\\n### Navigation [...] ### Navigation\\n\\n index\\n modules |\\n next |\\n previous |\\n Python »\\n 3.15.2 documentation »\\n The Python standard library »\\n Removed Modules »\\n `distutils` — Building and installing Python modules\\n |\\n |\\n\\n# `distutils` — Building and installing Python modules¶\\n\\nDeprecated since version 3.10, removed in version 3.12.\"},{\"id\":\"c5f799-03\",\"claim_id\":\"c1\",\"url\":\"https://software.codidact.com/posts/291340\",\"content\":\"However, in Python 3.12, circumstances can combine to create a very annoying problem. Pip tries to use build isolation when it installs from source, meaning that it creates a separate virtual environment for the installation process (so that, for example, the setup process can use specific versions of Setuptools and other such tools, even if the code will be installed into an environment with a different version of those tools). Starting with Python 3.12, virtual environments created using the [...] ## Fixing problems with your own code\\n\\nIf you must maintain code that depends on `distutils` functionality and want it to work in Python 3.12 (especially if you are distributing it to others), consider replacing uses of `distutils` that can be covered by other standard library modules. If you still have parts for which \\\"`setuptools` is the best substitute\\\":\\n\\n   Install Setuptools locally [...] File \\\"/path/to/lib/python3.12/site-packages/speech_recognition/__init__.py\\\", line 111, in get_pyaudio\\n    from distutils.version import LooseVersion\\nModuleNotFoundError: No module named 'distutils'\\n```\"},{\"id\":\"2ad04c-04\",\"claim_id\":\"c1\",\"url\":\"https://pydevtools.com/handbook/reference/distutils\",\"content\":\"The limitations were felt most acutely in scientific computing. NumPy had to override nearly all of distutils to support Fortran, C++, and Cython, producing a parallel fork (`numpy.distutils`) that became a long-running maintenance burden. NumPy has since migrated to meson-python.\\n\\n## Deprecation and Removal\\n\\nPEP 632 (distutils deprecation) deprecated distutils in Python 3.10 and scheduled its removal. Python 3.12 completed that removal. [...] distutils was deprecated in Python 3.10 and removed in Python 3.12. Projects still importing from `distutils.core` must migrate to a modern build backend configured through pyproject.toml.\\n\\n## Original workflow\\n\\ndistutils handled package building, installation, and distribution through a `setup.py` script: [...] ## Cons\\n\\n No dependency resolution: could not declare or install transitive dependencies\\n Poor extensibility: custom build steps required subclassing undocumented internals\\n Brittle compiler handling: C extension flags were platform-dependent and hard to tune\\n Removed in Python 3.12; unavailable on any modern Python\"}]}"
+                  }
+                ]
+              },
+              "output": "{\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"refute\",\"citations\":[{\"evidence_id\":\"6bfa8d-02\",\"quote\":\"This module is no longer part of the Python standard library. It was removed in Python 3.12 after being deprecated in Python 3.10.\"}]}]}",
+              "citationCheck": [
+                {
+                  "claim_id": "c1",
+                  "evidence_id": "6bfa8d-02",
+                  "quote": "This module is no longer part of the Python standard library. It was removed in Python 3.12 after being deprecated in Python 3.10.",
+                  "passed": true
+                }
+              ]
+            },
+            {
+              "step": "fix:c1",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 675,
+              "usage": {
+                "prompt_tokens": 86,
+                "prompt_tokens_details": {
+                  "text_tokens": 86,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 19,
+                "total_tokens": 105
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Rewrite the refuted claim so it matches the cited evidence. Return JSON only: {\"fix\":\"...\"}. Do not add facts that are not in the evidence."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"claim\":\"Python 3.12 retained distutils in the standard library.\",\"evidence\":[\"This module is no longer part of the Python standard library. It was removed in Python 3.12 after being deprecated in Python 3.10.\"]}"
+                  }
+                ]
+              },
+              "output": "{\"fix\": \"Python 3.12 removed distutils from the standard library.\"}"
+            }
+          ],
+          "errors": []
+        }
+      },
+      "queryAudit": [
+        {
+          "generatedQuery": "Python 3.12 distutils standard library",
+          "sentQuery": "Python 3.12 retained distutils in the standard library.",
+          "source": "input-claim-text override"
+        }
+      ]
+    },
+    {
+      "id": "insufficient-node-download-size",
+      "input": "The Node.js v20.9.0 announcement says the release reduced the installed runtime size by 40%.",
+      "authoredDate": "2026-01-15",
+      "goldLabel": "근거 부족",
+      "goldBasis": {
+        "url": "https://nodejs.org/en/blog/release/v20.9.0",
+        "quote": null,
+        "reason": "Directly inspected official v20.9.0 release page; it gives no installed-size reduction percentage, so this source cannot establish the numeric claim."
+      },
+      "modelLabel": "근거 부족",
+      "matched": true,
+      "executionPath": "bifrost-virtual-key",
+      "queryMode": "input claim text sent directly; no site: filter, answer URL, or domain; model-generated candidate retained separately",
+      "executedQueries": [
+        "The Node.js v20.9.0 announcement says the release reduced the installed runtime size by 40%."
+      ],
+      "run": {
+        "id": "live-1794276697742",
+        "mode": "live",
+        "title": "입력한 답변 (로컬 실시간 분석)",
+        "authoredDate": "2026-01-15",
+        "answerText": "The Node.js v20.9.0 announcement says the release reduced the installed runtime size by 40%.",
+        "source": {
+          "status": "USER_INPUT",
+          "url": null,
+          "publishedDate": null,
+          "publishedDateText": "",
+          "note": "사용자 입력은 서버에 저장·로그되지 않습니다."
+        },
+        "collectedAt": "2026-11-10T02:11:37.742Z",
+        "collectionMethod": "Tavily basic 검색 + Bifrost 경유 Gemini 판정",
+        "claims": [
+          {
+            "id": "c1",
+            "text": "Node.js v20.9.0 announcement says the release reduced the installed runtime size by 40%",
+            "type": "통계",
+            "relation": "근거 부족",
+            "relationNote": "",
+            "evidence": [],
+            "fix": null
+          }
+        ],
+        "runLog": {
+          "note": "로컬 실시간 실행 (앱 상한: Gemini 5회 · Tavily 8회 · 순차 · 429 재시도 없음)",
+          "externalCalls": true,
+          "counts": {
+            "gemini": 2,
+            "tavily": 1
+          },
+          "tavily": [
+            {
+              "query": "The Node.js v20.9.0 announcement says the release reduced the installed runtime size by 40%.",
+              "topic": "news",
+              "collectedAt": "2026-11-10T02:11:40.634Z",
+              "results": [
+                {
+                  "url": "https://github.com/nodejs/nodejs.org/blob/main/apps/site/pages/en/blog/release/v20.9.0.md",
+                  "title": "nodejs.org/apps/site/pages/en/blog/release/v20.9.0.md at main · nodejs/nodejs.org · GitHub",
+                  "published_date": null,
+                  "contentExcerpt": "This release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into \"Active LTS\" and will remain so until October 2024. After that time, it will move into \"Maintenance\" until end of life in April 2026.\n\n### Known issue [...] M"
+                },
+                {
+                  "url": "https://nodejs.org/en/blog/release/v20.9.0",
+                  "title": "Node.js — Node.js 20.9.0 (LTS)",
+                  "published_date": null,
+                  "contentExcerpt": "Skip to content\n\n# Node.js 20.9.0 (LTS)\n\nRL\n\nRichard Lau\n\nNode.js 20.9.0 (LTS)\n\n## 2023-10-24, Version 20.9.0 'Iron' (LTS), @richardlau\n\n### Notable Changes\n\nThis release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into "
+                },
+                {
+                  "url": "https://blog.platformatic.dev/we-cut-nodejs-memory-in-half",
+                  "title": "Halving Node.js Memory Usage",
+                  "published_date": null,
+                  "contentExcerpt": "and confirmed a ~50% reduction in heap usage before approving. [...] Hashnode\n\nPlatformatic BlogPlatformatic BlogPlatformatic Blog\n\nWrite\n\n# We cut Node.js' Memory in half\n\n(so you don't have to)\n\nUpdated ·13 min read·Markdown\n\nM\n\nMatteo Collina\n\nWe cut Node.js' Memory in half\n\nOn this page [...] In"
+                },
+                {
+                  "url": "https://www.herodevs.com/blog-posts/node-js-v20-is-reaching-end-of-life",
+                  "title": "Node.js v20 Is Reaching End of Life",
+                  "published_date": null,
+                  "contentExcerpt": "Node.js v20 was cut in April 2023, and I’ve been involved with this release line for most of its lifetime. As a member of the Technical Steering Committee and a releaser, I helped maintain v20 throughout its supported years and released the majority of its versions.\n\n### Why v20 Was Important\n\nNode."
+                },
+                {
+                  "url": "https://www.digitalocean.com/community/questions/how-do-i-update-the-node-version-to-20-9-0",
+                  "title": "How do I update the node version to 20.9.0 | DigitalOcean",
+                  "published_date": null,
+                  "contentExcerpt": "# How do I update the node version to 20.9.0\n\nQuestion\n\nPosted on May 19, 2024\n\nNode.js\n\nDroplets\n\nChris Hunter-Johnson\n\nByChris Hunter-Johnson\n\nFollowing the tutorial  To fulfill the prequesit of installing node I used the command: sudo apt install nodejs This installed node 18.19.1. On my local ma"
+                }
+              ],
+              "generatedQuery": "Node.js v20.9.0 release installed runtime size 40% reduction announcement",
+              "querySource": "input-claim-text"
+            }
+          ],
+          "gemini": [
+            {
+              "step": "extract",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 819,
+              "usage": {
+                "prompt_tokens": 117,
+                "prompt_tokens_details": {
+                  "text_tokens": 117,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 58,
+                "total_tokens": 175
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"authored_date\":\"2026-01-15\",\"answer\":\"The Node.js v20.9.0 announcement says the release reduced the installed runtime size by 40%.\"}"
+                  }
+                ]
+              },
+              "output": "{\"claims\":[{\"text\":\"Node.js v20.9.0 announcement says the release reduced the installed runtime size by 40%\",\"type\":\"통계\",\"query\":\"Node.js v20.9.0 release installed runtime size 40% reduction announcement\"}]}"
+            },
+            {
+              "step": "judge",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 749,
+              "usage": {
+                "prompt_tokens": 2667,
+                "prompt_tokens_details": {
+                  "text_tokens": 2667,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 21,
+                "total_tokens": 2688
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"Node.js v20.9.0 announcement says the release reduced the installed runtime size by 40%\"}],\"evidence\":[{\"id\":\"4f122a-00\",\"claim_id\":\"c1\",\"url\":\"https://github.com/nodejs/nodejs.org/blob/main/apps/site/pages/en/blog/release/v20.9.0.md\",\"content\":\"This release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into \\\"Active LTS\\\" and will remain so until October 2024. After that time, it will move into \\\"Maintenance\\\" until end of life in April 2026.\\n\\n### Known issue [...] More file actions\\n\\n## Latest commit\\n\\n## History\\n\\nHistory\\n\\nHistory\\n\\n107 lines (97 loc) · 6.75 KB\\n\\n/\\n\\n# v20.9.0.md\\n\\nCopy path\\n\\n## File metadata and controls\\n\\n107 lines (97 loc) · 6.75 KB\\n\\nRaw\\n\\nCopy raw file\\n\\nDownload raw file\\n\\nOutline\\n\\nEdit and raw actions\\n\\n|  |  |\\n --- |\\n| date | 2023-10-24T14:34:46.457Z |\\n| category | release |\\n| title | Node.js 20.9.0 (LTS) |\\n| layout | blog-post |\\n| author | Richard Lau |\\n\\n## 2023-10-24, Version 20.9.0 'Iron' (LTS), @richardlau\\n\\n### Notable Changes [...] fbb299506589b03a24c24eb7bc9f0958462853a59e1f3e4d245e619890c13eeb node-v20.9.0-win-x86.7z 7607aa627bf13d05d98802dd9bd4158b7ee9e4ed285b7a80daa558cfed8443df node-v20.9.0-win-x86.zip b2decdfc3dd4bb43965be46302e1198b1a3a95da0be5c7dc7eb221c185a3c5fd node-v20.9.0-x64.msi 808d504dfd367b72260b378a5a5ee1812751a43512ab48d70d9d945f22c71af8 node-v20.9.0-x86.msi 54e165b89e75158993910053db5b0e652c1826521e624126de5ca6d\"},{\"id\":\"f15c9a-01\",\"claim_id\":\"c1\",\"url\":\"https://nodejs.org/en/blog/release/v20.9.0\",\"content\":\"Skip to content\\n\\n# Node.js 20.9.0 (LTS)\\n\\nRL\\n\\nRichard Lau\\n\\nNode.js 20.9.0 (LTS)\\n\\n## 2023-10-24, Version 20.9.0 'Iron' (LTS), @richardlau\\n\\n### Notable Changes\\n\\nThis release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into \\\"Active LTS\\\" and will remain so until October 2024. After that time, it will move into \\\"Maintenance\\\" until end of life in April 2026.\\n\\n### Known issue [...] 7607aa627bf13d05d98802dd9bd4158b7ee9e4ed285b7a80daa558cfed8443df    node-v20.9.0-win-x86.zipb2decdfc3dd4bb43965be46302e1198b1a3a95da0be5c7dc7eb221c185a3c5fd  node-v20.9.0-x64.msi b2decdfc3dd4bb43965be46302e1198b1a3a95da0be5c7dc7eb221c185a3c5fd    node-v20.9.0-x64.msi808d504dfd367b72260b378a5a5ee1812751a43512ab48d70d9d945f22c71af8  node-v20.9.0-x86.msi 808d504dfd367b72260b378a5a5ee1812751a43512ab48d70d9d945f22c71af8 [...] node-v20.9.0-x86.msi54e165b89e75158993910053db5b0e652c1826521e624126de5ca6de9ff7b06d  win-arm64/node.exe 54e165b89e75158993910053db5b0e652c1826521e624126de5ca6de9ff7b06d    win-arm64/node.exe90cb9fbf80b276f2ed039533a8b67f1aeaf204f0aaf6396b290ae9c4dcd6d690  win-arm64/node.lib 90cb9fbf80b276f2ed039533a8b67f1aeaf204f0aa\"},{\"id\":\"6792e9-02\",\"claim_id\":\"c1\",\"url\":\"https://blog.platformatic.dev/we-cut-nodejs-memory-in-half\",\"content\":\"and confirmed a ~50% reduction in heap usage before approving. [...] Hashnode\\n\\nPlatformatic BlogPlatformatic BlogPlatformatic Blog\\n\\nWrite\\n\\n# We cut Node.js' Memory in half\\n\\n(so you don't have to)\\n\\nUpdated ·13 min read·Markdown\\n\\nM\\n\\nMatteo Collina\\n\\nWe cut Node.js' Memory in half\\n\\nOn this page [...] In short, we achieved 50% memory savings with only a 2-4% increase in average latency across real-world workloads and reduced P99 latency by 7%. For most teams, this trade-off is an easy choice.\\n\\n## How Pointer Compression Works\"},{\"id\":\"84994a-03\",\"claim_id\":\"c1\",\"url\":\"https://www.herodevs.com/blog-posts/node-js-v20-is-reaching-end-of-life\",\"content\":\"Node.js v20 was cut in April 2023, and I’ve been involved with this release line for most of its lifetime. As a member of the Technical Steering Committee and a releaser, I helped maintain v20 throughout its supported years and released the majority of its versions.\\n\\n### Why v20 Was Important\\n\\nNode.js v20 mattered not because of a single headline feature, but because of a series of incremental improvements that collectively moved the runtime forward. [...] I see this as a continuation of the same responsibility: upstream, we define lifecycles and move the runtime forward; downstream, we make sure users who need more time aren’t left exposed. The goal is the same in both places: helping people run Node.js safely and sustainably.\\n\\n‍\\n\\n## Choices with EOL Node.js Installs\\n\\nNode.js v20 played an important role in the runtime’s history. Its End-of-Life marks the end of that chapter. [...] One of the most significant milestones in the v20 line was Node.js v20.19.0, which enabled require(esm) by default. This change meaningfully reduced friction between CommonJS and ESM, especially for larger and older codebases, and marked an important step in the evolution of Node.js module interoperabil\"},{\"id\":\"877b5c-04\",\"claim_id\":\"c1\",\"url\":\"https://www.digitalocean.com/community/questions/how-do-i-update-the-node-version-to-20-9-0\",\"content\":\"# How do I update the node version to 20.9.0\\n\\nQuestion\\n\\nPosted on May 19, 2024\\n\\nNode.js\\n\\nDroplets\\n\\nChris Hunter-Johnson\\n\\nByChris Hunter-Johnson\\n\\nFollowing the tutorial  To fulfill the prequesit of installing node I used the command: sudo apt install nodejs This installed node 18.19.1. On my local machine I am using 20.9.0. How do I upgrade to this version\\n\\nAt the end of the day I would like to get my dockerised nestjs api deployed from github but am assuming I need node there first [...] ## Related questions\\n\\nView all\\n\\nQuestion\\n\\n### Why does my Node.js app use way more memory in production than in local testing?\\n\\nbpdsksrtmj\\n\\n 1 month ago\\n 2 answers\\n\\nRead question\\n\\nQuestion\\n\\n### How do I deploy a Node.js app to a DigitalOcean Droplet and keep it running?\\n\\nNiketan Sharma\\n\\n 4 months ago\\n 2 answers\\n\\nRead question\\n\\nQuestion\\n\\n### What actually happens when you send an email from code - how does SMTP work under the hood?\\n\\n819167b5336c456e9ad38395fec1c5\\n\\n 4 months ago\\n 2 answers\"}]}"
+                  }
+                ]
+              },
+              "output": "{\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"insufficient\",\"citations\":[]}]}",
+              "citationCheck": []
+            }
+          ],
+          "errors": []
+        }
+      },
+      "queryAudit": [
+        {
+          "generatedQuery": "Node.js v20.9.0 release installed runtime size 40% reduction announcement",
+          "sentQuery": "The Node.js v20.9.0 announcement says the release reduced the installed runtime size by 40%.",
+          "source": "input-claim-text override"
+        }
+      ]
+    },
+    {
+      "id": "insufficient-py312-user-count",
+      "input": "The official Python 3.12 release notes report exactly 50 million active users.",
+      "authoredDate": "2026-01-15",
+      "goldLabel": "근거 부족",
+      "goldBasis": {
+        "url": "https://docs.python.org/3/whatsnew/3.12.html",
+        "quote": null,
+        "reason": "Directly inspected official Python 3.12 What’s New page; it contains no active-user count, so this source cannot establish the claim."
+      },
+      "modelLabel": "근거 부족",
+      "matched": true,
+      "executionPath": "bifrost-virtual-key",
+      "queryMode": "input claim text sent directly; no site: filter, answer URL, or domain; model-generated candidate retained separately",
+      "executedQueries": [
+        "The official Python 3.12 release notes report exactly 50 million active users."
+      ],
+      "run": {
+        "id": "live-1794276701384",
+        "mode": "live",
+        "title": "입력한 답변 (로컬 실시간 분석)",
+        "authoredDate": "2026-01-15",
+        "answerText": "The official Python 3.12 release notes report exactly 50 million active users.",
+        "source": {
+          "status": "USER_INPUT",
+          "url": null,
+          "publishedDate": null,
+          "publishedDateText": "",
+          "note": "사용자 입력은 서버에 저장·로그되지 않습니다."
+        },
+        "collectedAt": "2026-11-10T02:11:41.384Z",
+        "collectionMethod": "Tavily basic 검색 + Bifrost 경유 Gemini 판정",
+        "claims": [
+          {
+            "id": "c1",
+            "text": "The official Python 3.12 release notes report exactly 50 million active users.",
+            "type": "통계",
+            "relation": "근거 부족",
+            "relationNote": "",
+            "evidence": [],
+            "fix": null
+          }
+        ],
+        "runLog": {
+          "note": "로컬 실시간 실행 (앱 상한: Gemini 5회 · Tavily 8회 · 순차 · 429 재시도 없음)",
+          "externalCalls": true,
+          "counts": {
+            "gemini": 2,
+            "tavily": 1
+          },
+          "tavily": [
+            {
+              "query": "The official Python 3.12 release notes report exactly 50 million active users.",
+              "topic": "news",
+              "collectedAt": "2026-11-10T02:11:44.147Z",
+              "results": [
+                {
+                  "url": "https://mostlypython.substack.com/p/python-312-is-out",
+                  "title": "Python 3.12 is out! - by Eric Matthes - Mostly Python",
+                  "published_date": null,
+                  "contentExcerpt": "# Mostly Python\n\n# Python 3.12 is out!\n\n### MP 56: New releases are always fun to see.\n\nEric Matthes\n\nIf you haven’t heard yet, Python 3.12 was officially released yesterday. It’s always interesting to see what features made it into each new release. Even though the core of the language is very stab"
+                },
+                {
+                  "url": "https://discuss.python.org/t/python-3-12-0-final-is-here/35186",
+                  "title": "Python 3.12.0 (final) is here - Core Development - Discussions on Python.org",
+                  "published_date": null,
+                  "contentExcerpt": "Python 3.12.0 is the newest major release of the Python programming language, and it contains many new features and optimizations.\n\n# Major new features of the 3.12 series, compared to 3.11\n\n## New features\n\n`perf`\n\n## Type annotations\n\n## Deprecations\n\n`wstr`\n`wstr_length`\n`unittest`\n`smtpd`\n`distu"
+                },
+                {
+                  "url": "https://developers.slashdot.org/story/23/10/01/0531216/heres-whats-new-in-python-312",
+                  "title": "Here's What's New in Python 3.12 - Slashdot",
+                  "published_date": null,
+                  "contentExcerpt": "nice with that. it's too late, a [...] Monday will see the stable release of Python 3.12. Here's an article summarizing  what the new version will include:  \n   \n - enhanced error messages   \n — performance upgrades  \n - the introduction of Immortal objects and sub interpreters  \n - changes to F str"
+                },
+                {
+                  "url": "https://docs.python.org/3/whatsnew/3.12.html",
+                  "title": "What’s New In Python 3.12 — Python 3.15.2 documentation",
+                  "published_date": null,
+                  "contentExcerpt": "Python 3.12 is a stable release of the Python programming language, with a mix of changes to the language and the standard library. The library changes focus on cleaning up deprecated APIs, usability, and correctness. Of note, the `distutils` package has been removed from the standard library. Files"
+                },
+                {
+                  "url": "https://www.bitecode.dev/p/python-312-what-didnt-make-the-headlines",
+                  "title": "Python 3.12: what didn't make the headlines - Bite code!",
+                  "published_date": null,
+                  "contentExcerpt": "```\npyperformance run --python=/usr/bin/python3.11 -o py311.json pyperformance run --python=/usr/bin/python3.12 -o py312.json pyperformance compare py311.json py312.json\n```\n\nYou know what they say about benchmarks... Plus, despite the fact I killed everything I could and let the machine alone for t"
+                }
+              ],
+              "generatedQuery": "Python 3.12 release notes active users 50 million",
+              "querySource": "input-claim-text"
+            }
+          ],
+          "gemini": [
+            {
+              "step": "extract",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 892,
+              "usage": {
+                "prompt_tokens": 110,
+                "prompt_tokens_details": {
+                  "text_tokens": 110,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 48,
+                "total_tokens": 158
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"authored_date\":\"2026-01-15\",\"answer\":\"The official Python 3.12 release notes report exactly 50 million active users.\"}"
+                  }
+                ]
+              },
+              "output": "{\"claims\":[{\"text\":\"The official Python 3.12 release notes report exactly 50 million active users.\",\"type\":\"통계\",\"query\":\"Python 3.12 release notes active users 50 million\"}]}"
+            },
+            {
+              "step": "judge",
+              "requestedModel": "gemini/gemini-3.5-flash-lite",
+              "provider": "gemini",
+              "responseModel": "gemini-3.5-flash-lite",
+              "latencyMs": 817,
+              "usage": {
+                "prompt_tokens": 1949,
+                "prompt_tokens_details": {
+                  "text_tokens": 1949,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "completion_tokens": 21,
+                "total_tokens": 1970
+              },
+              "input": {
+                "model": "gemini/gemini-3.5-flash-lite",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+                  },
+                  {
+                    "role": "user",
+                    "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"The official Python 3.12 release notes report exactly 50 million active users.\"}],\"evidence\":[{\"id\":\"c71496-00\",\"claim_id\":\"c1\",\"url\":\"https://mostlypython.substack.com/p/python-312-is-out\",\"content\":\"# Mostly Python\\n\\n# Python 3.12 is out!\\n\\n### MP 56: New releases are always fun to see.\\n\\nEric Matthes\\n\\nIf you haven’t heard yet, Python 3.12 was officially released yesterday. It’s always interesting to see what features made it into each new release. Even though the core of the language is very stable, Python as a whole is constantly evolving.\\n\\nIn this post I’ll share some highlights of the new release, and some thoughts about when to consider upgrading.\\n\\n### Official release notes [...] The main place experienced Python programmers go to find out about new releases though, is the official release notes page for new versions. For this release, that’s the What’s New in Python 3.12 page in the official docs. (If you’re really trying to stay up to date with how the language is evolving, you can already read through an early draft of the 3.13 release notes.) [...] ### Conclusions\\n\\nPython is one of the most popular languages today because it achieves a healthy balance between stability and support for new features. If you’re planning to keep using Python indefinitely, it’s well worth your time to skim through the release notes, and try to understand what new features might be most relev\"},{\"id\":\"7fe545-01\",\"claim_id\":\"c1\",\"url\":\"https://discuss.python.org/t/python-3-12-0-final-is-here/35186\",\"content\":\"Python 3.12.0 is the newest major release of the Python programming language, and it contains many new features and optimizations.\\n\\n# Major new features of the 3.12 series, compared to 3.11\\n\\n## New features\\n\\n`perf`\\n\\n## Type annotations\\n\\n## Deprecations\\n\\n`wstr`\\n`wstr_length`\\n`unittest`\\n`smtpd`\\n`distutils`\\n`setuptools`\\n`distutils`\\n`SyntaxWarning`\\n`DeprecationWarning`\\n\\nFor more details on the changes to Python 3.12, see What’s new in Python 3.12.\\n\\n# More resources [...] Python 3.12.0 is the newest major release of the Python programming language, and it contains many new features and optimizations.\\n\\nA very small nit: I wish these announcements would say “newest feature release”, rather than major.\\n\\nTo counterbalance my nit, I’ll celebrate that my very first(#footnote-118896-1) PR to CPython is in this release. :tada:\\n\\n:tada:\\n\\nand very small ↩︎\\n\\nAnd now for something completely different [...] # Python 3.12.0 (final) is here\\n\\nFinally, it’s final! The final release of Python 3.12.0 (final) is here!\\n\\n(This also means I’ll be unblocking the 3.12 branch soon; I’m just going through pending PRs and merging them sequentially, to avoid some of the churn.)\\n\\n### Python Release Python 3.12.0\\n\\nTh\"},{\"id\":\"09a762-02\",\"claim_id\":\"c1\",\"url\":\"https://developers.slashdot.org/story/23/10/01/0531216/heres-whats-new-in-python-312\",\"content\":\"nice with that. it's too late, a [...] Monday will see the stable release of Python 3.12. Here's an article summarizing  what the new version will include:  \\n   \\n - enhanced error messages   \\n — performance upgrades  \\n - the introduction of Immortal objects and sub interpreters  \\n - changes to F strings  \\n - modifications related to types and type annotations  \\n - the removal of certain modules  \\n - improvements in type implementations [...] In spite of Powershell's many flaws, it's still easier for us to share Po\\n #### Not enough detail (Score:3, Informative)\\n\\n  by atomic\\\\_gingerbread ( 10452204 ) writes:  on Sunday October 01, 2023 @07:05PM (#63892695)\\n\\n  Someone who actually uses Python day-to-day and is interested in the practical differences should read the official release notes, which include code examples:   \\n     \\n    [python.org]\\n\\n  Share\\n\\n  twitter facebook\\n\\n#### Related Links Top of the: day, week, month.\"},{\"id\":\"40a59d-03\",\"claim_id\":\"c1\",\"url\":\"https://docs.python.org/3/whatsnew/3.12.html\",\"content\":\"Python 3.12 is a stable release of the Python programming language, with a mix of changes to the language and the standard library. The library changes focus on cleaning up deprecated APIs, usability, and correctness. Of note, the `distutils` package has been removed from the standard library. Filesystem support in `os` and `pathlib` has seen a number of improvements, and several modules have better performance. [...] `syslog.openlog()` and `syslog.closelog()` now fail if used in subinterpreters. `syslog.syslog()` may still be used in subinterpreters, but now only if `syslog.openlog()` has already been called in the main interpreter. These new restrictions do not apply to the main interpreter, so only a very small set of users might be affected. This change helps with interpreter isolation. Furthermore, `syslog` is a wrapper around process-global resources, which are best managed from the main interpreter. [...] ### Navigation\\n\\n index\\n modules |\\n next |\\n previous |\\n Python »\\n 3.15.2 documentation »\\n What’s New in Python »\\n What’s New In Python 3.12\\n |\\n |\\n\\n# What’s New In Python 3.12¶\\n\\nEditor:\\n:   Adam Turner\\n\\nThis article explains the new features in Python 3.12, compared to 3.11. \"},{\"id\":\"cdb1eb-04\",\"claim_id\":\"c1\",\"url\":\"https://www.bitecode.dev/p/python-312-what-didnt-make-the-headlines\",\"content\":\"```\\npyperformance run --python=/usr/bin/python3.11 -o py311.json pyperformance run --python=/usr/bin/python3.12 -o py312.json pyperformance compare py311.json py312.json\\n```\\n\\nYou know what they say about benchmarks... Plus, despite the fact I killed everything I could and let the machine alone for the solid hour it ran, getting some serious numbers is very difficult.\\n\\nThat being said, here is the report: [...] Python 3.12 has been released, and there are thousands of articles out there to repeat what the released notes already say. Some are pretty good, though, so if you haven't read RealPython's intro on the new typing features yet, add it to your list.\\n\\nAnd yes, I'm a fan of the better error messages (they are for me the best feature of the release), I applaud the formalization of f-string parsing, and hurrah for itertools.batched, but we have been discussing that for ages on Twitter. [...] By this, I mean the fact that MS is paying a team with Guido to speed up the language, and that we were all quite giddy when they announced that the target was a 50% gain at each release for the next 5 ones. We saw that coming, but still.\\n\\nThe release notes talk about a 5% gain in general, an \"}]}"
+                  }
+                ]
+              },
+              "output": "{\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"insufficient\",\"citations\":[]}]}",
+              "citationCheck": []
+            }
+          ],
+          "errors": []
+        }
+      },
+      "queryAudit": [
+        {
+          "generatedQuery": "Python 3.12 release notes active users 50 million",
+          "sentQuery": "The official Python 3.12 release notes report exactly 50 million active users.",
+          "source": "input-claim-text override"
+        }
+      ]
+    }
+  ]
+}

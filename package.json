@@ -1,0 +1,20 @@
+{
+  "name": "claimclock",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Stale-answer detector MVP: Tavily evidence + Gemini via local Bifrost gateway, with a key-free fixture demo.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "live:run": "node --env-file-if-exists=.env scripts/live-run-direct.mjs",
+    "build": "node scripts/build-static.mjs",
+    "test": "node --test tests/*.test.js",
+    "check": "for f in server.js lib/*.js public/*.js scripts/*.mjs tests/*.js; do node --check \"$f\" || exit 1; done",
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "live:run:bifrost": "node --env-file-if-exists=.env scripts/live-run.mjs"
+  }
+}

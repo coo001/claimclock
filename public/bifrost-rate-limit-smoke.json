@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "kind": "Bifrost virtual-key rate-limit smoke",
+  "checkedAt": "2026-11-10T07:44:32.851Z",
+  "path": "POST /v1/chat/completions using the local ClaimClock virtual key",
+  "providerRoute": "Gemini through Bifrost; no Tavily request",
+  "httpStatus": 200,
+  "usageTokens": 8,
+  "loggedRateLimitIds": "[\"claimclock-100-rpd-50000-tpd\"]",
+  "loggedBudgetIds": "[\"claimclock-daily-budget\"]",
+  "loggedTotalTokens": 8,
+  "loggedAt": "2026-11-10 07:39:32.613944+00:00",
+  "policy": {
+    "id": "claimclock-100-rpd-50000-tpd",
+    "requestLimitPerDay": 100,
+    "requestUsedAfterSmoke": 1,
+    "tokenLimitPerDay": 50000,
+    "tokensUsedAfterSmoke": 8
+  },
+  "budget": {
+    "limitUSD": 0.1,
+    "usedUSD": 0.0026919
+  },
+  "verified": true
+}

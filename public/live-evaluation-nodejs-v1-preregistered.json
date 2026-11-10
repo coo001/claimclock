@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "nodejs-release-schedule-time-drift-v1",
+  "registeredAt": "2026-11-10T16:16:00+09:00",
+  "evaluationAsOf": "2026-11-10",
+  "promptAndRules": "existing build/lib/live.js; unchanged during evaluation",
+  "sourceMethod": "Direct official Node.js Release schedule JSON fetched before evaluation; no Tavily or Gemini used to set labels.",
+  "plannedSamples": 15,
+  "changedSinceAuthoringCount": 8,
+  "changedSinceAuthoringFraction": 0.5333333333333333,
+  "queryMethod": "Gemini must generate each Tavily query; no query override or site restriction. Each one-sentence sample is sent through the live extraction/search/judgment path.",
+  "cases": [
+    {
+      "id": "stale-v10-active-lts",
+      "text": "Node.js v10.x is currently in Active LTS.",
+      "authoredDate": "2018-10-30",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Refuted",
+      "changedSinceAuthoring": true,
+      "transitionDate": "2020-05-19",
+      "currentState": "End-of-Life",
+      "goldReason": "The official schedule records lts=2018-10-30 and maintenance=2020-05-19; the answer was true on its date, but Active LTS ended at the maintenance transition.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v10",
+        "scheduleEntry": {
+          "start": "2018-04-24",
+          "lts": "2018-10-30",
+          "maintenance": "2020-05-19",
+          "end": "2021-04-30",
+          "codename": "Dubnium"
+        }
+      }
+    },
+    {
+      "id": "stale-v12-active-lts",
+      "text": "Node.js v12.x is currently in Active LTS.",
+      "authoredDate": "2019-10-21",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Refuted",
+      "changedSinceAuthoring": true,
+      "transitionDate": "2020-11-30",
+      "currentState": "End-of-Life",
+      "goldReason": "The official schedule records lts=2019-10-21 and maintenance=2020-11-30; the answer was true on its date, but Active LTS ended at the maintenance transition.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v12",
+        "scheduleEntry": {
+          "start": "2019-04-23",
+          "lts": "2019-10-21",
+          "maintenance": "2020-11-30",
+          "end": "2022-04-30",
+          "codename": "Erbium"
+        }
+      }
+    },
+    {
+      "id": "stale-v14-active-lts",
+      "text": "Node.js v14.x is currently in Active LTS.",
+      "authoredDate": "2020-10-27",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Refuted",
+      "changedSinceAuthoring": true,
+      "transitionDate": "2021-10-19",
+      "currentState": "End-of-Life",
+      "goldReason": "The official schedule records lts=2020-10-27 and maintenance=2021-10-19; the answer was true on its date, but Active LTS ended at the maintenance transition.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v14",
+        "scheduleEntry": {
+          "start": "2020-04-21",
+          "lts": "2020-10-27",
+          "maintenance": "2021-10-19",
+          "end": "2023-04-30",
+          "codename": "Fermium"
+        }
+      }
+    },
+    {
+      "id": "stale-v16-active-lts",
+      "text": "Node.js v16.x is currently in Active LTS.",
+      "authoredDate": "2021-10-26",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Refuted",
+      "changedSinceAuthoring": true,
+      "transitionDate": "2022-10-18",
+      "currentState": "End-of-Life",
+      "goldReason": "The official schedule records lts=2021-10-26 and maintenance=2022-10-18; the answer was true on its date, but Active LTS ended at the maintenance transition.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v16",
+        "scheduleEntry": {
+          "start": "2021-04-20",
+          "lts": "2021-10-26",
+          "maintenance": "2022-10-18",
+          "end": "2023-09-11",
+          "codename": "Gallium"
+        }
+      }
+    },
+    {
+      "id": "stale-v18-active-lts",
+      "text": "Node.js v18.x is currently in Active LTS.",
+      "authoredDate": "2022-10-25",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Refuted",
+      "changedSinceAuthoring": true,
+      "transitionDate": "2023-10-18",
+      "currentState": "End-of-Life",
+      "goldReason": "The official schedule records lts=2022-10-25 and maintenance=2023-10-18; the answer was true on its date, but Active LTS ended at the maintenance transition.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v18",
+        "scheduleEntry": {
+          "start": "2022-04-19",
+          "lts": "2022-10-25",
+          "maintenance": "2023-10-18",
+          "end": "2025-04-30",
+          "codename": "Hydrogen"
+        }
+      }
+    },
+    {
+      "id": "stale-v20-active-lts",
+      "text": "Node.js v20.x is currently in Active LTS.",
+      "authoredDate": "2023-10-24",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Refuted",
+      "changedSinceAuthoring": true,
+      "transitionDate": "2024-10-22",
+      "currentState": "End-of-Life",
+      "goldReason": "The official schedule records lts=2023-10-24 and maintenance=2024-10-22; the answer was true on its date, but Active LTS ended at the maintenance transition.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v20",
+        "scheduleEntry": {
+          "start": "2023-04-18",
+          "lts": "2023-10-24",
+          "maintenance": "2024-10-22",
+          "end": "2026-04-30",
+          "codename": "Iron"
+        }
+      }
+    },
+    {
+      "id": "stale-v22-active-lts",
+      "text": "Node.js v22.x is currently in Active LTS.",
+      "authoredDate": "2024-10-29",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Refuted",
+      "changedSinceAuthoring": true,
+      "transitionDate": "2025-10-21",
+      "currentState": "Maintenance LTS",
+      "goldReason": "The official schedule records lts=2024-10-29 and maintenance=2025-10-21; the answer was true on its date, but Active LTS ended at the maintenance transition.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v22",
+        "scheduleEntry": {
+          "start": "2024-04-24",
+          "lts": "2024-10-29",
+          "maintenance": "2025-10-21",
+          "end": "2027-04-30",
+          "codename": "Jod"
+        }
+      }
+    },
+    {
+      "id": "stale-v24-active-lts",
+      "text": "Node.js v24.x is currently in Active LTS.",
+      "authoredDate": "2025-10-28",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Refuted",
+      "changedSinceAuthoring": true,
+      "transitionDate": "2026-10-20",
+      "currentState": "Maintenance LTS",
+      "goldReason": "The official schedule records lts=2025-10-28 and maintenance=2026-10-20; the answer was true on its date, but Active LTS ended at the maintenance transition.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v24",
+        "scheduleEntry": {
+          "start": "2025-05-06",
+          "lts": "2025-10-28",
+          "maintenance": "2026-10-20",
+          "end": "2028-04-30",
+          "codename": "Krypton"
+        }
+      }
+    },
+    {
+      "id": "stable-v8-codename",
+      "text": "The codename of Node.js v8.x is Carbon.",
+      "authoredDate": "2017-05-30",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Supported",
+      "changedSinceAuthoring": false,
+      "transitionDate": null,
+      "currentState": "Codename remains the same",
+      "goldReason": "The official release schedule lists the codename Carbon for v8; this identifier is stable.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v8",
+        "scheduleEntry": {
+          "start": "2017-05-30",
+          "lts": "2017-10-31",
+          "maintenance": "2019-01-01",
+          "end": "2019-12-31",
+          "codename": "Carbon"
+        }
+      }
+    },
+    {
+      "id": "stable-v10-codename",
+      "text": "The codename of Node.js v10.x is Dubnium.",
+      "authoredDate": "2018-04-24",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Supported",
+      "changedSinceAuthoring": false,
+      "transitionDate": null,
+      "currentState": "Codename remains the same",
+      "goldReason": "The official release schedule lists the codename Dubnium for v10; this identifier is stable.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v10",
+        "scheduleEntry": {
+          "start": "2018-04-24",
+          "lts": "2018-10-30",
+          "maintenance": "2020-05-19",
+          "end": "2021-04-30",
+          "codename": "Dubnium"
+        }
+      }
+    },
+    {
+      "id": "stable-v12-codename",
+      "text": "The codename of Node.js v12.x is Erbium.",
+      "authoredDate": "2019-04-23",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Supported",
+      "changedSinceAuthoring": false,
+      "transitionDate": null,
+      "currentState": "Codename remains the same",
+      "goldReason": "The official release schedule lists the codename Erbium for v12; this identifier is stable.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v12",
+        "scheduleEntry": {
+          "start": "2019-04-23",
+          "lts": "2019-10-21",
+          "maintenance": "2020-11-30",
+          "end": "2022-04-30",
+          "codename": "Erbium"
+        }
+      }
+    },
+    {
+      "id": "stable-v14-codename",
+      "text": "The codename of Node.js v14.x is Fermium.",
+      "authoredDate": "2020-04-21",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Supported",
+      "changedSinceAuthoring": false,
+      "transitionDate": null,
+      "currentState": "Codename remains the same",
+      "goldReason": "The official release schedule lists the codename Fermium for v14; this identifier is stable.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v14",
+        "scheduleEntry": {
+          "start": "2020-04-21",
+          "lts": "2020-10-27",
+          "maintenance": "2021-10-19",
+          "end": "2023-04-30",
+          "codename": "Fermium"
+        }
+      }
+    },
+    {
+      "id": "stable-v16-codename",
+      "text": "The codename of Node.js v16.x is Gallium.",
+      "authoredDate": "2021-04-20",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Supported",
+      "changedSinceAuthoring": false,
+      "transitionDate": null,
+      "currentState": "Codename remains the same",
+      "goldReason": "The official release schedule lists the codename Gallium for v16; this identifier is stable.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v16",
+        "scheduleEntry": {
+          "start": "2021-04-20",
+          "lts": "2021-10-26",
+          "maintenance": "2022-10-18",
+          "end": "2023-09-11",
+          "codename": "Gallium"
+        }
+      }
+    },
+    {
+      "id": "stable-v18-codename",
+      "text": "The codename of Node.js v18.x is Hydrogen.",
+      "authoredDate": "2022-04-19",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Supported",
+      "changedSinceAuthoring": false,
+      "transitionDate": null,
+      "currentState": "Codename remains the same",
+      "goldReason": "The official release schedule lists the codename Hydrogen for v18; this identifier is stable.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v18",
+        "scheduleEntry": {
+          "start": "2022-04-19",
+          "lts": "2022-10-25",
+          "maintenance": "2023-10-18",
+          "end": "2025-04-30",
+          "codename": "Hydrogen"
+        }
+      }
+    },
+    {
+      "id": "stable-v20-codename",
+      "text": "The codename of Node.js v20.x is Iron.",
+      "authoredDate": "2023-04-18",
+      "goldAtAuthorDate": "Supported",
+      "goldCurrentLabel": "Supported",
+      "changedSinceAuthoring": false,
+      "transitionDate": null,
+      "currentState": "Codename remains the same",
+      "goldReason": "The official release schedule lists the codename Iron for v20; this identifier is stable.",
+      "officialSource": {
+        "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+        "versionKey": "v20",
+        "scheduleEntry": {
+          "start": "2023-04-18",
+          "lts": "2023-10-24",
+          "maintenance": "2024-10-22",
+          "end": "2026-04-30",
+          "codename": "Iron"
+        }
+      }
+    }
+  ]
+}

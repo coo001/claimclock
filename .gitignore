@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+*.log
+bifrost-data/
+/STATE.md
+/bifrost/
+/ClaimClock_pitch_v5.pptx
+/ClaimClock_pitch_v6.pptx
+.DS_Store

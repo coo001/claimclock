@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "mode": "recorded-runtime-feature",
+  "actualExternalRun": true,
+  "feature": "virtual-key authentication and request logging",
+  "bifrostVersion": "v2.5.0",
+  "provider": "gemini",
+  "model": "gemini-3.5-flash-lite",
+  "directKeyBypassEnabled": false,
+  "virtualKeyUsed": true,
+  "virtualKeyHeader": "x-bf-vk",
+  "smokeRequest": {
+    "httpStatus": 200,
+    "output": "{\n  \"status\": \"virtual-key-ok\"\n}",
+    "totalTokens": 34,
+    "logId": "c7a2de22-cbed-475c-8988-5bfad3a09401",
+    "loggedStatus": "success",
+    "loggedLatencyMs": 882.194875
+  },
+  "pipelineEvaluation": {
+    "file": "live-evaluation-bifrost-freequery-v1.json",
+    "samples": 6,
+    "matched": 6,
+    "tavilyCalls": 6,
+    "cumulativeTavilyCalls": 17,
+    "bifrostModelCalls": 14,
+    "bifrostLogStatusCounts": {
+      "success": 14
+    },
+    "logQueryHttpStatus": 200,
+    "logWindowStart": "2026-11-10T02:11:22.614Z",
+    "logWindowEnd": "2026-11-10T02:11:44.964Z",
+    "allGeminiCallsLogged": true
+  },
+  "valkeyUsed": false,
+  "semanticCacheEnabled": false,
+  "failedSetupProbe": "bifrost-vk-link-probe.json",
+  "secretsRecorded": false
+}

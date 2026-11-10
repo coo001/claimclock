@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "mode": "recorded-live-evaluation-pre-tuning",
+  "actualExternalRun": true,
+  "promptVersion": "live-run-direct.mjs MODEL_PROMPT (unchanged)",
+  "startedAt": "2026-11-10T01:41:49.648Z",
+  "finishedAt": "2026-11-10T01:42:12.296Z",
+  "tavilyCalls": 6,
+  "geminiCalls": 6,
+  "totalSamples": 6,
+  "matched": 5,
+  "accuracy": 0.8333333333333334,
+  "note": "총 6개 실제 API 표본: 기존 실패 1건 + 프롬프트 변경 전 새 표본 5건. 기존 불일치 표본을 수정 후 재사용하지 않음. 새 평가 5건의 라벨은 각 실행 전에 공식 원문 URL을 확인해 고정. 프롬프트/판정 규칙은 변경하지 않았다. 누계 Tavily 11회(이전 모델 탐색 재시도 6 + 새 5; API 호출 재시도 없음).",
+  "runs": [
+    {
+      "id": "node20-active-lts-window-baseline",
+      "claim": "Node.js 20.x remains in Active LTS through October 2024.",
+      "query": "Node.js 20.x Active LTS end-of-life EOL official releases",
+      "officialLabel": "지지",
+      "officialUrl": "https://nodejs.org/en/blog/release/v20.9.0",
+      "officialQuote": "The 20.x release line now moves into \"Active LTS\" and will remain so until October 2024.",
+      "modelLabel": "근거 부족",
+      "matched": false,
+      "evidence": [
+        {
+          "id": "e1",
+          "url": "https://hidekazu-konishi.com/entry/nodejs_release_and_eol_timeline.html",
+          "title": "Node.js Release and EOL Timeline - LTS Schedule, Active LTS and Maintenance, and End-of-Life Dates | hidekazu-konishi.com",
+          "published_date": null,
+          "excerpt": "Node.js 20 \"Iron\" reached End-of-Life on 2026-04-30. Node.js 18 \"Hydrogen\" reached End-of-Life on 2025-04-30, and Node.js 22 \"Jod\" is scheduled to reach End-of-Life on 2027-04-30. The exact EOL date for every major is listed in the per-version table above; the values come from the official Node.js R"
+        },
+        {
+          "id": "e2",
+          "url": "https://tuxcare.com/blog/node-eol",
+          "title": "Node.js End-of-Life: Dates, Risks & What to Do Next",
+          "published_date": null,
+          "excerpt": "Node.js 20 reaches end of life on April 30, 2026. For a version that entered Active LTS in October 2023, it has seen broad adoption in production environments. However, from May 1, 2026, any vulnerability discovered in Node.js 20 won’t receive an official patch. Given how widely it’s deployed, it is"
+        },
+        {
+          "id": "e3",
+          "url": "https://www.herodevs.com/blog-posts/node-js-end-of-life-dates-you-should-be-aware-of",
+          "title": "Node.js Version Support: EOL Dates and Latest Releases (July 2026)",
+          "published_date": null,
+          "excerpt": "The only fully supported lines today are Node.js 26 (Current), 24 (Active LTS), and 22 (Maintenance LTS). Everything else is end-of-life.\n\n‍\n\n## Versions Reaching EOL Next: What to Watch\n\n### Node.js 20 End of Life\n\nNode.js 20 reached end-of-life on April 30, 2026. It was one of the most widely depl"
+        }
+      ],
+      "model": {
+        "requested": "gemini-3.5-flash-lite",
+        "returned": "gemini-3.5-flash-lite",
+        "usage": {
+          "promptTokenCount": 1672,
+          "candidatesTokenCount": 78,
+          "totalTokenCount": 1750,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 1672
+            }
+          ],
+          "serviceTier": "standard"
+        },
+        "output": "{\"relation\":\"insufficient\",\"citations\":[],\"rationale\":\"The provided evidence mentions that Node.js 20 entered Active LTS on October 23, 2023, and reached End-of-Life on April 30, 2026, but it does not explicitly state whether it remained in Active LTS through October 2024.\"}",
+        "citations": []
+      },
+      "rationale": "The provided evidence mentions that Node.js 20 entered Active LTS on October 23, 2023, and reached End-of-Life on April 30, 2026, but it does not explicitly state whether it remained in Active LTS through October 2024.",
+      "executionAt": "2026-11-09T11:42:22.569Z"
+    },
+    {
+      "id": "py312-distutils",
+      "claim": "Python 3.12 removed the distutils package from the standard library.",
+      "query": "site:docs.python.org/3/whatsnew/3.12.html Python 3.12 distutils removed standard library",
+      "officialLabel": "지지",
+      "officialUrl": "https://docs.python.org/3/whatsnew/3.12.html",
+      "officialQuote": "the `distutils` package has been removed from the standard library",
+      "modelLabel": "지지",
+      "matched": true,
+      "evidence": [
+        {
+          "id": "e1",
+          "url": "https://docs.python.org/3/whatsnew/3.12.html",
+          "title": "What’s New In Python 3.12 — Python 3.15.2 documentation",
+          "published_date": null,
+          "excerpt": "Python 3.12 is a stable release of the Python programming language, with a mix of changes to the language and the standard library. The library changes focus on cleaning up deprecated APIs, usability, and correctness. Of note, the `distutils` package has been removed from the standard library. Filesystem support in `os` and `pathlib` has seen a number of improvements, and several modules have better performance. [...] ### distutils¶\n\n Remove the "
+        },
+        {
+          "id": "e2",
+          "url": "https://docs.python.org/3/whatsnew/3.12.html#removed",
+          "title": "What’s New In Python 3.12 — Python 3.15.2 documentation",
+          "published_date": null,
+          "excerpt": "Python 3.12 is a stable release of the Python programming language, with a mix of changes to the language and the standard library. The library changes focus on cleaning up deprecated APIs, usability, and correctness. Of note, the `distutils` package has been removed from the standard library. Filesystem support in `os` and `pathlib` has seen a number of improvements, and several modules have better performance. [...] ### distutils¶\n\n Remove the "
+        },
+        {
+          "id": "e3",
+          "url": "https://docs.python.org/3/whatsnew/3.12.html#deprecated",
+          "title": "What’s New In Python 3.12 — Python 3.15.2 documentation",
+          "published_date": null,
+          "excerpt": "Python 3.12 is a stable release of the Python programming language, with a mix of changes to the language and the standard library. The library changes focus on cleaning up deprecated APIs, usability, and correctness. Of note, the `distutils` package has been removed from the standard library. Filesystem support in `os` and `pathlib` has seen a number of improvements, and several modules have better performance. [...] ### distutils¶\n\n Remove the "
+        },
+        {
+          "id": "e4",
+          "url": "https://docs.python.org/3/whatsnew/3.12.html?ref=nicholashairs.com",
+          "title": "What’s New In Python 3.12 — Python 3.15.2 documentation",
+          "published_date": null,
+          "excerpt": "Python 3.12 is a stable release of the Python programming language, with a mix of changes to the language and the standard library. The library changes focus on cleaning up deprecated APIs, usability, and correctness. Of note, the `distutils` package has been removed from the standard library. Filesystem support in `os` and `pathlib` has seen a number of improvements, and several modules have better performance. [...] ### distutils¶\n\n Remove the "
+        },
+        {
+          "id": "e5",
+          "url": "https://docs.python.org/3/whatsnew/3.12.html#id7",
+          "title": "What’s New In Python 3.12 — Python 3.15.2 documentation",
+          "published_date": null,
+          "excerpt": "Python 3.12 is a stable release of the Python programming language, with a mix of changes to the language and the standard library. The library changes focus on cleaning up deprecated APIs, usability, and correctness. Of note, the `distutils` package has been removed from the standard library. Filesystem support in `os` and `pathlib` has seen a number of improvements, and several modules have better performance. [...] ### distutils¶\n\n Remove the "
+        }
+      ],
+      "model": {
+        "requested": "gemini-3.5-flash-lite",
+        "returned": "gemini-3.5-flash-lite",
+        "usage": {
+          "promptTokenCount": 1954,
+          "candidatesTokenCount": 63,
+          "totalTokenCount": 2017,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 1954
+            }
+          ],
+          "serviceTier": "standard"
+        },
+        "output": "{\"relation\":\"support\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"Of note, the `distutils` package has been removed from the standard library.\"}],\"rationale\":\"The evidence explicitly states that the distutils package has been removed from the standard library in Python 3.12.\"}",
+        "citations": [
+          {
+            "evidenceId": "e1",
+            "quote": "Of note, the `distutils` package has been removed from the standard library.",
+            "passed": true
+          }
+        ]
+      },
+      "rationale": "The evidence explicitly states that the distutils package has been removed from the standard library in Python 3.12."
+    },
+    {
+      "id": "node20-codename",
+      "claim": "Node.js 20 has the codename Iron.",
+      "query": "site:nodejs.org/en/about/previous-releases Node.js 20 codename Iron",
+      "officialLabel": "지지",
+      "officialUrl": "https://nodejs.org/en/about/previous-releases",
+      "officialQuote": "| [v20](/en/download/archive/v20.20.2) | Iron |",
+      "modelLabel": "지지",
+      "matched": true,
+      "evidence": [
+        {
+          "id": "e1",
+          "url": "https://nodejs.org/en/about/previous-releases#nodejs-releases",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e2",
+          "url": "https://nodejs.org/en/about/previous-releases#official-installation-methods",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e3",
+          "url": "https://nodejs.org/en/about/previous-releases#community-installation-methods",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e4",
+          "url": "https://nodejs.org/en/about/previous-releases#looking-for-the-latest-release-of-a-version-branch",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e5",
+          "url": "https://nodejs.org/en/about/previous-releases#looking-for-latest-release-of-a-version-branch",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        }
+      ],
+      "model": {
+        "requested": "gemini-3.5-flash-lite",
+        "returned": "gemini-3.5-flash-lite",
+        "usage": {
+          "promptTokenCount": 2443,
+          "candidatesTokenCount": 54,
+          "totalTokenCount": 2497,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 2443
+            }
+          ],
+          "serviceTier": "standard"
+        },
+        "output": "{\"relation\":\"support\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"| v20 | Iron |  |  | EOL |  |\"}],\"rationale\":\"The evidence table lists Node.js v20 with the codename Iron.\"}",
+        "citations": [
+          {
+            "evidenceId": "e1",
+            "quote": "| v20 | Iron |  |  | EOL |  |",
+            "passed": true
+          }
+        ]
+      },
+      "rationale": "The evidence table lists Node.js v20 with the codename Iron."
+    },
+    {
+      "id": "node209-date",
+      "claim": "Node.js 20.9.0 was released on 2023-10-24.",
+      "query": "site:nodejs.org/en/blog/release/v20.9.0 Node.js 20.9.0 2023-10-24 release date",
+      "officialLabel": "지지",
+      "officialUrl": "https://nodejs.org/en/blog/release/v20.9.0",
+      "officialQuote": "2023-10-24, Version 20.9.0",
+      "modelLabel": "지지",
+      "matched": true,
+      "evidence": [
+        {
+          "id": "e1",
+          "url": "https://nodejs.org/en/blog/release/v20.9.0",
+          "title": "Node.js — Node.js 20.9.0 (LTS)",
+          "published_date": null,
+          "excerpt": "Skip to content\n\n# Node.js 20.9.0 (LTS)\n\nRL\n\nRichard Lau\n\nNode.js 20.9.0 (LTS)\n\n## 2023-10-24, Version 20.9.0 'Iron' (LTS), @richardlau\n\n### Notable Changes\n\nThis release marks the transition of Node.js 20.x into Long Term Support (LTS) with the codename 'Iron'. The 20.x release line now moves into \"Active LTS\" and will remain so until October 2024. After that time, it will move into \"Maintenance\" until end of life in April 2026.\n\n### Known issue"
+        }
+      ],
+      "model": {
+        "requested": "gemini-3.5-flash-lite",
+        "returned": "gemini-3.5-flash-lite",
+        "usage": {
+          "promptTokenCount": 1120,
+          "candidatesTokenCount": 76,
+          "totalTokenCount": 1196,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 1120
+            }
+          ],
+          "serviceTier": "standard"
+        },
+        "output": "{\"relation\":\"support\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"2023-10-24, Version 20.9.0 'Iron' (LTS)\"}],\"rationale\":\"The evidence explicitly states that Version 20.9.0 was released on 2023-10-24.\"}",
+        "citations": [
+          {
+            "evidenceId": "e1",
+            "quote": "2023-10-24, Version 20.9.0 'Iron' (LTS)",
+            "passed": true
+          }
+        ]
+      },
+      "rationale": "The evidence explicitly states that Version 20.9.0 was released on 2023-10-24."
+    },
+    {
+      "id": "node22-codename",
+      "claim": "Node.js 22 has the codename Jod.",
+      "query": "site:nodejs.org/en/about/previous-releases Node.js 22 codename Jod",
+      "officialLabel": "지지",
+      "officialUrl": "https://nodejs.org/en/about/previous-releases",
+      "officialQuote": "| [v22](/en/download/archive/v22.23.4) | Jod |",
+      "modelLabel": "지지",
+      "matched": true,
+      "evidence": [
+        {
+          "id": "e1",
+          "url": "https://nodejs.org/en/about/previous-releases#nodejs-releases",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e2",
+          "url": "https://nodejs.org/en/about/previous-releases#official-installation-methods",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e3",
+          "url": "https://nodejs.org/en/about/previous-releases#community-installation-methods",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e4",
+          "url": "https://nodejs.org/en/about/previous-releases#looking-for-the-latest-release-of-a-version-branch",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e5",
+          "url": "https://nodejs.org/en/about/previous-releases#looking-for-latest-release-of-a-version-branch",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        }
+      ],
+      "model": {
+        "requested": "gemini-3.5-flash-lite",
+        "returned": "gemini-3.5-flash-lite",
+        "usage": {
+          "promptTokenCount": 2444,
+          "candidatesTokenCount": 56,
+          "totalTokenCount": 2500,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 2444
+            }
+          ],
+          "serviceTier": "standard"
+        },
+        "output": "{\"relation\":\"support\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"| v22 | Jod |  |  | LTS |  |\"}],\"rationale\":\"The evidence table shows that Node.js v22 has the codename Jod.\"}",
+        "citations": [
+          {
+            "evidenceId": "e1",
+            "quote": "| v22 | Jod |  |  | LTS |  |",
+            "passed": true
+          }
+        ]
+      },
+      "rationale": "The evidence table shows that Node.js v22 has the codename Jod."
+    },
+    {
+      "id": "node20-status",
+      "claim": "The official Node.js releases table marks the v20 line as EOL.",
+      "query": "site:nodejs.org/en/about/previous-releases Node.js v20 status EOL",
+      "officialLabel": "지지",
+      "officialUrl": "https://nodejs.org/en/about/previous-releases",
+      "officialQuote": "| [v20](/en/download/archive/v20.20.2) | Iron | Apr 17, 2023 | Mar 24, 2026 | EOL |",
+      "modelLabel": "지지",
+      "matched": true,
+      "evidence": [
+        {
+          "id": "e1",
+          "url": "https://nodejs.org/en/about/previous-releases#nodejs-releases",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e2",
+          "url": "https://nodejs.org/en/about/previous-releases#official-installation-methods",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e3",
+          "url": "https://nodejs.org/en/about/previous-releases#looking-for-the-latest-release-of-a-version-branch",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e4",
+          "url": "https://nodejs.org/en/about/previous-releases#community-installation-methods",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        },
+        {
+          "id": "e5",
+          "url": "https://nodejs.org/en/about/previous-releases#release-schedule",
+          "title": "Node.js — Node.js Releases",
+          "published_date": null,
+          "excerpt": "| Node.js | Codename | First released | Last updated | Status |\n ---  --- \n| v26   |  | Current |  |\n| v25   |  | EOL |  |\n| v24 | Krypton |  |  | LTS |  |\n| v23   |  | EOL |  |\n| v22 | Jod |  |  | LTS |  |\n| v21   |  | EOL |  |\n| v20 | Iron |  |  | EOL |  |\n| v19   |  | EOL |  |\n| v18 | Hydrogen |  |  | EOL |  |\n| v17   |  | EOL |  |\n| v16 | Gallium |  |  | EOL |  |\n| v15   |  | EOL |  |\n| v14 | Fermium |  |  | EOL |  |\n| v13   |  | EOL |  |\n| v"
+        }
+      ],
+      "model": {
+        "requested": "gemini-3.5-flash-lite",
+        "returned": "gemini-3.5-flash-lite",
+        "usage": {
+          "promptTokenCount": 2782,
+          "candidatesTokenCount": 82,
+          "totalTokenCount": 2864,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 2782
+            }
+          ],
+          "serviceTier": "standard"
+        },
+        "output": "{\n  \"relation\": \"support\",\n  \"citations\": [\n    {\n      \"evidence_id\": \"e1\",\n      \"quote\": \"| v20 | Iron |  |  | EOL |  |\"\n    }\n  ],\n  \"rationale\": \"The official Node.js releases table lists v20 with the status EOL.\"\n}",
+        "citations": [
+          {
+            "evidenceId": "e1",
+            "quote": "| v20 | Iron |  |  | EOL |  |",
+            "passed": true
+          }
+        ]
+      },
+      "rationale": "The official Node.js releases table lists v20 with the status EOL."
+    }
+  ],
+  "cumulativeTavilyRequestsIncludingEarlierRetries": 11
+}
