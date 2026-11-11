@@ -29,9 +29,9 @@ Open `http://127.0.0.1:5173` in a browser. Pick a sample, then move the evaluati
 
 ## Status notes
 
-- The browser UI and the pitch deck (`ClaimClock_pitch_v10.pptx`) are in English. The default Node.js sample replays a real stored Bifrost run. The pre-registered operating-path evaluation has 15 Node.js claims; results and limitations are below.
+- The browser UI and the pitch deck (`ClaimClock_pitch_v11.pptx`) are in English. The default Node.js sample replays a real stored Bifrost run. A fresh Deno 2.0 live analysis is recorded as the third public run. The pre-registered operating-path evaluation has 15 Node.js claims; results and limitations are below.
 - The Pages demo is built from `main` by the manual `pages.yml` workflow. Changes on `main` appear there only after that workflow is run again.
-- Older decks (`ClaimClock_pitch_v7`, `v8`, and `v9`) are kept only as history; `v10` is current.
+- Older decks (`ClaimClock_pitch_v7` through `v10`) are kept only as history; `v11` is current.
 
 ## Wayback evidence in the default sample
 
@@ -80,8 +80,8 @@ The static demo page only shows stored examples and recorded runs, and keys are 
 
 1. To create direct-call records, copy `.env.example` to `.env` and set `TAVILY_API_KEY` and `GEMINI_API_KEY`. `.env` is not committed to git.
 2. To use Bifrost, follow the official install guide and run it locally: https://docs.getbifrost.ai/quickstart/gateway/setting-up
-3. Configure the Gemini provider in the Bifrost admin UI: https://docs.getbifrost.ai/providers/supported-providers/gemini. The Bifrost path uses `TAVILY_API_KEY`, `BIFROST_BASE_URL=http://localhost:8080` and `GEMINI_MODEL` from `.env`, and runs with `npm run live:run:bifrost`.
-4. `npm run live:run` is the direct path and `npm run live:run:bifrost` is the gateway path. Either way, records are written to public-only files; never put key values in logs or the repository.
+3. Configure the Gemini provider in the Bifrost admin UI: https://docs.getbifrost.ai/providers/supported-providers/gemini. Local live mode uses `TAVILY_API_KEY`, `BIFROST_BASE_URL=http://localhost:8080`, `BIFROST_VIRTUAL_KEY`, and `GEMINI_MODEL` from ignored `.env`; the virtual key is sent only from the local server as `x-bf-vk`.
+4. `npm run live:run` is the direct path, `npm run live:run:bifrost` is the earlier gateway path, and `npm run live:run:deno` records a fresh one-claim example through the local virtual-key gateway. Keep the Tavily free-tier call limit in mind. Records are written to public-only files; never put key values in logs or the repository.
 5. Semantic-cache performance was not measured: no Valkey/Redis runtime was reachable at `127.0.0.1:6379`. Local Bifrost configuration, databases and key files are not included in this repository. If you test caching separately, verify an actual cache hit before claiming savings.
 
 Bifrost is an open-source gateway you can run yourself. That does not make the Gemini or Tavily inference APIs free. The app caps each input at 5 Gemini calls and 8 Tavily calls, and at 20 analyses per UTC day. 429/quota errors are not retried. Check prices and limits on each provider's official page before running.
@@ -111,7 +111,7 @@ Destinations:
 
 ## Verification
 
-Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; what each one checks is listed below. `ClaimClock_pitch_v10.pptx` has nine English slides and adds the corrected Python evidence-date example, the local five-record priority queue (scores 80, 65 and 50), the direct-key mode note, and the evaluation-set composition (8/15 status-transition cases, 53% of this sample, not population impact). Updated slides 5, 6, 8 and 9 were rendered with macOS Quick Look and visually inspected; unchanged slides preserve the already reviewed v9 base. The screenshot sources for slides 6 and 9 are `docs/claimclock-python-example-v10.png` and `docs/claimclock-queue-items-v10.png`. PowerPoint and LibreOffice were not used.
+Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; what each one checks is listed below. `ClaimClock_pitch_v11.pptx` has ten English slides; it adds measured per-claim economics and a clearly stated 1,000-answer scale assumption, removes the stale Pages caveat, and makes the video link visible. The current video link is inside slide 9.
 
 `npm run build` copies `public/` and `lib/` into `dist/`. The local server also serves `/live-run.json` statically.
 
@@ -119,7 +119,7 @@ Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; wh
 - `npm run check`: syntax-checks every JS file with `node --check`.
 - `npm run check:secrets`: checks that no real `.env` file other than `.env.example` exists, and that files git would commit (tracked files and new, non-ignored files) contain no strings shaped like API keys or tokens. Output shows only file paths and pattern names, never values or file contents. It judges by shape only, so false positives are possible: for example, a sample key in the docs (a long string starting with `sk-` or `AIza`) or a placeholder of 8+ characters in `.env.example` will fail. In that case, empty the value or use a placeholder shorter than 8 characters (for example `xxx`).
 
-There are no browser end-to-end tests. [**Demo video**](https://github.com/coo001/claimclock/blob/main/video/ClaimClock_demo.mp4) (87.9s, 1080p, silent). The small operating-path evaluation and its limits are reported above; it is not a general benchmark.
+There are no browser end-to-end tests. [**Demo video**](https://github.com/coo001/claimclock/blob/main/video/ClaimClock_demo.mp4) (113.8s, 1080p, silent; includes a 35s real local live analysis). The small operating-path evaluation and its limits are reported above; it is not a general benchmark.
 
 ## Current limitations (2026-11-10)
 
@@ -133,3 +133,12 @@ The following constraints remain; they are not presented as completed work.
 ## Technology and AI use
 
 A plain Node.js HTTP server and browser JavaScript. The live AI feature passes Gemini calls through a local Bifrost gateway and uses Tavily for search. AI coding agents assisted development. Bifrost itself is Apache-2.0 open source; each dependency's license and API terms must be followed separately. The recorded real runs include earlier direct calls, an earlier six-sample Bifrost demonstration, and the separate 15-case operating-path evaluation above. The latter used a Bifrost virtual key with Gemini-generated queries sent unchanged to Tavily; its result, retries and usage counters are recorded in the linked JSON files.
+
+
+## Batch recheck and measured unit economics
+
+Export the browser queue JSON and run `npm run recheck -- path/to/queue.json [YYYY-MM-DD]`. This CLI re-scores saved evidence only; it makes **no** new Tavily, Bifrost, or Gemini calls. The browser queue remains local to the browser unless the user explicitly exports it.
+
+Measured on the existing 15-claim Node.js evaluation record: 25,161 reported Gemini tokens across 49 Bifrost request attempts (37 successful), 18 Tavily search attempts, and $0.0147018 reported by the configured Bifrost budget meter. Normalized per evaluated claim: about 1,677 tokens, $0.00098 measured model cost, 3.27 Bifrost request attempts (including retries), and 1.2 Tavily searches. These are historical ratios from a small, Node.js-only sample, not a guarantee or a benchmark.
+
+Illustrative monthly workload: 1,000 saved answers × 3 claims each × one recheck/month = 3,000 claim checks/month. If the observed per-claim mix held, estimate about 5.03 million tokens, $2.94 Bifrost-metered model cost, 9,800 gateway attempts, and 3,600 Tavily basic-search attempts (about 3,600 credits if each remains one credit). Assumptions: same model, prompts, retry rate, evidence search depth, and account pricing; excludes infrastructure, caching, rate limits, failed jobs beyond the measured sample, and price changes. A batch export/re-score does not itself fetch fresh evidence; each new evidence check still needs the local live analysis path.

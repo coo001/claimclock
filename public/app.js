@@ -298,6 +298,17 @@ async function loadRecordedRun() {
         panel.insertAdjacentHTML('afterbegin', `<hr><h3>Recorded live Python analysis through local Bifrost</h3><p>${escapeHtml(pythonRun.input.title)} · ${escapeHtml(pythonRun.startedAt)} · Tavily ${escapeHtml(pythonRun.result.runLog.counts.tavily)} searches · Gemini ${escapeHtml(pythonRun.result.runLog.counts.gemini)} calls. Replay only; opening this record makes no API calls.</p><ul>${claims}</ul>`);
       }
     }
+    const denoRes = await fetch('./live-run-deno-bifrost.json', { cache: 'no-store' });
+    if (denoRes.ok) {
+      const denoRun = await denoRes.json();
+      if (denoRun.mode === 'recorded-live' && denoRun.actualExternalRun === true && denoRun.executionPath.includes('virtual key')) {
+        const claims = (denoRun.result.claims || []).map((c) => {
+          const evidence = (c.evidence || []).map((e) => `<blockquote>${escapeHtml(e.quote)}</blockquote><a href="${escapeHtml(safeUrl(e.url))}" target="_blank" rel="noopener noreferrer">${escapeHtml(e.title || e.url)}</a>`).join('');
+          return `<li><strong>${escapeHtml(c.text)}</strong> · ${escapeHtml(displayLabel(c.relation))}${evidence}</li>`;
+        }).join('');
+        panel.insertAdjacentHTML('afterbegin', `<hr><h3>Third record · fresh Deno analysis</h3><p>${escapeHtml(denoRun.input.title)} · ${escapeHtml(denoRun.startedAt)} · local Bifrost virtual key · Tavily ${escapeHtml(denoRun.result.runLog.counts.tavily)} search · Gemini ${escapeHtml(denoRun.result.runLog.counts.gemini)} calls. Live analysis captured locally; public replay makes no new calls.</p><ul>${claims}</ul>`);
+      }
+    }
   } catch {
     panel.innerHTML = '<p class="muted">Could not load the run summary records. The default example is stored real Bifrost output, and this page made no new external calls.</p>';
   }

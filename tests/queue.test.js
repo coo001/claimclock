@@ -63,7 +63,7 @@ test('batch recheck sorts by highest claim score, then title, then id', () => {
   assert.deepEqual(ties, ['z-a1', 'z-a2', 'z-b']);
   const node = rows.find((r) => r.id === fixtures[0].id);
   assert.equal(node.total, 1);
-  assert.deepEqual(node.counts, { supported: 0, refuted: 1, insufficient: 0, overdue: 1 });
+  assert.deepEqual(node.counts, { supported: 0, refuted: 1, insufficient: 0, overdue: 0 });
   assert.equal(rows.length, fixtures.length + 3);
   const html = renderQueue(rows, { evalDate: AT.evalDate });
   assert.match(html, /Highest score/);

@@ -7,7 +7,7 @@ import { liveConfig, runLive } from '../lib/live.js';
 import { computeView, DEFAULT_CYCLES } from '../lib/scoring.js';
 import { runLiveDirect } from '../scripts/live-run-direct.mjs';
 
-const ENV = { BIFROST_BASE_URL: 'http://localhost:8080', GEMINI_MODEL: 'gemini-2.5-flash', TAVILY_API_KEY: 'test' };
+const ENV = { BIFROST_BASE_URL: 'http://localhost:8080', GEMINI_MODEL: 'gemini-2.5-flash', TAVILY_API_KEY: 'test', BIFROST_VIRTUAL_KEY: 'test-vk' };
 const CONTENT = 'Node.js 22 entered Active LTS on 2024-10-29 according to the release schedule.';
 const QUOTE = 'Node.js 22 entered Active LTS on 2024-10-29';
 
@@ -71,6 +71,7 @@ test('runLive: Gemini only via Bifrost OpenAI-compatible API, verbatim citation 
     assert.equal(c.body.model, 'gemini/gemini-2.5-flash');
     assert.ok(Array.isArray(c.body.messages));
     assert.equal(c.headers.authorization, undefined);
+    assert.equal(c.headers['x-bf-vk'], 'test-vk');
   }
   assert.equal(calls[1].headers.authorization, 'Bearer test');
 

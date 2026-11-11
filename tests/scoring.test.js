@@ -151,6 +151,14 @@ test('availability is the later of event date and collection date', () => {
   assert.equal(noFallback.relation, INSUFFICIENT);
 });
 
+test('freshly collected evidence anchors the next recheck to the last checked date', () => {
+  const claim = { id: 'c1', text: 'x', type: '버전', relation: SUPPORT, evidence: [{ id: 'e1', origin: ORIGIN_EXTERNAL, url: 'https://example.com', stance: SUPPORT, citationOk: true, date: '2024-10-07', collectedAt: '2026-11-11T10:00:00Z' }] };
+  const checked = evaluateClaim(claim, { evalDate: '2026-11-11', cycles: DEFAULT_CYCLES, authoredDate: '2024-10-07' });
+  assert.equal(checked.anchorDate, '2026-11-11');
+  assert.equal(checked.recheckDate, '2026-12-11');
+  assert.equal(checked.overdue, false);
+});
+
 test('saved fix suggestion is hidden before its generation date and when that date is unknown', () => {
   const result = normalizeResult(FIXTURES[0]);
   const fixText = 'Node.js 20 has an End of Life date of April 30, 2026.';

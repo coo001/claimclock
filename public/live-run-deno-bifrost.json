@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "mode": "recorded-live",
+  "actualExternalRun": true,
+  "executionPath": "Tavily basic search + Gemini through local Bifrost virtual key",
+  "startedAt": "2026-11-11T06:37:22.180Z",
+  "finishedAt": "2026-11-11T06:37:55.556Z",
+  "input": {
+    "title": "Deno 2.0 release claim (fresh local live analysis)",
+    "authoredDate": "2024-10-09",
+    "answerText": "Deno 2.0 reached its stable release on October 9, 2024."
+  },
+  "result": {
+    "id": "live-1794379042254",
+    "mode": "live",
+    "title": "Your answer (local live analysis)",
+    "authoredDate": "2024-10-09",
+    "answerText": "Deno 2.0 reached its stable release on October 9, 2024.",
+    "source": {
+      "status": "Recorded live run",
+      "url": null,
+      "publishedDate": null,
+      "publishedDateText": "",
+      "note": "Processed locally; request text is not retained by this demo server."
+    },
+    "collectedAt": "2026-11-11T06:37:22.254Z",
+    "collectionMethod": "Tavily basic search + Gemini judgment through Bifrost",
+    "claims": [
+      {
+        "id": "c1",
+        "text": "Deno 2.0 reached its stable release on October 9, 2024.",
+        "type": "버전",
+        "relation": "지지",
+        "relationNote": "",
+        "evidence": [
+          {
+            "id": "502874-01",
+            "origin": "external-search",
+            "url": "https://en.wikipedia.org/wiki/Deno_(software)",
+            "title": "Deno (software) - Wikipedia",
+            "quote": "Deno 2 was released October 9, 2024.",
+            "stance": "지지",
+            "citationOk": true,
+            "date": "2024-10-09",
+            "dateBasis": "Date appears verbatim in the cited source text.",
+            "collectedAt": "2026-11-11T06:37:25.830Z"
+          }
+        ],
+        "fix": null,
+        "fixGeneratedAt": ""
+      }
+    ],
+    "runLog": {
+      "note": "Local live run (app limits: 5 Gemini calls · 8 Tavily calls · sequential · no retries on 429)",
+      "externalCalls": true,
+      "counts": {
+        "gemini": 2,
+        "tavily": 1
+      },
+      "tavily": [
+        {
+          "query": "Deno 2.0 stable release date October 9 2024",
+          "topic": "general",
+          "collectedAt": "2026-11-11T06:37:25.830Z",
+          "results": [
+            {
+              "url": "https://www.infoworld.com/article/3555164/deno-2-0-arrives-ready-to-battle-node-js.html",
+              "title": "Deno 2.0 arrives, ready to battle Node.js | InfoWorld",
+              "published_date": null,
+              "contentExcerpt": "Deno 2.0, a major update to the open source Deno runtime for JavaScript, TypeScript, and WebAssembly, is now available as a production release. It emphasizes backward compatibility with the rival Node.js runtime and NPM and a stabilized standard library.\n\nProponents say the Deno 2.0 update was desig"
+            },
+            {
+              "url": "https://en.wikipedia.org/wiki/Deno_(software)",
+              "title": "Deno (software) - Wikipedia",
+              "published_date": null,
+              "contentExcerpt": "Deno 2 was released October 9, 2024. It primarily brings Node.js compatibility improvements and removes deprecated features. Version 2.9 was released on June 25, 2026 bringing native desktop applications packaging among other improvements.\n\nOn October 9, 2026, Ryan Dahl announced Deno deprecation fo"
+            },
+            {
+              "url": "https://news.ycombinator.com/item?id=41789551",
+              "title": "Deno 2 | Hacker News",
+              "published_date": null,
+              "contentExcerpt": "|  |  |  |\n --- \n|  |  | daft\\_pink on Oct 9, 2024  | prev | next (javascript:void(0))   hoping it gets added to homebrew soon. |\n\n|  |  |  |\n --- \n|  |  | lucsky on Oct 10, 2024  | parent | next (javascript:void(0))   Just did it: ```   $ brew update && brew install deno   $ deno --version   deno 2"
+            }
+          ]
+        }
+      ],
+      "gemini": [
+        {
+          "step": "extract",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 3303,
+          "usage": {
+            "prompt_tokens": 112,
+            "prompt_tokens_details": {
+              "text_tokens": 112,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 53,
+            "total_tokens": 165
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+              },
+              {
+                "role": "user",
+                "content": "{\"authored_date\":\"2024-10-09\",\"answer\":\"Deno 2.0 reached its stable release on October 9, 2024.\"}"
+              }
+            ]
+          },
+          "output": "{\"claims\":[{\"text\":\"Deno 2.0 reached its stable release on October 9, 2024.\",\"type\":\"버전\",\"query\":\"Deno 2.0 stable release date October 9 2024\"}]}"
+        },
+        {
+          "step": "judge",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 1066,
+          "usage": {
+            "prompt_tokens": 1406,
+            "prompt_tokens_details": {
+              "text_tokens": 1406,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 52,
+            "total_tokens": 1458
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+              },
+              {
+                "role": "user",
+                "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"Deno 2.0 reached its stable release on October 9, 2024.\"}],\"evidence\":[{\"id\":\"d82158-00\",\"claim_id\":\"c1\",\"url\":\"https://www.infoworld.com/article/3555164/deno-2-0-arrives-ready-to-battle-node-js.html\",\"content\":\"Deno 2.0, a major update to the open source Deno runtime for JavaScript, TypeScript, and WebAssembly, is now available as a production release. It emphasizes backward compatibility with the rival Node.js runtime and NPM and a stabilized standard library.\\n\\nProponents say the Deno 2.0 update was designed to make JavaScript development simpler and more scalable. The production release, from Deno Land, was announced October 9 and can be installed from dotcom–2.deno. [...] news\\n\\nOct 9, 20243 mins\\n\\n## Major update to the Deno runtime for JavaScript, TypeScript, and WebAssembly is backward compatible with Node.js and stabilizes the standard library.\\n\\nshutterstock 1591493512 dinosaur roadside attraction brontosaurus T Rex clouds blue sky\\n\\nCredit: The Image Party / Shutterstock [...] Version 2.0 was issued as a release candidate on September 19, with Deno proponents citing features such as changes to global variables and improved dependency management. The Deno 2.0 production release includes the following updates:\\n\\n Private NPM registries are supported.\\n Workspaces and monorepo are supported.\\n `deno fmt` can now format HTML, CSS, and YAML.\\n `deno lint` now has Node-specific rules and quick\"},{\"id\":\"502874-01\",\"claim_id\":\"c1\",\"url\":\"https://en.wikipedia.org/wiki/Deno_(software)\",\"content\":\"Deno 2 was released October 9, 2024. It primarily brings Node.js compatibility improvements and removes deprecated features. Version 2.9 was released on June 25, 2026 bringing native desktop applications packaging among other improvements.\\n\\nOn October 9, 2026, Ryan Dahl announced Deno deprecation following acquisition by Cloudflare. Dahl pledged to provide Deno runtime fixes and security updates for another year before shutting down development permanently in 2027.\\n\\n## Overview [...] 23. ↑ Casonato, Luca (2022-09-08). \\\"Fresh 1.1 - automatic JSX, plugins, DevTools, and more\\\". Deno Blog. Retrieved 2022-09-10.\\n24. ↑ Jiang, Andy (2023-04-04). \\\"Announcing Deno SaaSKit: an open-source SaaS template built with Fresh\\\". Deno Blog. Retrieved 2022-04-04.\\n25. ↑ \\\"Announcing Deno 2\\\". Deno Blog. 2024-10-09. Retrieved 2024-10-27.\\n26. 1 2 Dahl, Ryan (2026-10-09). \\\"Deno is joining Cloudflare\\\". Deno. Retrieved 2026-10-09.\\n27. ↑ \\\"Deno Is Ready for Production\\\". InfoQ. Retrieved 2020-07-01.\"},{\"id\":\"4c86f1-02\",\"claim_id\":\"c1\",\"url\":\"https://news.ycombinator.com/item?id=41789551\",\"content\":\"|  |  |  |\\n --- \\n|  |  | daft\\\\_pink on Oct 9, 2024  | prev | next (javascript:void(0))   hoping it gets added to homebrew soon. |\\n\\n|  |  |  |\\n --- \\n|  |  | lucsky on Oct 10, 2024  | parent | next (javascript:void(0))   Just did it: ```   $ brew update && brew install deno   $ deno --version   deno 2.0.0 (stable, release, aarch64-apple-darwin)   v8 12.9.202.13-rusty   typescript 5.6.2 ``` | [...] Just did it: ```   $ brew update && brew install deno   $ deno --version   deno 2.0.0 (stable, release, aarch64-apple-darwin)   v8 12.9.202.13-rusty   typescript 5.6.2 ``` | | | |  |  |  |  ---  |  |  | daft\\\\_pink on Oct 11, 2024  | root | parent | next (javascript:void(0))   Yup. Awesome! Thanks! | | | |  |  |  |  ---  |  |  | pier25 on Oct 9, 2024  | parent | prev | next (javascript:void(0))   they mentioned in the livestream they were working on it | | | |  |  |  |  ---  |  |  | nsonha on [...] | |  |  |  |  ---  |  |  | Deno 2 (deno.com) | |  | | 152 points by frou\\\\_dh on Oct 9, 2024  | hide | past | favorite | 24 comments | |  | |  |     |  |  |  |  |  ---  --- | | |  |  |  |  ---  |  |  | WuxiFingerHold on Oct 9, 2024  | next (javascript:void(0))   Deno 2 with full Node compatibility \"}]}"
+              }
+            ]
+          },
+          "output": "{\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support\",\"citations\":[{\"evidence_id\":\"502874-01\",\"quote\":\"Deno 2 was released October 9, 2024.\"}]}]}",
+          "citationCheck": [
+            {
+              "claim_id": "c1",
+              "evidence_id": "502874-01",
+              "quote": "Deno 2 was released October 9, 2024.",
+              "passed": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  }
+}

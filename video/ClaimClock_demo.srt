@@ -1,0 +1,55 @@
+1
+00:00:00,000 --> 00:00:05,000
+A new Deno claim enters local live mode.
+
+2
+00:00:05,000 --> 00:00:12,000
+Tavily searches fresh evidence; Gemini is routed through the local Bifrost virtual key.
+
+3
+00:00:12,000 --> 00:00:22,000
+Live result: one claim, one Tavily search, two Bifrost calls.
+
+4
+00:00:22,000 --> 00:00:29,000
+The actual model responses and request trace are visible.
+
+5
+00:00:29,000 --> 00:00:35,319
+This is a fresh live analysis, not a stored example.
+
+6
+00:00:37,249 --> 00:00:44,593
+ClaimClock checks whether saved answers have gone stale.
+
+7
+00:00:44,593 --> 00:00:52,926
+Start with a dated answer and inspect its status over time.
+
+8
+00:00:52,926 --> 00:01:02,259
+The Node.js example changes from supported to refuted.
+
+9
+00:01:02,259 --> 00:01:10,564
+Move one day forward to see the evidence-based transition.
+
+10
+00:01:10,564 --> 00:01:18,858
+A second saved example covers Python support lifecycle claims.
+
+11
+00:01:18,858 --> 00:01:28,175
+Two claims are extracted and judged against searched evidence.
+
+12
+00:01:28,175 --> 00:01:37,792
+Tavily evidence is evaluated by Gemini through local Bifrost.
+
+13
+00:01:37,792 --> 00:01:47,106
+This saved record used two Tavily searches and four Bifrost calls.
+
+14
+00:01:47,106 --> 00:01:48,119
+The browser replays this record without making new API calls.
