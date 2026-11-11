@@ -13,6 +13,7 @@ const STATIC = new Map([
   ['/app.js', ['public/app.js', 'text/javascript; charset=utf-8']],
   ['/style.css', ['public/style.css', 'text/css; charset=utf-8']],
   ['/live-run.json', ['public/live-run.json', 'application/json; charset=utf-8']],
+  ['/live-run-python-bifrost.json', ['public/live-run-python-bifrost.json', 'application/json; charset=utf-8']],
   ['/live-evaluation-pre.json', ['public/live-evaluation-pre.json', 'application/json; charset=utf-8']],
   ['/live-run-bifrost.json', ['public/live-run-bifrost.json', 'application/json; charset=utf-8']],
   ['/live-run-gemini-direct.json', ['public/live-run-gemini-direct.json', 'application/json; charset=utf-8']],

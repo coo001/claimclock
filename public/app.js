@@ -287,12 +287,34 @@ async function loadRecordedRun() {
       const directRun = await directRes.json();
       panel.insertAdjacentHTML('beforeend', `<p>Separate direct Gemini call record · ${directRun.requestCount} request(s) · ${escapeHtml(directRun.output)}</p>`);
     }
+    const pythonRes = await fetch('./live-run-python-bifrost.json', { cache: 'no-store' });
+    if (pythonRes.ok) {
+      const pythonRun = await pythonRes.json();
+      if (pythonRun.mode === 'recorded-live' && pythonRun.actualExternalRun === true) {
+        const claims = (pythonRun.result.claims || []).map((c) => {
+          const evidence = (c.evidence || []).map((e) => `<blockquote>${escapeHtml(e.quote)}</blockquote><a href="${escapeHtml(safeUrl(e.url))}" target="_blank" rel="noopener noreferrer">${escapeHtml(e.title || e.url)}</a>`).join('');
+          return `<li><strong>${escapeHtml(c.text)}</strong> · ${escapeHtml(displayLabel(c.relation))}${evidence}</li>`;
+        }).join('');
+        panel.insertAdjacentHTML('afterbegin', `<hr><h3>Recorded live Python analysis through local Bifrost</h3><p>${escapeHtml(pythonRun.input.title)} · ${escapeHtml(pythonRun.startedAt)} · Tavily ${escapeHtml(pythonRun.result.runLog.counts.tavily)} searches · Gemini ${escapeHtml(pythonRun.result.runLog.counts.gemini)} calls. Replay only; opening this record makes no API calls.</p><ul>${claims}</ul>`);
+      }
+    }
   } catch {
     panel.innerHTML = '<p class="muted">Could not load the run summary records. The default example is stored real Bifrost output, and this page made no new external calls.</p>';
   }
 }
 
-function init() {
+async function init() {
+  try {
+    const response = await fetch('./live-run-python-bifrost.json', { cache: 'no-store' });
+    if (response.ok) {
+      const record = await response.json();
+      if (record.mode === 'recorded-live' && record.actualExternalRun === true && record.result?.runLog?.externalCalls === true) {
+        const example = normalizeResult(record.result);
+        example.title = `Recorded live run: ${record.input?.title || 'Additional example'}`;
+        fixtures.push(example);
+      }
+    }
+  } catch {}
   $('example').innerHTML = fixtures.map((f) => `<option value="${f.id}">${displayTitle(f).replace(/[<>&]/g, '')}</option>`).join('');
   $('example').addEventListener('change', (e) => selectExample(e.target.value));
   $('verify').addEventListener('click', verify);

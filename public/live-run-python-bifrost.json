@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "mode": "recorded-live",
+  "actualExternalRun": true,
+  "executionPath": "local-bifrost-direct-key",
+  "bifrost": {
+    "version": "2.5.0",
+    "host": "127.0.0.1:18080",
+    "directKeyBypassEnabled": true,
+    "authHeaderNames": [
+      "x-bf-direct-key",
+      "Authorization"
+    ]
+  },
+  "startedAt": "2026-11-11T01:10:07.948Z",
+  "finishedAt": "2026-11-11T01:10:25.940Z",
+  "input": {
+    "title": "Python support lifecycle claims",
+    "authoredDate": "2024-10-07",
+    "answerText": "Python 3.8 reached end of life on October 7, 2024. Python 3.12 is supported through October 2028."
+  },
+  "result": {
+    "id": "live-1794359407949",
+    "mode": "live",
+    "title": "Your answer (local live analysis)",
+    "authoredDate": "2024-10-07",
+    "answerText": "Python 3.8 reached end of life on October 7, 2024. Python 3.12 is supported through October 2028.",
+    "source": {
+      "status": "USER_INPUT",
+      "url": null,
+      "publishedDate": null,
+      "publishedDateText": "",
+      "note": "User input is not stored or logged by the server."
+    },
+    "collectedAt": "2026-11-11T01:10:07.949Z",
+    "collectionMethod": "Tavily basic search + Gemini judgment through Bifrost",
+    "claims": [
+      {
+        "id": "c1",
+        "text": "Python 3.8 reached end of life on October 7, 2024.",
+        "type": "버전",
+        "relation": "지지",
+        "relationNote": "",
+        "evidence": [
+          {
+            "id": "30cab8-01",
+            "origin": "external-search",
+            "url": "https://pythonspeed.com/articles/stop-using-python-3.8",
+            "title": "It’s time to stop using Python 3.8",
+            "quote": "Python 3.8 has reached its end of life as of October 7, 2024.",
+            "stance": "지지",
+            "citationOk": true,
+            "date": "2024-10-07",
+            "dateBasis": "Date appears verbatim in the cited source text.",
+            "collectedAt": "2026-11-11T01:10:12.461Z"
+          }
+        ],
+        "fix": null,
+        "fixGeneratedAt": ""
+      },
+      {
+        "id": "c2",
+        "text": "Python 3.12 is supported through October 2028.",
+        "type": "버전",
+        "relation": "지지",
+        "relationNote": "",
+        "evidence": [
+          {
+            "id": "d7f5d2-00",
+            "origin": "external-search",
+            "url": "https://www.herodevs.com/blog-posts/python-end-of-life-dates-every-versions-support-timeline",
+            "title": "Python End-of-Life Dates: Every Version's Support Timeline",
+            "quote": "October 31, 2028: Python 3.12 reaches end of life.",
+            "stance": "지지",
+            "citationOk": true,
+            "date": "2028-10-31",
+            "dateBasis": "Date appears verbatim in the cited source text.",
+            "collectedAt": "2026-11-11T01:10:12.461Z"
+          }
+        ],
+        "fix": null,
+        "fixGeneratedAt": ""
+      }
+    ],
+    "runLog": {
+      "note": "Local live run (app limits: 5 Gemini calls · 8 Tavily calls · sequential · no retries on 429)",
+      "externalCalls": true,
+      "counts": {
+        "gemini": 4,
+        "tavily": 2
+      },
+      "tavily": [
+        {
+          "query": "Python 3.8 end of life date",
+          "topic": "general",
+          "collectedAt": "2026-11-11T01:10:12.461Z",
+          "results": [
+            {
+              "url": "https://www.herodevs.com/blog-posts/python-end-of-life-dates-every-versions-support-timeline",
+              "title": "Python End-of-Life Dates: Every Version's Support Timeline",
+              "published_date": null,
+              "contentExcerpt": "Already EOL: Python 3.9 (October 2025) and Python 3.8 (October 2024) are already end of life. If you are running either version outside a supported distribution like RHEL 9, you are accumulating unpatched vulnerabilities.\n\nOctober 31, 2027: Python 3.11 reaches end of life.\n\nOctober 31, 2028: Python "
+            },
+            {
+              "url": "https://pythonspeed.com/articles/stop-using-python-3.8",
+              "title": "It’s time to stop using Python 3.8",
+              "published_date": null,
+              "contentExcerpt": "Still, there is only so much time you can delay upgrading, and for Python 3.8, the time to upgrade is as soon as possible. Python 3.8 has reached its end of life as of October 7, 2024.\n\nNo more bug fixes.\n\nNo more security fixes.\n\n“He’s dead, Jim.”\n\nStill not convinced? Let’s see why you want to upg"
+            },
+            {
+              "url": "https://devguide.python.org/versions",
+              "title": "Status of Python versions",
+              "published_date": null,
+              "contentExcerpt": "| Branch | Schedule | Status | First release | End of life | Release manager |\n ---  ---  --- |\n| 3.10 | PEP 619 | end-of-life | 2021-10-04 | 2026-10-01 | Pablo Galindo Salgado |\n| 3.9 | PEP 596 | end-of-life | 2020-10-05 | 2025-10-31 | Łukasz Langa |\n| 3.8 | PEP 569 | end-of-life | 2019-10-14 | 202"
+            }
+          ]
+        },
+        {
+          "query": "Python 3.12 end of support date",
+          "topic": "general",
+          "collectedAt": "2026-11-11T01:10:13.652Z",
+          "results": [
+            {
+              "url": "https://www.nicholashairs.com/posts/major-changes-between-python-versions",
+              "title": "Summary of Major Changes Between Python Versions",
+              "published_date": null,
+              "contentExcerpt": "For each section the end-of-life date (EOL) refers to the date at which the Python Software Foundation will not longer provide security patches for a particular version.\n\n   Python 3.7 and earlier (EOL Jun 2023)\n   Python 3.8 (EOL Oct 2024)\n   Python 3.9 (EOL Oct 2025)\n   Python 3.10 (EOL Oct 2026)\n"
+            },
+            {
+              "url": "https://endoflife.date/python",
+              "title": "Python | endoflife.date",
+              "published_date": null,
+              "contentExcerpt": "| 3.12 | 3 years ago (02 Oct 2023) | Ended 1 year and 7 months ago (02 Apr 2025) | Ends in 2 years (31 Oct 2028) | 3.12.16 (25 Oct 2026) |\n| 3.11 | 4 years ago (24 Oct 2022) | Ended 2 years and 7 months ago (01 Apr 2024) | Ends in 11 months (31 Oct 2027) | 3.11.18 (25 Oct 2026) |\n| 3.10 | 5 years ag"
+            },
+            {
+              "url": "https://www.herodevs.com/blog-posts/python-end-of-life-dates-every-versions-support-timeline",
+              "title": "Python End-of-Life Dates: Every Version's Support Timeline",
+              "published_date": null,
+              "contentExcerpt": "| Version | Release Date | Bug-Fix End | Security-Only End (EOL) | Status | Latest Release |\n| 3.15 | ~Oct 2026 | ~Oct 2028 | ~Oct 2031 | Release candidate3.15.0rc2 |\n| 3.14 | Oct 7, 2025 | ~Oct 2027 | Oct 31, 2030 | Bug-fix support | 3.14.7 |\n| 3.13 | Oct 7, 2024 | ~Oct 2026 | Oct 31, 2029 | Bug-fi"
+            }
+          ]
+        }
+      ],
+      "gemini": [
+        {
+          "step": "extract",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 2507,
+          "usage": {
+            "prompt_tokens": 127,
+            "prompt_tokens_details": {
+              "text_tokens": 127,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 81,
+            "total_tokens": 208
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+              },
+              {
+                "role": "user",
+                "content": "{\"authored_date\":\"2024-10-07\",\"answer\":\"Python 3.8 reached end of life on October 7, 2024. Python 3.12 is supported through October 2028.\"}"
+              }
+            ]
+          },
+          "output": "{\"claims\":[{\"text\":\"Python 3.8 reached end of life on October 7, 2024.\",\"type\":\"버전\",\"query\":\"Python 3.8 end of life date\"},{\"text\":\"Python 3.12 is supported through October 2028.\",\"type\":\"버전\",\"query\":\"Python 3.12 end of support date\"}]}"
+        },
+        {
+          "step": "judge",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 12284,
+          "usage": {
+            "prompt_tokens": 2596,
+            "prompt_tokens_details": {
+              "text_tokens": 2596,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 110,
+            "total_tokens": 2706
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+              },
+              {
+                "role": "user",
+                "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"Python 3.8 reached end of life on October 7, 2024.\"},{\"id\":\"c2\",\"text\":\"Python 3.12 is supported through October 2028.\"}],\"evidence\":[{\"id\":\"d7f5d2-00\",\"claim_id\":\"c1\",\"url\":\"https://www.herodevs.com/blog-posts/python-end-of-life-dates-every-versions-support-timeline\",\"content\":\"Already EOL: Python 3.9 (October 2025) and Python 3.8 (October 2024) are already end of life. If you are running either version outside a supported distribution like RHEL 9, you are accumulating unpatched vulnerabilities.\\n\\nOctober 31, 2027: Python 3.11 reaches end of life.\\n\\nOctober 31, 2028: Python 3.12 reaches end of life.\\n\\n~May 2032: RHEL 9 maintenance support ends, taking Red Hat's Python 3.9 backporting with it.\\n\\n‍\\n\\n## How to Check Your Python Version [...] | 3.10 | Oct 4, 2021 | Apr 5, 2023 | Oct 31, 2026 | Final weeks | 3.10.21 |\\n| 3.9 | Oct 5, 2020 | May 17, 2022 | Oct 31, 2025 | End of life | 3.9.25final |\\n| 3.8 | Oct 14, 2019 | May 3, 2021 | Oct 7, 2024 | End of life | 3.8.20final |\\n| 3.7 | Jun 27, 2018 | Jun 27, 2020 | Jun 27, 2023 | End of life | 3.7.17final |\\n| 3.6 | Dec 23, 2016 | Dec 24, 2018 | Dec 23, 2021 | End of life | 3.6.15final |\\n| 2.7 | Jul 3, 2010 | — | Jan 1, 2020 | End of life | 2.7.18final |\"},{\"id\":\"30cab8-01\",\"claim_id\":\"c1\",\"url\":\"https://pythonspeed.com/articles/stop-using-python-3.8\",\"content\":\"Still, there is only so much time you can delay upgrading, and for Python 3.8, the time to upgrade is as soon as possible. Python 3.8 has reached its end of life as of October 7, 2024.\\n\\nNo more bug fixes.\\n\\nNo more security fixes.\\n\\n“He’s dead, Jim.”\\n\\nStill not convinced? Let’s see why you want to upgrade.\\n\\n## What does end-of-life mean?\\n\\nPython 3.8 was released in October 2019, five years ago at the time of writing. As you can see in PEP 569: [...] Bug fix and security fix sub-releases happened every 2 months for the first two years.\\n After that, releases happened as needed for security fixes only.\\n Releases will stop 5 years after 3.8 was released.\\n\\nWhich is to say, there will be no future Python 3.8 releases. If there is a security bug, it won’t get fixed by the Python development team. [...] And of course long-term support only continues for a limited amount of time. For example, Ubuntu 20.04 (which is the version that includes Python 3.8) will end general security updates in April 2025. After that you’ll be able to get security updates for personal use, but for large-scale commercial use you will need to pay Ubuntu.\\n\\n### Your dependencies will stop getting updates\"},{\"id\":\"606b58-02\",\"claim_id\":\"c1\",\"url\":\"https://devguide.python.org/versions\",\"content\":\"| Branch | Schedule | Status | First release | End of life | Release manager |\\n ---  ---  --- |\\n| 3.10 | PEP 619 | end-of-life | 2021-10-04 | 2026-10-01 | Pablo Galindo Salgado |\\n| 3.9 | PEP 596 | end-of-life | 2020-10-05 | 2025-10-31 | Łukasz Langa |\\n| 3.8 | PEP 569 | end-of-life | 2019-10-14 | 2024-10-07 | Łukasz Langa |\\n| 3.7 | PEP 537 | end-of-life | 2018-06-27 | 2023-06-27 | Ned Deily |\\n| 3.6 | PEP 494 | end-of-life | 2016-12-23 | 2021-12-23 | Ned Deily |\"},{\"id\":\"4396df-00\",\"claim_id\":\"c2\",\"url\":\"https://www.nicholashairs.com/posts/major-changes-between-python-versions\",\"content\":\"For each section the end-of-life date (EOL) refers to the date at which the Python Software Foundation will not longer provide security patches for a particular version.\\n\\n   Python 3.7 and earlier (EOL Jun 2023)\\n   Python 3.8 (EOL Oct 2024)\\n   Python 3.9 (EOL Oct 2025)\\n   Python 3.10 (EOL Oct 2026)\\n   Python 3.11 (EOL Oct 2027)\\n   Python 3.12 (EOL Oct 2028)\\n   Python 3.13 (EOL Oct 2029)\\n   Python 3.14 (EOL Oct 2030)\\n   Python 3.15 (EOL Oct 2031)\\n\\n## Python 3.7 and earlier (EOL Jun 2023) [...] ## Python 3.12 (EOL Oct 2028)\\n\\n### Typing: Type Parameter Syntax (PEP 695)\\n\\nCompact annotation of generic classes and functions\\n\\n```python\\ndef maxT -> T:\\n  ...\\n\\nclass list[T]:\\n  def __getitem__(self, index: int, /) -> T:\\n    ...\\n\\n  def append(self, element: T) -> None:\\n    ...\\n```\\n\\nAbility to declare type aliases using `type` statement (generates `TypeAliasType`)\\n\\n```python\\ntype Point = tuple[float, float]\\n\\n# Type aliases can also be generic\\ntype Point[T] = tuple[T, T]\\n```\"},{\"id\":\"db66b2-01\",\"claim_id\":\"c2\",\"url\":\"https://endoflife.date/python\",\"content\":\"| 3.12 | 3 years ago (02 Oct 2023) | Ended 1 year and 7 months ago (02 Apr 2025) | Ends in 2 years (31 Oct 2028) | 3.12.16 (25 Oct 2026) |\\n| 3.11 | 4 years ago (24 Oct 2022) | Ended 2 years and 7 months ago (01 Apr 2024) | Ends in 11 months (31 Oct 2027) | 3.11.18 (25 Oct 2026) |\\n| 3.10 | 5 years ago (04 Oct 2021) | Ended 3 years and 7 months ago (05 Apr 2023) | Ended 1 month and 1 week ago (01 Oct 2026) | 3.10.22 (01 Oct 2026) |\"},{\"id\":\"a6cfe7-02\",\"claim_id\":\"c2\",\"url\":\"https://www.herodevs.com/blog-posts/python-end-of-life-dates-every-versions-support-timeline\",\"content\":\"| Version | Release Date | Bug-Fix End | Security-Only End (EOL) | Status | Latest Release |\\n| 3.15 | ~Oct 2026 | ~Oct 2028 | ~Oct 2031 | Release candidate3.15.0rc2 |\\n| 3.14 | Oct 7, 2025 | ~Oct 2027 | Oct 31, 2030 | Bug-fix support | 3.14.7 |\\n| 3.13 | Oct 7, 2024 | ~Oct 2026 | Oct 31, 2029 | Bug-fix support | 3.13.15 |\\n| 3.12 | Oct 2, 2023 | Apr 2, 2025 | Oct 31, 2028 | Security-only | 3.12.14 |\\n| 3.11 | Oct 24, 2022 | Apr 1, 2024 | Oct 31, 2027 | Security-only | 3.11.16 | [...] Already EOL: Python 3.9 (October 2025) and Python 3.8 (October 2024) are already end of life. If you are running either version outside a supported distribution like RHEL 9, you are accumulating unpatched vulnerabilities.\\n\\nOctober 31, 2027: Python 3.11 reaches end of life.\\n\\nOctober 31, 2028: Python 3.12 reaches end of life.\\n\\n~May 2032: RHEL 9 maintenance support ends, taking Red Hat's Python 3.9 backporting with it.\\n\\n‍\\n\\n## How to Check Your Python Version [...] Ubuntu LTS: Ubuntu 22.04 LTS ships Python 3.10 and will receive security updates through April 2027 (standard) or April 2032 (with Ubuntu Pro). Ubuntu 24.04 LTS ships Python 3.12.\\n\\nAmazon Linux 2023: Ships Python 3.9 as the default, with support pla\"}]}"
+              }
+            ]
+          },
+          "output": "{\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support\",\"citations\":[{\"evidence_id\":\"30cab8-01\",\"quote\":\"Python 3.8 has reached its end of life as of October 7, 2024.\"}]},{\"claim_id\":\"c2\",\"relation\":\"support\",\"citations\":[{\"evidence_id\":\"d7f5d2-00\",\"quote\":\"October 31, 2028: Python 3.12 reaches end of life.\"}]}]}",
+          "citationCheck": [
+            {
+              "claim_id": "c1",
+              "evidence_id": "30cab8-01",
+              "quote": "Python 3.8 has reached its end of life as of October 7, 2024.",
+              "passed": true
+            },
+            {
+              "claim_id": "c2",
+              "evidence_id": "d7f5d2-00",
+              "quote": "October 31, 2028: Python 3.12 reaches end of life.",
+              "passed": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  "evaluation": {
+    "referenceSource": "Python developer guide: supported versions",
+    "referenceUrl": "https://devguide.python.org/versions/",
+    "note": "Human comparison not assigned; live output preserved without a claim-level accuracy score."
+  }
+}

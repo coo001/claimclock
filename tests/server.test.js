@@ -61,6 +61,20 @@ test('GET /live-run.json serves the recorded API run', async () => {
   assert.ok(body.humanAgreement.total >= 1);
 });
 
+test('GET /live-run-python-bifrost.json serves the second real Bifrost example', async () => {
+  const res = await fetch(`${base}/live-run-python-bifrost.json`);
+  assert.equal(res.status, 200);
+  assert.match(res.headers.get('content-type'), /application\/json/);
+  const body = await res.json();
+  assert.equal(body.mode, 'recorded-live');
+  assert.equal(body.actualExternalRun, true);
+  assert.equal(body.input.title, 'Python support lifecycle claims');
+  assert.equal(body.result.runLog.counts.tavily, 2);
+  assert.equal(body.result.claims.length, 2);
+  assert.ok(body.result.claims.every((claim) => claim.evidence.length > 0));
+  assert.doesNotMatch(JSON.stringify(body), /\bsk-[A-Za-z0-9]|AIza[0-9A-Za-z_-]{20,}|tvly-[A-Za-z0-9]/);
+});
+
 test('GET routes serve evaluation, Bifrost, and direct Gemini run records', async () => {
   for (const [route, mode] of [
     ['/live-evaluation-pre.json', 'recorded-live-evaluation-pre-tuning'],

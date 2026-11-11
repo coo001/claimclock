@@ -17,7 +17,7 @@ npm test
 npm start
 ```
 
-Open `http://127.0.0.1:5173` in a browser. Pick a sample, then move the evaluation-date slider and the per-type re-check cycles: the score, timeline, re-check dates and ICS file update immediately. The first, default sample is the recorded Node.js 20.x stale-answer run. Selecting a sample or re-verifying the exact same text only replays stored output and makes no external calls.
+Open `http://127.0.0.1:5173` in a browser. Pick a sample, then move the evaluation-date slider and the per-type re-check cycles: the score, timeline, re-check dates and ICS file update immediately. The first, default sample is the recorded Node.js 20.x stale-answer run. A second recorded live sample covers Python 3.8 and 3.12 support claims. Selecting either recorded sample or re-verifying its exact text only replays stored output and makes no external calls.
 
 **Typing your own paragraph.** A paragraph is shown with a result only when it exactly matches (after whitespace normalization) the text of a stored example. Matching the recorded real run replays that run's stored output; matching a fixed example shows its human-labeled example data and says it is not AI output. Any other paragraph gets no result. On the static demo (GitHub Pages) there is no backend, so the page says that no live analysis is possible there, that the paragraph was not analyzed or sent anywhere, and that live analysis requires a local install and your own API keys. With the local server but no keys configured, the page reports that live mode is not configured.
 
@@ -45,6 +45,10 @@ The default sample shows the claim as true at first and false after Node.js 20 l
 Both URLs were found with the Wayback CDX API and their text was read back from the captures. The slider therefore shows Insufficient evidence on 2023-10-24, Supported from 2023-10-25 to 2024-10-21, and Refuted from 2024-10-22. Archived items are human-added: they decide the relation and date but are not counted as independent sources. The Tavily result (collected 2026-11-10) appears only from that date, so the independent-source count is 0 until then and 1 on 2026-11-10.
 
 ## Recorded real runs
+
+### Second live example: Python support claims (N=2)
+
+On 2026-11-11, a non-Node.js paragraph was analyzed through local Bifrost v2.5.0: “Python 3.8 reached end of life on October 7, 2024. Python 3.12 is supported through October 2028.” Gemini extracted two claims, Tavily was called twice, and Gemini made four Bifrost calls; both judgments were “supported” with one cited Tavily result each. The saved replay is `public/live-run-python-bifrost.json` and is available as a selectable example. This is a two-claim demonstration, not an accuracy benchmark. For this run only, Bifrost used `client.allow_direct_keys:true`, `x-bf-direct-key:true`, and the caller's Gemini key in the Authorization header; the key itself was not recorded. The public replay makes no API calls.
 
 ### Current operating-path evaluation (pre-registered, Node.js N=15)
 
