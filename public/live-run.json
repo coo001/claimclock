@@ -14,7 +14,7 @@
         "claimId": "c1",
         "claimText": "Node.js 20.x remains in Active LTS through October 2024.",
         "label": "지지",
-        "labelSource": "사람이 원문 URL을 직접 확인: 공식 Node.js v20.9.0 공지가 Active LTS until October 2024라고 명시.",
+        "labelSource": "Checked against the original URL: the official Node.js v20.9.0 announcement says the 20.x release line remains in Active LTS until October 2024.",
         "evidenceUrl": "https://nodejs.org/en/blog/release/v20.9.0",
         "modelRelation": "근거 부족",
         "evidenceQuote": "The 20.x release line now moves into \"Active LTS\" and will remain so until October 2024."

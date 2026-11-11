@@ -29,9 +29,9 @@ Open `http://127.0.0.1:5173` in a browser. Pick a sample, then move the evaluati
 
 ## Status notes
 
-- The browser UI and the pitch deck (`ClaimClock_pitch_v9.pptx`) are in English. The default Node.js sample replays a real stored Bifrost run. The pre-registered operating-path evaluation has 15 Node.js claims; results and limitations are below.
+- The browser UI and the pitch deck (`ClaimClock_pitch_v10.pptx`) are in English. The default Node.js sample replays a real stored Bifrost run. The pre-registered operating-path evaluation has 15 Node.js claims; results and limitations are below.
 - The Pages demo is built from `main` by the manual `pages.yml` workflow. Changes on `main` appear there only after that workflow is run again.
-- Older decks (`ClaimClock_pitch_v7` and `v8`) are kept only as history; `v9` is current.
+- Older decks (`ClaimClock_pitch_v7`, `v8`, and `v9`) are kept only as history; `v10` is current.
 
 ## Wayback evidence in the default sample
 
@@ -48,7 +48,7 @@ Both URLs were found with the Wayback CDX API and their text was read back from 
 
 ### Second live example: Python support claims (N=2)
 
-On 2026-11-11, a non-Node.js paragraph was analyzed through local Bifrost v2.5.0: “Python 3.8 reached end of life on October 7, 2024. Python 3.12 is supported through October 2028.” Gemini extracted two claims, Tavily was called twice, and Gemini made four Bifrost calls; both judgments were “supported” with one cited Tavily result each. The saved replay is `public/live-run-python-bifrost.json` and is available as a selectable example. This is a two-claim demonstration, not an accuracy benchmark. For this run only, Bifrost used `client.allow_direct_keys:true`, `x-bf-direct-key:true`, and the caller's Gemini key in the Authorization header; the key itself was not recorded. The public replay makes no API calls.
+On 2026-11-11, a non-Node.js paragraph was analyzed through local Bifrost v2.5.0: “Python 3.8 reached end of life on October 7, 2024. Python 3.12 is supported through October 2028.” Gemini extracted two claims, Tavily was called twice, and Gemini made four Bifrost request attempts across extraction and judgment; both claims were labeled “supported,” with one cited Tavily result each. The saved replay is `public/live-run-python-bifrost.json` and is available as a selectable example. This is a two-claim demonstration, not an accuracy benchmark. The quoted 2028 date is treated as a target date, not a publication/event date; the Python 3.12 evidence date remains unknown and becomes available from its 2026-11-11 collection date. For this run only, Bifrost used `client.allow_direct_keys:true`, `x-bf-direct-key:true`, and the caller's Gemini key in the Authorization header; the key itself was not recorded. This added two Tavily calls, bringing the known cumulative total to 40/50. The public replay makes no API calls.
 
 ### Current operating-path evaluation (pre-registered, Node.js N=15)
 
@@ -111,7 +111,7 @@ Destinations:
 
 ## Verification
 
-Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; what each one checks is listed below. `ClaimClock_pitch_v9.pptx` has nine English slides with real app captures from the current build (Supported on 2024-10-21, Refuted on 2024-10-22, the 2026-11-10 evidence view and the batch queue). Every slide was rendered and visually inspected with macOS Quick Look; PowerPoint and LibreOffice were not used.
+Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; what each one checks is listed below. `ClaimClock_pitch_v10.pptx` has nine English slides and adds the corrected Python evidence-date example, the local five-record priority queue (scores 80, 65 and 50), the direct-key mode note, and the evaluation-set composition (8/15 status-transition cases, 53% of this sample, not population impact). Updated slides 5, 6, 8 and 9 were rendered with macOS Quick Look and visually inspected; unchanged slides preserve the already reviewed v9 base. The screenshot sources for slides 6 and 9 are `docs/claimclock-python-example-v10.png` and `docs/claimclock-queue-items-v10.png`. PowerPoint and LibreOffice were not used.
 
 `npm run build` copies `public/` and `lib/` into `dist/`. The local server also serves `/live-run.json` statically.
 
@@ -119,7 +119,7 @@ Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; wh
 - `npm run check`: syntax-checks every JS file with `node --check`.
 - `npm run check:secrets`: checks that no real `.env` file other than `.env.example` exists, and that files git would commit (tracked files and new, non-ignored files) contain no strings shaped like API keys or tokens. Output shows only file paths and pattern names, never values or file contents. It judges by shape only, so false positives are possible: for example, a sample key in the docs (a long string starting with `sk-` or `AIza`) or a placeholder of 8+ characters in `.env.example` will fail. In that case, empty the value or use a placeholder shorter than 8 characters (for example `xxx`).
 
-There are no browser end-to-end tests, and no demo video is included in this repository. The small operating-path evaluation and its limits are reported above; it is not a general benchmark.
+There are no browser end-to-end tests. [**Demo video**](https://github.com/coo001/claimclock/blob/main/video/ClaimClock_demo.mp4) (87.9s, 1080p, silent). The small operating-path evaluation and its limits are reported above; it is not a general benchmark.
 
 ## Current limitations (2026-11-10)
 

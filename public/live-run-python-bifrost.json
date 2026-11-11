@@ -73,8 +73,8 @@
             "quote": "October 31, 2028: Python 3.12 reaches end of life.",
             "stance": "지지",
             "citationOk": true,
-            "date": "2028-10-31",
-            "dateBasis": "Date appears verbatim in the cited source text.",
+            "date": null,
+            "dateBasis": "Quoted date 2028-10-31 is later than collection (2026-11-11); treated as a target date, not a publication/event date.",
             "collectedAt": "2026-11-11T01:10:12.461Z"
           }
         ],
