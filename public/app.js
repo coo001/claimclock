@@ -2,7 +2,7 @@ import { FIXTURES } from './lib/fixtures.js';
 import { normalizeResult, matchFixture } from './lib/schema.js';
 import { computeView, buildIcs, DEFAULT_CYCLES, CLAIM_TYPES, addDays, daysBetween, isValidDate, displayLabel, DATE_UNKNOWN } from './lib/scoring.js';
 import { renderResult, selectNote, replayNote, displayTitle } from './lib/render.js';
-import { loadQueue, saveQueue, addRecords, removeRecord, findRecord, emptyQueue, recheckQueue, renderQueue, QUEUE_CAP } from './lib/queue.js';
+import { loadQueue, saveQueue, serializeQueue, addRecords, removeRecord, findRecord, emptyQueue, recheckQueue, renderQueue, QUEUE_CAP } from './lib/queue.js';
 
 const $ = (id) => document.getElementById(id);
 const fixtures = FIXTURES.map(normalizeResult);
@@ -67,6 +67,16 @@ function initQueue() {
   $('queue-recheck').addEventListener('click', () => {
     renderQueuePanel();
     setQueueMessage(`Rechecked ${state.queue.records.length} stored record(s) at evaluation date ${state.evalDate ?? state.today} from their saved evidence. No new evidence was fetched.`, 'ok');
+  });
+  $('queue-export').addEventListener('click', () => {
+    const blob = new Blob([serializeQueue(state.queue)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'claimclock-queue.json';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    setQueueMessage(`Exported ${state.queue.records.length} saved record(s).`, 'ok');
   });
   $('queue-clear').addEventListener('click', () => commitQueue(emptyQueue(), 'Cleared the queue in this browser.'));
   $('queue-list').addEventListener('click', (e) => {
@@ -316,16 +326,25 @@ async function loadRecordedRun() {
 
 async function init() {
   try {
-    const response = await fetch('./live-run-python-bifrost.json', { cache: 'no-store' });
-    if (response.ok) {
-      const record = await response.json();
-      if (record.mode === 'recorded-live' && record.actualExternalRun === true && record.result?.runLog?.externalCalls === true) {
-        const example = normalizeResult(record.result);
-        example.title = `Recorded live run: ${record.input?.title || 'Additional example'}`;
-        fixtures.push(example);
-      }
-    }
+    const status = await fetch('./api/status', { cache: 'no-store' }).then((r) => r.ok ? r.json() : null);
+    if (status?.liveReady) $('mode-banner').textContent = 'Local live mode · new answers analyzed through Bifrost virtual-key routing';
   } catch {}
+  // Recorded real runs: selectable and replayable by exact text match. Replay makes no API calls.
+  for (const [file, label] of [
+    ['./live-run-python-bifrost.json', 'Recorded live run'],
+    ['./live-run-deno-bifrost.json', 'Recorded live run'],
+  ]) {
+    try {
+      const r = await fetch(file, { cache: 'no-store' });
+      if (!r.ok) continue;
+      const record = await r.json();
+      if (record.mode !== 'recorded-live' || record.actualExternalRun !== true || record.result?.runLog?.externalCalls !== true) continue;
+      const example = normalizeResult(record.result);
+      example.mode = 'recorded-live';
+      example.title = `${label}: ${record.input?.title || example.answerText.slice(0, 55)}`;
+      if (!fixtures.some((f) => f.id === example.id)) fixtures.push(example);
+    } catch {}
+  }
   $('example').innerHTML = fixtures.map((f) => `<option value="${f.id}">${displayTitle(f).replace(/[<>&]/g, '')}</option>`).join('');
   $('example').addEventListener('change', (e) => selectExample(e.target.value));
   $('verify').addEventListener('click', verify);

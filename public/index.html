@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="field">
-        <label for="answer">Answer paragraph (public replay loads recorded runs; local live mode can analyze new text)</label>
+        <label for="answer">Answer paragraph (public replay loads examples; local live mode can analyze new text)</label>
         <textarea id="answer" rows="5" spellcheck="false"></textarea>
       </div>
       <div class="actions">
@@ -93,6 +93,7 @@
         <button type="button" id="queue-save">Save current result</button>
         <button type="button" id="queue-demo">Load all fixed examples (demo)</button>
         <button type="button" id="queue-recheck" class="primary">Recheck stored records</button>
+        <button type="button" id="queue-export">Export queue JSON</button>
         <button type="button" id="queue-clear">Clear queue</button>
       </div>
       <div id="queue-message" class="message" role="status" aria-live="polite"></div>
