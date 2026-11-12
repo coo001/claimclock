@@ -17,7 +17,7 @@ npm test
 npm start
 ```
 
-Open `http://127.0.0.1:5173` in a browser. Pick a sample, then move the evaluation-date slider and the per-type re-check cycles: the score, timeline, re-check dates and ICS file update immediately. The first, default sample is the recorded Node.js 20.x stale-answer run. A second recorded live sample covers Python 3.8 and 3.12 support claims. Selecting either recorded sample or re-verifying its exact text only replays stored output and makes no external calls.
+Open `http://127.0.0.1:5173` in a browser. Pick a sample, then move the evaluation-date slider and the per-type re-check cycles: the score, timeline, re-check dates and ICS file update immediately. The first, default sample is the recorded Node.js 20.x stale-answer run. Three more recorded live runs are selectable: a 2023-dated paragraph in which two claims were refuted live and given suggested fixes, Python 3.8 and 3.12 support claims, and a Deno 2.0 release claim. Selecting a recorded run or re-verifying its exact text only replays stored output and makes no external calls.
 
 **Typing your own paragraph.** A paragraph is shown with a result only when it exactly matches (after whitespace normalization) the text of a stored example. Matching the recorded real run replays that run's stored output; matching a fixed example shows its human-labeled example data and says it is not AI output. Any other paragraph gets no result. On the static demo (GitHub Pages) there is no backend, so the page says that no live analysis is possible there, that the paragraph was not analyzed or sent anywhere, and that live analysis requires a local install and your own API keys. With the local server but no keys configured, the page reports that live mode is not configured.
 
@@ -29,9 +29,9 @@ Open `http://127.0.0.1:5173` in a browser. Pick a sample, then move the evaluati
 
 ## Status notes
 
-- The browser UI and the pitch deck (`ClaimClock_pitch_v11.pptx`) are in English. The default Node.js sample replays a real stored Bifrost run. A fresh Deno 2.0 live analysis is recorded as the third public run. The pre-registered operating-path evaluation has 15 Node.js claims; results and limitations are below.
+- The browser UI and the pitch deck (`ClaimClock_pitch_v12.pptx`) are in English. The default Node.js sample replays a real stored Bifrost run. Three further live runs (stale claims refuted with fixes, Python, Deno 2.0) are stored and replayable. A 19-answer real-answer corpus measurement and the pre-registered 15-claim Node.js evaluation are reported below with their limits.
 - The Pages demo is built from `main` by the manual `pages.yml` workflow. Changes on `main` appear there only after that workflow is run again.
-- Older decks (`ClaimClock_pitch_v7` through `v10`) are kept only as history; `v11` is current.
+- Older decks (`ClaimClock_pitch_v7` through `v11`) are kept only as history; `v12` is current.
 
 ## Wayback evidence in the default sample
 
@@ -44,15 +44,50 @@ The default sample shows the claim as true at first and false after Node.js 20 l
 
 Both URLs were found with the Wayback CDX API and their text was read back from the captures. The slider therefore shows Insufficient evidence on 2023-10-24, Supported from 2023-10-25 to 2024-10-21, and Refuted from 2024-10-22. Archived items are human-added: they decide the relation and date but are not counted as independent sources. The Tavily result (collected 2026-11-10) appears only from that date, so the independent-source count is 0 until then and 1 on 2026-11-10.
 
+## Small real-answer corpus (19 Stack Overflow answers)
+
+How often do real, dated answers go stale, and does ClaimClock put the stale ones first? This was measured on a small set on 2026-11-12. Files: `public/corpus-stale-v1.json` (answers, labels, source excerpts, exclusions), `public/corpus-stale-v1-run.json` (the reported run) and `public/corpus-stale-v1-run-prompt1.json` (the earlier run), produced by `scripts/corpus-judge.mjs`.
+
+**How the set was built.** Six keyword queries ("latest LTS version", "current LTS", "end of life version", "latest stable version is", "currently supported versions", "still supported until") were sent to the public Stack Exchange API for Stack Overflow answers created in 2023–2024, sorted by votes. Of 153 distinct answers, a fixed regex kept 25 that name a product version next to a time-sensitive word. Each was read; 6 were excluded for reasons listed in the file and 19 were labeled against a primary-source excerpt stored with each row (release schedules, vendor roadmaps, official announcements).
+
+**What was found in the set.** 12 of the 19 answers (63%) contain a statement that is no longer true for a reader on 2026-11-12: 9 state a current/latest/supported status that has since changed, and 3 use a relative time phrase ("about a month from now") that has expired. 7 still hold.
+
+**What ClaimClock did (judge prompt 2, evaluation date 2026-11-12).**
+
+| | Stale (12) | Still valid (7) |
+|---|---|---|
+| At least one claim Refuted | 8 | 0 |
+| Every claim Supported | 1 | 6 |
+| Other (insufficient evidence or no claim extracted) | 3 | 1 |
+
+- Sorted by highest claim score, the 12 highest-ranked answers contain 10 of the 12 stale ones.
+- If a reviewer skipped the 7 answers in which every claim was Supported, 7 of 19 reads (37%) would be saved and 1 of the 12 stale answers would be missed (an Azul support end year that changed from 2027 to 2029). This is a count of answers, not measured reviewer time; no person was timed.
+- The pipeline took a median of 2.4 s per answer (maximum 8.5 s, 48 Gemini requests in total through the Bifrost virtual key) with the search step replaced as described below.
+
+**Limits. Read these before quoting any number above.**
+
+- The set is a keyword-selected convenience set, deliberately enriched for version and support wording. 63% describes these 19 answers only; it is not an estimate for Stack Overflow or for answers in general.
+- Labels were assigned during development with an AI coding assistant by comparing each quoted sentence with the stored primary-source excerpt. There was no second, independent human annotator.
+- Retrieval was not tested. To stay inside the Tavily free quota, the search step was answered from the stored primary-source excerpt (0 Tavily requests), so the result measures extraction, judgment and ranking given good evidence. The 15-claim evaluation below shows that live retrieval does miss official sources.
+- The judge prompt was changed after the first run on this same set. With prompt 1, 2 of the 12 stale answers were flagged, and 5 of the 19 runs hit provider 429 errors, so the two runs are not a clean comparison. Prompt 2 tells the judge the evaluation date and asks whether the claim is true on that date. Its result is therefore tuned on these 19 answers and is not a held-out result; no separate held-out set was run.
+- One stale answer was flagged for a different sentence than the labeled one, and one stale answer produced no extracted claim.
+- 19 answers are too few for a rate with a useful confidence interval.
+
 ## Recorded real runs
+
+### Live run that caught stale claims (2026-11-12, 3 claims)
+
+A paragraph dated 2023-06-01 was typed into the local live UI and analyzed once, in real time, through Tavily and the local Bifrost virtual key; the same run is on the demo video. Three sentences were sent: "Node.js 20.x is currently in Active LTS." (the default example text, left in the input box by mistake, so there is no space after its period), "Python 3.8 is still receiving security updates." and "Node.js 18 is the newest LTS line." The run took 9.0 s with 3 Tavily searches and 4 Gemini requests. Both added claims were Refuted with a quote that passed the citation check, and each received a suggested fix; the first claim was Insufficient evidence because no quote passed the check. The unedited record is `public/live-run-stale-bifrost.json` and is a selectable, replayable example.
+
+Limits: this is one run with three claims. Both refuting sources are third-party pages (a discuss.python.org thread and a personal blog), not the official schedules. The suggested Python fix repeats the forum's wording ("will stop getting security updates in November 2024"), which is in the future tense and less precise than the official end-of-life date (2024-10-07), so it needs the human review the UI asks for. The run used judge prompt 1, before the prompt change described in the corpus section. It added 3 Tavily calls, for a known cumulative total of 43/50.
 
 ### Second live example: Python support claims (N=2)
 
 On 2026-11-11, a non-Node.js paragraph was analyzed through local Bifrost v2.5.0: “Python 3.8 reached end of life on October 7, 2024. Python 3.12 is supported through October 2028.” Gemini extracted two claims, Tavily was called twice, and Gemini made four Bifrost request attempts across extraction and judgment; both claims were labeled “supported,” with one cited Tavily result each. The saved replay is `public/live-run-python-bifrost.json` and is available as a selectable example. This is a two-claim demonstration, not an accuracy benchmark. The quoted 2028 date is treated as a target date, not a publication/event date; the Python 3.12 evidence date remains unknown and becomes available from its 2026-11-11 collection date. For this run only, Bifrost used `client.allow_direct_keys:true`, `x-bf-direct-key:true`, and the caller's Gemini key in the Authorization header; the key itself was not recorded. This added two Tavily calls, bringing the known cumulative total to 40/50. The public replay makes no API calls.
 
-### Current operating-path evaluation (pre-registered, Node.js N=15)
+### Operating-path evaluation (pre-registered, Node.js N=15, judge prompt 1)
 
-The final, pre-registered set contains eight status-shift claims and seven stable codenames. All 15 judgments completed; 12/15 exactly matched the frozen human labels (80%), including 5/8 status shifts and 7/7 codenames. All 15 Gemini-generated Tavily queries were sent unchanged. Prompts and rules were not changed; transient 429/503 responses and retries remain in the run records. The evaluation used 18 new Tavily calls, bringing the known cumulative total to 38/50. Bifrost recorded 49 request attempts, 37 successful responses and 25,161 reported tokens. At the end of the run, the daily policy counter was 38/100 requests and 25,169/50,000 tokens (including an 8-token smoke check); the guard meter showed $0.0147018/$0.10. This is a small, Node.js-specific evaluation, not a general accuracy claim. Records: `public/live-evaluation-nodejs-v1-preregistered.json`, `public/live-evaluation-nodejs-v1.json` and `public/live-evaluation-nodejs-v1-retries.json`.
+The final, pre-registered set contains eight status-shift claims and seven stable codenames. All 15 judgments completed; 12/15 exactly matched the frozen human labels (80%), including 5/8 status shifts and 7/7 codenames. All 15 Gemini-generated Tavily queries were sent unchanged. Prompts and rules were not changed during this evaluation; transient 429/503 responses and retries remain in the run records. It was run on 2026-11-10 with judge prompt 1 and has not been repeated with prompt 2 (introduced 2026-11-12), so 80% does not describe the current prompt. The evaluation used 18 new Tavily calls, bringing the known cumulative total to 38/50. Bifrost recorded 49 request attempts, 37 successful responses and 25,161 reported tokens. At the end of the run, the daily policy counter was 38/100 requests and 25,169/50,000 tokens (including an 8-token smoke check); the guard meter showed $0.0147018/$0.10. This is a small, Node.js-specific evaluation, not a general accuracy claim. Records: `public/live-evaluation-nodejs-v1-preregistered.json`, `public/live-evaluation-nodejs-v1.json` and `public/live-evaluation-nodejs-v1-retries.json`.
 
 ### Earlier direct-call evaluation (N=6)
 
@@ -109,36 +144,37 @@ Destinations:
 - Repository: https://github.com/coo001/claimclock
 - Demo: https://coo001.github.io/claimclock/ (built from `main` by the manual Pages workflow; run it again after new commits)
 
+## Batch recheck and measured unit economics
+
+Press **Export queue JSON** in the queue panel (it downloads `claimclock-queue.json`) and run `npm run recheck -- path/to/queue.json [YYYY-MM-DD]`. This CLI re-scores saved evidence only; it makes **no** new Tavily, Bifrost, or Gemini calls. The browser queue remains local to the browser unless the user explicitly exports it.
+
+Measured on the existing 15-claim Node.js evaluation record: 25,161 reported Gemini tokens across 49 Bifrost request attempts (37 successful), 18 Tavily search attempts, and $0.0147018 reported by the configured Bifrost budget meter. Normalized per evaluated claim: about 1,677 tokens, $0.00098 measured model cost, 3.27 Bifrost request attempts (including retries), and 1.2 Tavily searches. These are historical ratios from a small, Node.js-only sample, not a guarantee or a benchmark.
+
+Illustrative monthly workload: 1,000 saved answers × 3 claims each × one recheck/month = 3,000 claim checks/month. If the observed per-claim mix held, estimate about 5.03 million tokens, $2.94 Bifrost-metered model cost, 9,800 gateway attempts, and 3,600 Tavily basic-search attempts (about 3,600 credits if each remains one credit). Assumptions: same model, prompts, retry rate, evidence search depth, and account pricing; excludes infrastructure, caching, rate limits, failed jobs beyond the measured sample, and price changes. A batch export/re-score does not itself fetch fresh evidence; each new evidence check still needs the local live analysis path.
+
 ## Verification
 
-Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; what each one checks is listed below. `ClaimClock_pitch_v11.pptx` has ten English slides; it adds measured per-claim economics and a clearly stated 1,000-answer scale assumption, removes the stale Pages caveat, and makes the video link visible. The current video link is inside slide 9.
+Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; what each one checks is listed below. `ClaimClock_pitch_v12.pptx` has eleven English slides; it adds the 19-answer corpus measurement with its limits and the live stale-claim run. The video link is on slide 10.
 
 `npm run build` copies `public/` and `lib/` into `dist/`. The local server also serves `/live-run.json` statically.
 
-- `npm test`: checks fixed scoring cases, label input, fixture matching, and how the ICS changes with date and cycle changes. It also checks that undated evidence is not back-dated to a page-update date, that evidence becomes available only on the later of its event and collection dates (with the result timestamp as fallback and exclusion when neither is known), that saved fix suggestions are hidden before their generation date or when it is unknown, that evidence provenance is assigned and preserved, that human-added evidence is not counted as an independent source, and that only dates of the judged relation feed the score. `tests/queue.test.js` checks the batch queue's sorting, 20-record cap, storage error handling, and that queue operations make no fetch calls and do not mutate saved records. In a key-free environment it starts the server on port 0 and checks `/`, the static JS/CSS/fixture modules, `/api/status` (`liveReady:false`), `/api/verify` (503 `LIVE_NOT_CONFIGURED`) and the recorded JSON responses for `/live-run.json`, `/live-evaluation-pre.json`, `/live-run-bifrost.json`, `/live-run-gemini-direct.json`, `/live-evaluation-bifrost-freequery-v1.json`, `/bifrost-runtime-feature.json` and `/bifrost-vk-link-probe.json`. It checks that the first sample matches the Bifrost evaluation record exactly, that `recorded-live` mode is kept, that only the same paragraph is replayed, and that the replay notice says no external call was made; an exact-match fixed example is described as human-labeled data, not AI output. `tests/basepath.test.js` also checks that, without a backend, the page states that no live analysis is possible there and that live mode needs a local install and your own API keys. The live pipeline is only exercised with a mock fetch, so real API calls are 0. Tests make no external network calls.
+- `npm test`: checks fixed scoring cases, label input, fixture matching, and how the ICS changes with date and cycle changes. It also checks that undated evidence is not back-dated to a page-update date, that evidence becomes available only on the later of its event and collection dates (with the result timestamp as fallback and exclusion when neither is known), that saved fix suggestions are hidden before their generation date or when it is unknown, that evidence provenance is assigned and preserved, that human-added evidence is not counted as an independent source, and that only dates of the judged relation feed the score. `tests/queue.test.js` checks the batch queue's sorting, 20-record cap, storage error handling, and that queue operations make no fetch calls and do not mutate saved records. In a key-free environment it starts the server on port 0 and checks `/`, the static JS/CSS/fixture modules, `/api/status` (`liveReady:false`), `/api/verify` (503 `LIVE_NOT_CONFIGURED`) and the recorded JSON responses for `/live-run.json`, `/live-evaluation-pre.json`, `/live-run-bifrost.json`, `/live-run-stale-bifrost.json`, `/live-run-gemini-direct.json`, `/live-evaluation-bifrost-freequery-v1.json`, `/bifrost-runtime-feature.json` and `/bifrost-vk-link-probe.json`. It checks that the first sample matches the Bifrost evaluation record exactly, that `recorded-live` mode is kept, that only the same paragraph is replayed, and that the replay notice says no external call was made; an exact-match fixed example is described as human-labeled data, not AI output. `tests/basepath.test.js` also checks that, without a backend, the page states that no live analysis is possible there and that live mode needs a local install and your own API keys. The live pipeline is only exercised with a mock fetch, so real API calls are 0. Tests make no external network calls.
 - `npm run check`: syntax-checks every JS file with `node --check`.
 - `npm run check:secrets`: checks that no real `.env` file other than `.env.example` exists, and that files git would commit (tracked files and new, non-ignored files) contain no strings shaped like API keys or tokens. Output shows only file paths and pattern names, never values or file contents. It judges by shape only, so false positives are possible: for example, a sample key in the docs (a long string starting with `sk-` or `AIza`) or a placeholder of 8+ characters in `.env.example` will fail. In that case, empty the value or use a placeholder shorter than 8 characters (for example `xxx`).
 
-There are no browser end-to-end tests. [**Demo video**](https://github.com/coo001/claimclock/blob/main/video/ClaimClock_demo.mp4) (113.8s, 1080p, silent; includes a 35s real local live analysis). The small operating-path evaluation and its limits are reported above; it is not a general benchmark.
+There are no browser end-to-end tests. [**Demo video**](https://github.com/coo001/claimclock/blob/main/video/ClaimClock_demo.mp4) (127s, 1080p, silent with burned-in captions; `video/ClaimClock_demo.srt` has the same text). The first 56 s are the unedited screen recording of the 2026-11-12 local live run in which two stale claims were refuted (captions were re-set afterwards); the rest shows the current UI in public replay mode with no API calls, and ends with the corpus numbers and their limits. The small operating-path evaluation and its limits are reported above; it is not a general benchmark.
 
-## Current limitations (2026-11-10)
+## Current limitations (2026-11-12)
 
 The following constraints remain; they are not presented as completed work.
 
-- The N=15 operating-path evaluation is small and specific to Node.js release-status and codename claims; three of eight status shifts were mislabeled. It is not a general performance benchmark.
+- The N=15 operating-path evaluation is small and specific to Node.js release-status and codename claims; three of eight status shifts were mislabeled. It used judge prompt 1 and was not repeated after the prompt change. It is not a general performance benchmark.
+- The 19-answer corpus is keyword-selected, labeled without an independent annotator, run without live retrieval, and its reported run uses a prompt adjusted on the same answers. It shows that stale version claims are easy to find in real answers and that ranking put most of them first; it does not establish a general stale rate, accuracy or time saved.
+- Suggested fixes copy the cited evidence, including third-party wording, and must be reviewed by a person. Nothing is rewritten or sent automatically.
 - Semantic-cache hit rate and savings were not measured because no Valkey/Redis runtime was reachable at `127.0.0.1:6379`.
 - The static demo replays stored records. Live inference requires local credentials and a local gateway; no keys, Bifrost data/configuration, or gateway binary are included in the repository. The Pages demo shows the commit that was last deployed; newer commits on `main` appear only after the Pages workflow is run again.
 - The batch queue only rescores evidence already saved with each record. It does not find new evidence, so a stored record cannot become fresher than its saved evidence.
 
 ## Technology and AI use
 
-A plain Node.js HTTP server and browser JavaScript. The live AI feature passes Gemini calls through a local Bifrost gateway and uses Tavily for search. AI coding agents assisted development. Bifrost itself is Apache-2.0 open source; each dependency's license and API terms must be followed separately. The recorded real runs include earlier direct calls, an earlier six-sample Bifrost demonstration, and the separate 15-case operating-path evaluation above. The latter used a Bifrost virtual key with Gemini-generated queries sent unchanged to Tavily; its result, retries and usage counters are recorded in the linked JSON files.
-
-
-## Batch recheck and measured unit economics
-
-Export the browser queue JSON and run `npm run recheck -- path/to/queue.json [YYYY-MM-DD]`. This CLI re-scores saved evidence only; it makes **no** new Tavily, Bifrost, or Gemini calls. The browser queue remains local to the browser unless the user explicitly exports it.
-
-Measured on the existing 15-claim Node.js evaluation record: 25,161 reported Gemini tokens across 49 Bifrost request attempts (37 successful), 18 Tavily search attempts, and $0.0147018 reported by the configured Bifrost budget meter. Normalized per evaluated claim: about 1,677 tokens, $0.00098 measured model cost, 3.27 Bifrost request attempts (including retries), and 1.2 Tavily searches. These are historical ratios from a small, Node.js-only sample, not a guarantee or a benchmark.
-
-Illustrative monthly workload: 1,000 saved answers × 3 claims each × one recheck/month = 3,000 claim checks/month. If the observed per-claim mix held, estimate about 5.03 million tokens, $2.94 Bifrost-metered model cost, 9,800 gateway attempts, and 3,600 Tavily basic-search attempts (about 3,600 credits if each remains one credit). Assumptions: same model, prompts, retry rate, evidence search depth, and account pricing; excludes infrastructure, caching, rate limits, failed jobs beyond the measured sample, and price changes. A batch export/re-score does not itself fetch fresh evidence; each new evidence check still needs the local live analysis path.
+A plain Node.js HTTP server and browser JavaScript. The live AI feature passes Gemini calls through a local Bifrost gateway and uses Tavily for search. AI coding agents assisted development, including collecting and labeling the 19-answer corpus. Bifrost itself is Apache-2.0 open source; each dependency's license and API terms must be followed separately. The recorded real runs include earlier direct calls, an earlier six-sample Bifrost demonstration, and the separate 15-case operating-path evaluation above. The latter used a Bifrost virtual key with Gemini-generated queries sent unchanged to Tavily; its result, retries and usage counters are recorded in the linked JSON files.

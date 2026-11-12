@@ -1,55 +1,59 @@
 1
-00:00:00,000 --> 00:00:05,000
-A new Deno claim enters local live mode.
+00:00:00,886 --> 00:00:05,936
+Local live mode. A paragraph dated June 2023 is sent for a real-time recheck.
 
 2
-00:00:05,000 --> 00:00:12,000
-Tavily searches fresh evidence; Gemini is routed through the local Bifrost virtual key.
+00:00:05,936 --> 00:00:16,405
+Live: Tavily searches today’s evidence. Gemini judges it through the local Bifrost virtual key.
 
 3
-00:00:12,000 --> 00:00:22,000
-Live result: one claim, one Tavily search, two Bifrost calls.
+00:00:16,405 --> 00:00:23,582
+Live result in 9.0 s: 3 claims, 2 refuted · 3 Tavily searches · 4 Gemini calls via Bifrost.
 
 4
-00:00:22,000 --> 00:00:29,000
-The actual model responses and request trace are visible.
+00:00:23,582 --> 00:00:32,288
+Claim 1 is the default sample sentence left in the box: insufficient evidence in this run.
 
 5
-00:00:29,000 --> 00:00:35,319
-This is a fresh live analysis, not a stored example.
+00:00:32,288 --> 00:00:40,960
+Claim 2, Python 3.8 security updates: refuted by a quoted source, with a fix to review.
 
 6
-00:00:37,249 --> 00:00:44,593
-ClaimClock checks whether saved answers have gone stale.
+00:00:40,960 --> 00:00:49,616
+Claim 3, Node.js 18 as the newest LTS: refuted by a dated quote, with a fix to review.
 
 7
-00:00:44,593 --> 00:00:52,926
-Start with a dated answer and inspect its status over time.
+00:00:49,616 --> 00:00:56,000
+The run log shows the real Tavily queries and the Gemini requests routed through Bifrost.
 
 8
-00:00:52,926 --> 00:01:02,259
-The Node.js example changes from supported to refuted.
+00:00:56,678 --> 00:01:02,727
+The public demo needs no key: it replays stored real runs and makes no API calls.
 
 9
-00:01:02,259 --> 00:01:10,564
-Move one day forward to see the evidence-based transition.
+00:01:02,727 --> 00:01:12,326
+The live run you just watched is stored as a selectable example and replays exactly.
 
 10
-00:01:10,564 --> 00:01:18,858
-A second saved example covers Python support lifecycle claims.
+00:01:12,326 --> 00:01:21,880
+Time travel on the default sample: on 2024-10-21 the Node.js 20 claim is still Supported.
 
 11
-00:01:18,858 --> 00:01:28,175
-Two claims are extracted and judged against searched evidence.
+00:01:21,880 --> 00:01:31,480
+One day later the official schedule takes effect: Refuted. A past view never borrows future evidence.
 
 12
-00:01:28,175 --> 00:01:37,792
-Tavily evidence is evaluated by Gemini through local Bifrost.
+00:01:31,480 --> 00:01:39,529
+A Deno 2.0 release claim that was analyzed live earlier is also replayable: Supported.
 
 13
-00:01:37,792 --> 00:01:47,106
-This saved record used two Tavily searches and four Bifrost calls.
+00:01:39,529 --> 00:01:48,615
+Batch queue: saved answers are re-scored from their saved evidence and sorted by review priority.
 
 14
-00:01:47,106 --> 00:01:48,119
-The browser replays this record without making new API calls.
+00:01:48,615 --> 00:01:55,230
+Export queue JSON downloads the file that the npm run recheck command reads.
+
+15
+00:01:55,230 --> 00:02:07,200
+Measured on 19 real answers: 12 held a stale claim and 8 of those were flagged. Limits are on screen.
