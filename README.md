@@ -2,7 +2,15 @@
 
 ClaimClock re-checks an old answer claim by claim and shows whether each claim still holds, with the evidence, its dates and when to look again. Tavily finds current evidence, and a local Bifrost gateway relays the Gemini calls. The public demo replays stored runs and needs no API key.
 
-**Demo:** https://coo001.github.io/claimclock/ · **Repository:** https://github.com/coo001/claimclock
+**Demo:** https://coo001.github.io/claimclock/ · **Repository:** https://github.com/coo001/claimclock · **Video:** [127 s, silent, captioned](https://github.com/coo001/claimclock/blob/main/video/ClaimClock_demo.mp4) · **Deck:** [`ClaimClock_pitch_v13.pptx`](ClaimClock_pitch_v13.pptx)
+
+**At a glance**
+
+- **Run it:** Node.js 22 or later, no dependencies to install and no keys: `npm test && npm start`, then open `http://127.0.0.1:5173`.
+- **The public demo can:** replay four stored real runs and three fixed examples, move the evaluation date and re-check cycles, download the ICS file, show the stored run log, and use the browser-local batch queue with JSON export.
+- **The public demo cannot:** analyze new text. It has no backend, makes no Tavily, Gemini or Bifrost calls, and shows a notice instead of a result for any paragraph that is not a stored one.
+- **Live analysis is local only:** it needs your own `TAVILY_API_KEY`, a locally running Bifrost gateway with a Gemini provider key, and a Bifrost virtual key in `.env` (see [Live local mode](#live-local-mode-optional)).
+- **Every number here is a small-sample measurement** with its sample and assumptions stated next to it; the "Refuted" labels are model verdicts, not verified ground truth (see the [official cross-check](#cross-check-against-official-sources-2026-11-12-done-by-hand-after-the-run)).
 
 ![The default Node.js sample on 2024-10-21 (Supported) and 2024-10-22 (Refuted)](docs/claimclock-demo.png)
 
@@ -29,9 +37,9 @@ Open `http://127.0.0.1:5173` in a browser. Pick a sample, then move the evaluati
 
 ## Status notes
 
-- The browser UI and the pitch deck (`ClaimClock_pitch_v12.pptx`) are in English. The default Node.js sample replays a real stored Bifrost run. Three further live runs (stale claims refuted with fixes, Python, Deno 2.0) are stored and replayable. A 19-answer real-answer corpus measurement and the pre-registered 15-claim Node.js evaluation are reported below with their limits.
+- The browser UI and the pitch deck (`ClaimClock_pitch_v13.pptx`) are in English. The default Node.js sample replays a real stored Bifrost run. Three further live runs (stale claims refuted with fixes, Python, Deno 2.0) are stored and replayable. A 19-answer real-answer corpus measurement and the pre-registered 15-claim Node.js evaluation are reported below with their limits.
 - The Pages demo is built from `main` by the manual `pages.yml` workflow. Changes on `main` appear there only after that workflow is run again.
-- Older decks (`ClaimClock_pitch_v7` through `v11`) are kept only as history; `v12` is current.
+- Older decks (`ClaimClock_pitch_v7` through `v12`) are kept only as history; `v13` is current. It differs from `v12` only in the wording and official-source links for the live stale-claim run on slides 6 and 9.
 
 ## Wayback evidence in the default sample
 
@@ -73,13 +81,50 @@ How often do real, dated answers go stale, and does ClaimClock put the stale one
 - One stale answer was flagged for a different sentence than the labeled one, and one stale answer produced no extracted claim.
 - 19 answers are too few for a rate with a useful confidence interval.
 
+## Public demo: feature checklist
+
+What the static GitHub Pages demo is expected to do once the current `main` is deployed. The page shows whatever commit the manual `pages.yml` workflow last built, so check this list against the live page after each deployment; if an item is missing there, the deployment is older than this README.
+
+Works on the public demo (no keys, no external calls):
+
+1. The example drop-down lists the default recorded Node.js 20.x run, three more recorded live runs ("Three version-support claims dated 2023 (two refuted live)", Python 3.8/3.12, Deno 2.0) and the fixed examples; choosing one shows its claims, evidence, badges and scores.
+2. **Recheck** on the exact text of a stored example replays the stored output and says that no external call was made.
+3. The evaluation-date slider and the re-check cycles update status, score, timeline and re-check dates; the default sample is Supported on 2024-10-21 and Refuted on 2024-10-22.
+4. **Download ICS** and "Show ICS contents" work.
+5. The run log and "Real API run records" show the stored queries, URLs, requests and token usage.
+6. The batch recheck queue: **Save current result**, **Load all fixed examples (demo)**, **Recheck stored records**, **Open**, remove, **Clear queue** and **Export queue JSON** (downloads `claimclock-queue.json`). The queue lives in this browser's `localStorage` only.
+
+Does not work on the public demo (by design):
+
+- Any paragraph that is not a stored one gets the notice "No live analysis is possible on this page." and no result; the text is not sent anywhere.
+- No Tavily search, no Gemini or Bifrost call, no new evidence. Batch recheck only re-scores saved evidence.
+- `npm run recheck` and the `live:run*` scripts are local command-line tools.
+
+Local only: live analysis of new text, with the keys and the local Bifrost gateway described in [Live local mode](#live-local-mode-optional).
+
 ## Recorded real runs
 
 ### Live run that caught stale claims (2026-11-12, 3 claims)
 
 A paragraph dated 2023-06-01 was typed into the local live UI and analyzed once, in real time, through Tavily and the local Bifrost virtual key; the same run is on the demo video. Three sentences were sent: "Node.js 20.x is currently in Active LTS." (the default example text, left in the input box by mistake, so there is no space after its period), "Python 3.8 is still receiving security updates." and "Node.js 18 is the newest LTS line." The run took 9.0 s with 3 Tavily searches and 4 Gemini requests. Both added claims were Refuted with a quote that passed the citation check, and each received a suggested fix; the first claim was Insufficient evidence because no quote passed the check. The unedited record is `public/live-run-stale-bifrost.json` and is a selectable, replayable example.
 
-Limits: this is one run with three claims. Both refuting sources are third-party pages (a discuss.python.org thread and a personal blog), not the official schedules. The suggested Python fix repeats the forum's wording ("will stop getting security updates in November 2024"), which is in the future tense and less precise than the official end-of-life date (2024-10-07), so it needs the human review the UI asks for. The run used judge prompt 1, before the prompt change described in the corpus section. It added 3 Tavily calls, for a known cumulative total of 43/50.
+Limits: this is one run with three claims. Both refuting sources are third-party pages (a discuss.python.org thread and a personal blog), not the official schedules; the cross-check below compares them with the official sources. The suggested Python fix repeats the forum's wording ("will stop getting security updates in November 2024"), which is in the future tense and less precise than the official end-of-life date (2024-10-07), so it needs the human review the UI asks for. The run used judge prompt 1, before the prompt change described in the corpus section. It added 3 Tavily calls, for a known cumulative total of 43/50.
+
+#### Cross-check against official sources (2026-11-12, done by hand after the run)
+
+> **The "Refuted" labels in this run are model verdicts based on third-party pages. They are not verified ground truth.** The official sources below were read by hand on 2026-11-12, after the run. They were not among the evidence the model cited, and the stored record and the replay in the demo are unchanged, so the demo still shows only the third-party quotes.
+
+| Claim (answer dated 2023-06-01) | Model verdict and its source | Official source | Does the official source agree? |
+|---|---|---|---|
+| "Python 3.8 is still receiving security updates." | Refuted. Forum post on discuss.python.org: "Python 3.8 will stop getting security updates in November 2024." | [PEP 569](https://peps.python.org/pep-0569/): security-only releases were provided "until October 7th 2024", and "As of 2024-10-07, 3.8 has reached the end-of-life phase of its release cycle"; the final security release was 3.8.20 on 2024-09-06. The [Python versions table](https://devguide.python.org/versions/) lists 3.8 as end-of-life, 2024-10-07. | **Verdict: yes.** Python 3.8 no longer receives security updates. **Quote and fix: no.** The official date is 2024-10-07, not "November 2024", and the suggested fix is in the future tense about a past event. |
+| "Node.js 18 is the newest LTS line." | Refuted. Personal blog (hidekazu-konishi.com): "As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)". | Official [`schedule.json`](https://github.com/nodejs/Release/blob/main/schedule.json): v18 `end` 2025-04-30; v20 `lts` 2023-10-24; v24 `lts` 2025-10-28, `maintenance` 2026-10-20; v26 `lts` 2026-10-28. The [Node.js releases page](https://nodejs.org/en/about/previous-releases) lists v18 as EOL and v22, v24 and v26 as LTS. | **Verdict: yes.** Node.js 18 reached end of life on 2025-04-30 and newer LTS lines exist. **Fix: out of date.** The quote was right for 2026-07-24, but on the run date Node.js 26 had already entered LTS (2026-10-28) and Node.js 24 had moved to Maintenance (2026-10-20). The suggested fix omits Node.js 26. |
+| "Node.js 20.x is currently in Active LTS." | Insufficient evidence (no quote passed the citation check). | Same `schedule.json`: v20 `maintenance` 2024-10-22, `end` 2026-04-30. | **No.** Against the official schedule this claim is false on 2026-11-12, so the run missed it. |
+
+What this does and does not show:
+
+- Both refuted claims were true when the answer was dated: on 2023-06-01 Python 3.8 was in its security-fix phase and Node.js 18 was the newest LTS line (Node.js 20 entered LTS on 2023-10-24). "Refuted" here means "no longer true on the evaluation date", not "wrong when written".
+- In this one run the model's two Refuted verdicts match the official schedules, but neither suggested fix is accurate enough to paste, and one stale claim out of three was not caught. Live retrieval returned no official schedule for any of the three claims.
+- Three claims are not an accuracy measurement.
 
 ### Second live example: Python support claims (N=2)
 
@@ -154,7 +199,7 @@ Illustrative monthly workload: 1,000 saved answers × 3 claims each × one reche
 
 ## Verification
 
-Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; what each one checks is listed below. `ClaimClock_pitch_v12.pptx` has eleven English slides; it adds the 19-answer corpus measurement with its limits and the live stale-claim run. The video link is on slide 10.
+Run `npm test`, `npm run build`, `npm run check` and `npm run check:secrets`; what each one checks is listed below. `ClaimClock_pitch_v13.pptx` has eleven English slides; it adds the 19-answer corpus measurement with its limits and the live stale-claim run. The video link is on slide 10.
 
 `npm run build` copies `public/` and `lib/` into `dist/`. The local server also serves `/live-run.json` statically.
 
