@@ -331,6 +331,7 @@ async function init() {
   } catch {}
   // Recorded real runs: selectable and replayable by exact text match. Replay makes no API calls.
   for (const [file, label] of [
+    ['./live-run-stale-bifrost.json', 'Recorded live run'],
     ['./live-run-python-bifrost.json', 'Recorded live run'],
     ['./live-run-deno-bifrost.json', 'Recorded live run'],
   ]) {

@@ -3,7 +3,7 @@ import fs from 'node:fs';
 // Live pipeline tests with an injected fake fetch. No real network, no secrets (placeholder key only).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { liveConfig, runLive } from '../lib/live.js';
+import { liveConfig, runLive, liveTitle } from '../lib/live.js';
 import { computeView, DEFAULT_CYCLES } from '../lib/scoring.js';
 import { runLiveDirect } from '../scripts/live-run-direct.mjs';
 
@@ -169,4 +169,29 @@ test('runLiveDirect: one Tavily and one Gemini direct call, Bifrost bypass is la
   const serialized = JSON.stringify(record);
   assert.equal(serialized.includes(key1), false);
   assert.equal(serialized.includes(key2), false);
+});
+
+test('live record title reflects the first sentence of the input', async () => {
+  assert.equal(liveTitle('Python 3.8 is still receiving security updates. Node.js 18 is the newest LTS line.'), 'Live analysis: Python 3.8 is still receiving security updates.');
+  assert.equal(liveTitle(`${'a'.repeat(90)}. Next.`), `Live analysis: ${'a'.repeat(69)}…`);
+  const { impl } = fakeFetch({ claim_id: 'c1', relation: 'support', citations: [{ evidence_id: 'e1', quote: QUOTE }] });
+  assert.equal((await run(impl)).title, 'Live analysis: Node.js 22는 Active LTS입니다.');
+});
+
+test('LIVE_TAVILY_LIMIT tightens the per-run Tavily cap and never raises the app limit', async () => {
+  const threeClaims = async (url, init) => {
+    const body = JSON.parse(init.body);
+    let data;
+    if (url === 'https://api.tavily.com/search') data = { results: [{ url: 'https://example.org/a', title: 'A', published_date: null, content: CONTENT }] };
+    else data = body.messages[0].content.startsWith('You extract')
+      ? chat({ claims: [1, 2, 3].map((i) => ({ text: `claim ${i}`, type: 'version', query: `q${i}` })) })
+      : chat({ judgements: [] });
+    return { ok: true, status: 200, text: async () => JSON.stringify(data) };
+  };
+  const at = (limit) => runLive({ text: 'x.', authoredDate: '2025-01-01', env: { ...ENV, LIVE_TAVILY_LIMIT: limit }, fetchImpl: threeClaims });
+  const capped = await at('2');
+  assert.equal(capped.runLog.counts.tavily, 2);
+  assert.match(capped.runLog.errors.join(' '), /tavily call limit of 2 exceeded/);
+  assert.equal((await at('99')).runLog.counts.tavily, 3);
+  assert.equal((await at('')).runLog.counts.tavily, 3);
 });

@@ -1,0 +1,603 @@
+{
+  "schemaVersion": 1,
+  "mode": "corpus-judge-stage-measurement",
+  "corpus": "corpus-stale-v1.json",
+  "promptVersion": 1,
+  "evalDate": "2026-11-12",
+  "ranAt": "2026-11-12T01:39:02.175Z",
+  "executionPath": "Gemini extract/judge/fix through the local Bifrost virtual key; search step answered from the stored primary-source excerpt",
+  "tavilyRequestsMade": 0,
+  "retrievalTested": false,
+  "summary": {
+    "answers": 19,
+    "runsWithErrors": 5,
+    "byLabel": {
+      "stale-status": {
+        "n": 9,
+        "flagged": 1,
+        "allSupported": 2
+      },
+      "stale-relative-time": {
+        "n": 3,
+        "flagged": 1,
+        "allSupported": 0
+      },
+      "still-valid": {
+        "n": 7,
+        "flagged": 0,
+        "allSupported": 5
+      }
+    },
+    "skippable": {
+      "allSupported": 7,
+      "ofWhichStale": 2
+    },
+    "staleInTopRanked": {
+      "top": 12,
+      "stale": 8
+    },
+    "pipelineSeconds": {
+      "median": 1.63,
+      "max": 3.448,
+      "total": 29.291
+    },
+    "geminiRequests": 38
+  },
+  "rankedIds": [
+    "so-75977557",
+    "so-77468125",
+    "so-76691103",
+    "so-76300789",
+    "so-75867650",
+    "so-77993035",
+    "so-78745656",
+    "so-76182141",
+    "so-76547876",
+    "so-77750366",
+    "so-77106579",
+    "so-77233866",
+    "so-75150938",
+    "so-76774926",
+    "so-76336081",
+    "so-78279867",
+    "so-78229388",
+    "so-75479544",
+    "so-77421147"
+  ],
+  "rows": [
+    {
+      "id": "so-76691103",
+      "url": "https://stackoverflow.com/a/76691103",
+      "answeredOn": "2023-07-14",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 65,
+      "counts": {
+        "claims": 2,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 1
+      },
+      "seconds": 1.843,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "distutils was deprecated in 3.10",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        },
+        {
+          "text": "distutils was removed in 3.12",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "Remove the distutils package."
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-77233866",
+      "url": "https://stackoverflow.com/a/77233866",
+      "answeredOn": "2023-10-05",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 40,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.948,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "distutils can still be used on Python 3.12+ by installing setuptools",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "The third-party Setuptools package continues to provide distutils , if you still require it in Python 3.12 and beyond."
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-76300789",
+      "url": "https://stackoverflow.com/a/76300789",
+      "answeredOn": "2023-05-21",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 65,
+      "counts": {
+        "claims": 1,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 1
+      },
+      "seconds": 1.63,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Most developers use the Node.js LTS version (currently version 18).",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-75867650",
+      "url": "https://stackoverflow.com/a/75867650",
+      "answeredOn": "2023-03-28",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 65,
+      "counts": {
+        "claims": 2,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 1
+      },
+      "seconds": 2.288,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Ubuntu 22.04 LTS curl is version 7.81.0",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "Package: curl (7.81.0-1ubuntu1.30 and others)"
+          ]
+        },
+        {
+          "text": "The latest curl is 7.88.1",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-77993035",
+      "url": "https://stackoverflow.com/a/77993035",
+      "answeredOn": "2024-02-14",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 65,
+      "counts": {
+        "claims": 1,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 1
+      },
+      "seconds": 1.491,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Node.js v20.11.0과 ts-node v10.9.2 사이에 호환성 문제가 많다.",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-75977557",
+      "url": "https://stackoverflow.com/a/75977557",
+      "answeredOn": "2023-04-10",
+      "label": "stale-status",
+      "flagged": true,
+      "allSupported": false,
+      "maxScore": 70,
+      "counts": {
+        "claims": 1,
+        "supported": 0,
+        "refuted": 1,
+        "insufficient": 0
+      },
+      "seconds": 2.401,
+      "geminiRequests": 3,
+      "claims": [
+        {
+          "text": "Java 25 is current now in 2024-09.",
+          "relation": "Refuted",
+          "fix": "Java 25 is scheduled for GA in 2025/09.",
+          "quotes": [
+            "25 (GA 2025/09/16)"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-76547876",
+      "url": "https://stackoverflow.com/a/76547876",
+      "answeredOn": "2023-06-24",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 50,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.373,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Python 3.7 has since reached its end-of-life.",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "\"3.7\":{\"status\":\"end-of-life\",\"first_release\":\"2018-06-27\",\"end_of_life\":\"2023-06-27\"}"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-75150938",
+      "url": "https://stackoverflow.com/a/75150938",
+      "answeredOn": "2023-01-17",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 40,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.423,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "on Python 3.6 , this scenario can't be encountered, since the newest (built) NumPy version is v1.19.5",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "PyPI numpy 1.19.x releases: 1.19.0, 1.19.1, 1.19.2, 1.19.3, 1.19.4, 1.19.5 (1.19.5 requires_python >=3.6; 1.20.0 requires_python >=3.7)"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-78279867",
+      "url": "https://stackoverflow.com/a/78279867",
+      "answeredOn": "2024-04-05",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 0,
+      "counts": {
+        "claims": 0,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 0.282,
+      "geminiRequests": 1,
+      "claims": [],
+      "errors": [
+        "Claim extraction failed: HTTP 429: {\"is_bifrost_error\":false,\"status_code\":429,\"error\":{\"type\":\"RESOURCE_EXHAUSTED\",\"code\":\"429\",\"message\":\"You exceeded your current quota, please check your plan and billing details. For more informati"
+      ]
+    },
+    {
+      "id": "so-78745656",
+      "url": "https://stackoverflow.com/a/78745656",
+      "answeredOn": "2024-07-14",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 65,
+      "counts": {
+        "claims": 2,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 2
+      },
+      "seconds": 1.16,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "The latest release LTS from Oracle at the time of writing is Java 21",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        },
+        {
+          "text": "the next LTS from Oracle is projected to be Java 25",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        }
+      ],
+      "errors": [
+        "Judgment failed; all claims marked insufficient evidence: HTTP 429: {\"is_bifrost_error\":false,\"status_code\":429,\"error\":{\"type\":\"RESOURCE_EXHAUSTED\",\"code\":\"429\",\"message\":\"You exceeded your current quota, please check your plan and billing details. For more informati"
+      ]
+    },
+    {
+      "id": "so-78229388",
+      "url": "https://stackoverflow.com/a/78229388",
+      "answeredOn": "2024-03-27",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 0,
+      "counts": {
+        "claims": 0,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 0.255,
+      "geminiRequests": 1,
+      "claims": [],
+      "errors": [
+        "Claim extraction failed: HTTP 429: {\"is_bifrost_error\":false,\"status_code\":429,\"error\":{\"type\":\"RESOURCE_EXHAUSTED\",\"code\":\"429\",\"message\":\"You exceeded your current quota, please check your plan and billing details. For more informati"
+      ]
+    },
+    {
+      "id": "so-77750366",
+      "url": "https://stackoverflow.com/a/77750366",
+      "answeredOn": "2024-01-03",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 50,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.977,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Node V20 is the LTS",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "\"v20\":{\"start\":\"2023-04-18\",\"lts\":\"2023-10-24\",\"maintenance\":\"2024-10-22\",\"end\":\"2026-04-30\",\"codename\":\"Iron\"}"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-77106579",
+      "url": "https://stackoverflow.com/a/77106579",
+      "answeredOn": "2023-09-14",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 50,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 2.079,
+      "geminiRequests": 3,
+      "claims": [
+        {
+          "text": "Ubuntu 22.10 has reached End of Life on July 20 2023",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "as of July 20, 2023, Ubuntu 22.10 is no longer supported"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-77468125",
+      "url": "https://stackoverflow.com/a/77468125",
+      "answeredOn": "2023-11-12",
+      "label": "stale-relative-time",
+      "flagged": true,
+      "allSupported": false,
+      "maxScore": 70,
+      "counts": {
+        "claims": 2,
+        "supported": 0,
+        "refuted": 2,
+        "insufficient": 0
+      },
+      "seconds": 3.448,
+      "geminiRequests": 4,
+      "claims": [
+        {
+          "text": "PHP 7.2 reached its end of life almost 3 years ago",
+          "relation": "Refuted",
+          "fix": "PHP 7.2 reached its end of life almost 5 years ago",
+          "quotes": [
+            "7.2 30 Nov 2020 (5 years, 11 months ago) 7.2.34"
+          ]
+        },
+        {
+          "text": "PHP 8.0 will reach that point pretty soon (in about two weeks from now)",
+          "relation": "Refuted",
+          "fix": "PHP 8.0 reached that point on 26 Nov 2023.",
+          "quotes": [
+            "8.0 26 Nov 2023 (2 years, 11 months ago) 8.0.30"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-76774926",
+      "url": "https://stackoverflow.com/a/76774926",
+      "answeredOn": "2023-07-26",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 40,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.874,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Java 8 end-of-life is scheduled for 2030",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "8 (LTS)** March 2014 March 2022 December 2030***** Indefinite"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-76336081",
+      "url": "https://stackoverflow.com/a/76336081",
+      "answeredOn": "2023-05-25",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 40,
+      "counts": {
+        "claims": 2,
+        "supported": 2,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.737,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Java 20 is the latest Java version as of May 2023.",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "18 - 20 (non-LTS) March 2022 - March 2023 September 2022 - September 2023 Not Available Indefinite"
+          ]
+        },
+        {
+          "text": "Java 8, 11, and 17 are Long-Term Support (LTS) versions.",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "8 (LTS)** March 2014 March 2022 December 2030***** Indefinite",
+            "11 (LTS) September 2018 September 2023 January 2032***** Indefinite",
+            "17 (LTS) September 2021 September 2026**** September 2029**** Indefinite"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-76182141",
+      "url": "https://stackoverflow.com/a/76182141",
+      "answeredOn": "2023-05-05",
+      "label": "stale-relative-time",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 65,
+      "counts": {
+        "claims": 1,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 1
+      },
+      "seconds": 1.591,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Rails 4.1.6 reached end-of-life about 7 years ago",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-75479544",
+      "url": "https://stackoverflow.com/a/75479544",
+      "answeredOn": "2023-02-17",
+      "label": "stale-relative-time",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 0,
+      "counts": {
+        "claims": 0,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 0.283,
+      "geminiRequests": 1,
+      "claims": [],
+      "errors": [
+        "Claim extraction failed: HTTP 429: {\"is_bifrost_error\":false,\"status_code\":429,\"error\":{\"type\":\"RESOURCE_EXHAUSTED\",\"code\":\"429\",\"message\":\"You exceeded your current quota, please check your plan and billing details. For more informati"
+      ]
+    },
+    {
+      "id": "so-77421147",
+      "url": "https://stackoverflow.com/a/77421147",
+      "answeredOn": "2023-11-04",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 0,
+      "counts": {
+        "claims": 0,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 0.208,
+      "geminiRequests": 1,
+      "claims": [],
+      "errors": [
+        "Claim extraction failed: HTTP 429: {\"is_bifrost_error\":false,\"status_code\":429,\"error\":{\"type\":\"RESOURCE_EXHAUSTED\",\"code\":\"429\",\"message\":\"You exceeded your current quota, please check your plan and billing details. For more informati"
+      ]
+    }
+  ]
+}

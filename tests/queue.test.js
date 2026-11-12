@@ -1,4 +1,8 @@
 // Browser-local batch queue helpers. Fake storage only; any fetch call fails the test. No network.
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { FIXTURES } from '../lib/fixtures.js';
@@ -123,4 +127,25 @@ test('queue operations make no fetch calls and do not mutate saved answers or ev
     globalThis.fetch = realFetch;
   }
   assert.equal(calls, 0);
+});
+
+test('exported queue JSON is what the UI button downloads and what npm run recheck reads', () => {
+  const { queue } = addRecords(emptyQueue(), fixtures, '2026-11-12');
+  const exported = serializeQueue(queue);
+  const file = path.join(os.tmpdir(), `claimclock-queue-${process.pid}.json`);
+  fs.writeFileSync(file, exported);
+  try {
+    const cli = spawnSync(process.execPath, ['scripts/recheck.mjs', file, '2026-11-12'], { encoding: 'utf8' });
+    assert.equal(cli.status, 0, cli.stderr);
+    const out = JSON.parse(cli.stdout);
+    assert.equal(out.count, fixtures.length);
+    assert.equal(out.warning, null);
+    assert.deepEqual(out.records, JSON.parse(JSON.stringify(recheckQueue(parseQueue(exported).queue, { evalDate: '2026-11-12', cycles: DEFAULT_CYCLES, today: '2026-11-12' }))));
+  } finally {
+    fs.rmSync(file, { force: true });
+  }
+  const html = fs.readFileSync('public/index.html', 'utf8');
+  const app = fs.readFileSync('public/app.js', 'utf8');
+  assert.match(html, /id="queue-export"/);
+  assert.match(app, /\$\('queue-export'\)[\s\S]{0,200}serializeQueue\(state\.queue\)/);
 });

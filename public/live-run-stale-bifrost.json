@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "mode": "recorded-live",
+  "actualExternalRun": true,
+  "executionPath": "Tavily basic search + Gemini through local Bifrost virtual key",
+  "startedAt": "2026-11-12T01:30:44.239Z",
+  "finishedAt": "2026-11-12T01:30:53.201Z",
+  "input": {
+    "title": "Three version-support claims dated 2023 (two refuted live)",
+    "authoredDate": "2023-06-01",
+    "answerText": "Node.js 20.x is currently in Active LTS.Python 3.8 is still receiving security updates. Node.js 18 is the newest LTS line.",
+    "note": "Typed into the local live UI on 2026-11-12 and recorded on video in real time. The first sentence is the default example text that was already in the input box, so the paragraph sent for analysis has three sentences (no space after the first period). The record is unedited."
+  },
+  "result": {
+    "id": "live-1794447044308",
+    "mode": "live",
+    "title": "Live analysis: Node.js 20.x is currently in Active LTS.Python 3.8 is still receiving…",
+    "authoredDate": "2023-06-01",
+    "answerText": "Node.js 20.x is currently in Active LTS.Python 3.8 is still receiving security updates. Node.js 18 is the newest LTS line.",
+    "source": {
+      "status": "Recorded live run",
+      "url": null,
+      "publishedDate": null,
+      "publishedDateText": "",
+      "note": "Processed locally; request text is not retained by this demo server."
+    },
+    "collectedAt": "2026-11-12T01:30:44.308Z",
+    "collectionMethod": "Tavily basic search + Gemini judgment through Bifrost",
+    "claims": [
+      {
+        "id": "c1",
+        "text": "Node.js 20.x is currently in Active LTS",
+        "type": "버전",
+        "relation": "근거 부족",
+        "relationNote": "",
+        "evidence": [],
+        "fix": null,
+        "fixGeneratedAt": ""
+      },
+      {
+        "id": "c2",
+        "text": "Python 3.8 is still receiving security updates",
+        "type": "버전",
+        "relation": "반박",
+        "relationNote": "",
+        "evidence": [
+          {
+            "id": "150a20-00",
+            "origin": "external-search",
+            "url": "https://discuss.python.org/t/end-of-life-eol-versions-usage/69601",
+            "title": "End-of-life (EOL) versions usage - Python Help - Discussions on Python.org",
+            "quote": "Python 3.8 will stop getting security updates in November 2024.",
+            "stance": "반박",
+            "citationOk": true,
+            "date": null,
+            "dateBasis": "No published_date or date in the cited source text.",
+            "collectedAt": "2026-11-12T01:30:48.430Z"
+          }
+        ],
+        "fix": "Python 3.8 will stop getting security updates in November 2024.",
+        "fixGeneratedAt": "2026-11-12T01:30:44.308Z"
+      },
+      {
+        "id": "c3",
+        "text": "Node.js 18 is the newest LTS line",
+        "type": "버전",
+        "relation": "반박",
+        "relationNote": "",
+        "evidence": [
+          {
+            "id": "8cf691-00",
+            "origin": "external-search",
+            "url": "https://hidekazu-konishi.com/entry/nodejs_release_and_eol_timeline.html",
+            "title": "Node.js Release and EOL Timeline - LTS Schedule, Active LTS and Maintenance, and End-of-Life Dates | hidekazu-konishi.com",
+            "quote": "As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)",
+            "stance": "반박",
+            "citationOk": true,
+            "date": "2026-07-24",
+            "dateBasis": "Date appears verbatim in the cited source text.",
+            "collectedAt": "2026-11-12T01:30:50.042Z"
+          }
+        ],
+        "fix": "As of 2026-07-24, the supported LTS lines are Node.js 24 and Node.js 22.",
+        "fixGeneratedAt": "2026-11-12T01:30:44.308Z"
+      }
+    ],
+    "runLog": {
+      "note": "Local live run (app limits: 5 Gemini calls · 8 Tavily calls · sequential · no retries on 429)",
+      "externalCalls": true,
+      "counts": {
+        "gemini": 4,
+        "tavily": 3
+      },
+      "tavily": [
+        {
+          "query": "Node.js release schedule LTS status 20.x",
+          "topic": "general",
+          "collectedAt": "2026-11-12T01:30:46.996Z",
+          "results": [
+            {
+              "url": "https://en.wikipedia.org/wiki/Nodejs",
+              "title": "Node.js - Wikipedia",
+              "published_date": null,
+              "contentExcerpt": "| Unsupported: 19.x | Unsupported: End-of-Life | 2022-10-18 | 2023-06-01 |\n| Unsupported: 20.x | Unsupported: End-of-Life | Iron | 2023-04-18 | 2026-04-30 |\n| Unsupported: 21.x | Unsupported: End-of-Life | 2023-10-17 | 2024-06-01 |\n| Supported: 22.x | Supported: Maintenance LTS | Jod | 2024-04-24 | "
+            },
+            {
+              "url": "https://github.com/nodejs/node",
+              "title": "GitHub - nodejs/node: Node.js JavaScript runtime ✨🐢🚀✨ · GitHub",
+              "published_date": null,
+              "contentExcerpt": "Current: Under active development, no semver-major changes allowed. Node.js releases a new major version once a year, in April. Releases stay Current for 6 months, then convert to LTS (see below) each October. Their ABI may change between releases. They are intended for library authors and CI pipeli"
+            },
+            {
+              "url": "https://nodejs.org/en/download",
+              "title": "Node.js — Download Node.js®",
+              "published_date": null,
+              "contentExcerpt": "Learn more about Node.js releases, including the release schedule and LTS status.\n\nLearn how to verify signed SHASUMS.\n\nLooking for Node.js source? Download a signed Node.js source tarball.\n\nCheck out our nightly binaries or all previous releases or the unofficial binaries for other platforms.\n\n## P"
+            }
+          ]
+        },
+        {
+          "query": "Python 3.8 end of life security updates schedule",
+          "topic": "general",
+          "collectedAt": "2026-11-12T01:30:48.430Z",
+          "results": [
+            {
+              "url": "https://discuss.python.org/t/end-of-life-eol-versions-usage/69601",
+              "title": "End-of-life (EOL) versions usage - Python Help - Discussions on Python.org",
+              "published_date": null,
+              "contentExcerpt": "### It’s time to stop using Python 3.8\n\nPython 3.8 will stop getting security updates in November 2024. You really should upgrade!\n\nI’m curious, is this to convince people who do not understand the implications from the lack of security updates?\n\nIn terms of educational uses I think it’s less about "
+            },
+            {
+              "url": "https://www.herodevs.com/blog-posts/python-end-of-life-dates-every-versions-support-timeline",
+              "title": "Python End-of-Life Dates: Every Version's Support Timeline",
+              "published_date": null,
+              "contentExcerpt": "| Version | Release Date | Bug-Fix End | Security-Only End (EOL) | Status | Latest Release |\n| 3.15 | ~Oct 2026 | ~Oct 2028 | ~Oct 2031 | Release candidate3.15.0rc2 |\n| 3.14 | Oct 7, 2025 | ~Oct 2027 | Oct 31, 2030 | Bug-fix support | 3.14.7 |\n| 3.13 | Oct 7, 2024 | ~Oct 2026 | Oct 31, 2029 | Bug-fi"
+            },
+            {
+              "url": "https://github.com/aws-solutions/aws-control-tower-customizations/issues/193",
+              "title": "Python 3.8 End-Of-Life · Issue #193 · aws-solutions/aws-control-tower-customizations · GitHub",
+              "published_date": null,
+              "contentExcerpt": "As described in the Lambda runtime support policy , end of support for language runtimes in Lambda happens in several stages. Starting on October 14, 2024, Lambda will no longer apply security patches and other updates to the Python 3.8 runtime used by Lambda functions, and functions using Python 3."
+            }
+          ]
+        },
+        {
+          "query": "Node.js release schedule LTS lines",
+          "topic": "general",
+          "collectedAt": "2026-11-12T01:30:50.042Z",
+          "results": [
+            {
+              "url": "https://hidekazu-konishi.com/entry/nodejs_release_and_eol_timeline.html",
+              "title": "Node.js Release and EOL Timeline - LTS Schedule, Active LTS and Maintenance, and End-of-Life Dates | hidekazu-konishi.com",
+              "published_date": null,
+              "contentExcerpt": "Only even-numbered major versions are promoted to Long Term Support (LTS). As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS), while Node.js 26 is the current Current release and is scheduled to become Active LTS on 2026-10-28. Odd-numbered versions"
+            },
+            {
+              "url": "https://nodejsdesignpatterns.com/blog/nodejs-release-schedule-changes",
+              "title": "Node.js is changing its release schedule and version numbers",
+              "published_date": null,
+              "contentExcerpt": "1. One major release a year, not two. Each new major lands every April and is promoted to LTS in October.\n2. Year-based version numbers. Node.js 27 ships in 2027, Node.js 28 in 2028, Node.js 29 in 2029, and so on.\n3. Every release becomes LTS. The odd/even distinction is gone. Node.js 27 will become"
+            },
+            {
+              "url": "https://www.herodevs.com/blog-posts/node-js-end-of-life-dates-you-should-be-aware-of",
+              "title": "Node.js Version Support: EOL Dates and Latest Releases (July 2026)",
+              "published_date": null,
+              "contentExcerpt": "Node.js 24 is the Active LTS line (EOL April 30, 2028) and Node.js 22 is in Maintenance LTS (EOL April 30, 2027). Node.js 26, released in May 2026, is the Current line and is scheduled to enter LTS in October 2026.\n\n#### Why should I avoid odd-numbered Node.js versions in production?\n\nOdd-numbered r"
+            }
+          ]
+        }
+      ],
+      "gemini": [
+        {
+          "step": "extract",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 825,
+          "usage": {
+            "prompt_tokens": 128,
+            "prompt_tokens_details": {
+              "text_tokens": 128,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 101,
+            "total_tokens": 229
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You extract checkable factual claims from an answer. Return JSON only: {\"claims\":[{\"text\":\"...\",\"type\":\"가격|버전|직책|통계|안정 사실\",\"query\":\"web search query\"}]}. At most 8 claims. Keep the claim language the same as the input. Prefer official/primary sources in the query."
+              },
+              {
+                "role": "user",
+                "content": "{\"authored_date\":\"2023-06-01\",\"answer\":\"Node.js 20.x is currently in Active LTS.Python 3.8 is still receiving security updates. Node.js 18 is the newest LTS line.\"}"
+              }
+            ]
+          },
+          "output": "{\"claims\":[{\"text\":\"Node.js 20.x is currently in Active LTS\",\"type\":\"버전\",\"query\":\"Node.js release schedule LTS status 20.x\"},{\"text\":\"Python 3.8 is still receiving security updates\",\"type\":\"버전\",\"query\":\"Python 3.8 end of life security updates schedule\"},{\"text\":\"Node.js 18 is the newest LTS line\",\"type\":\"버전\",\"query\":\"Node.js release schedule LTS lines\"}]}"
+        },
+        {
+          "step": "judge",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 1286,
+          "usage": {
+            "prompt_tokens": 3376,
+            "prompt_tokens_details": {
+              "text_tokens": 3376,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 232,
+            "total_tokens": 3608
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "For each claim, judge its relation to the evidence. Return JSON only: {\"judgements\":[{\"claim_id\":\"c1\",\"relation\":\"support|refute|insufficient\",\"citations\":[{\"evidence_id\":\"e1\",\"quote\":\"exact substring copied from the evidence content\"}]}]}. Use insufficient when evidence is unrelated or unclear. Quotes must be copied verbatim."
+              },
+              {
+                "role": "user",
+                "content": "{\"claims\":[{\"id\":\"c1\",\"text\":\"Node.js 20.x is currently in Active LTS\"},{\"id\":\"c2\",\"text\":\"Python 3.8 is still receiving security updates\"},{\"id\":\"c3\",\"text\":\"Node.js 18 is the newest LTS line\"}],\"evidence\":[{\"id\":\"a81922-00\",\"claim_id\":\"c1\",\"url\":\"https://en.wikipedia.org/wiki/Nodejs\",\"content\":\"| Unsupported: 19.x | Unsupported: End-of-Life | 2022-10-18 | 2023-06-01 |\\n| Unsupported: 20.x | Unsupported: End-of-Life | Iron | 2023-04-18 | 2026-04-30 |\\n| Unsupported: 21.x | Unsupported: End-of-Life | 2023-10-17 | 2024-06-01 |\\n| Supported: 22.x | Supported: Maintenance LTS | Jod | 2024-04-24 | 2027-04-30 |\\n| Unsupported: 23.x | Unsupported: End-of-Life | 2024-10-15 | 2025-06-01 |\\n| Supported: 24.x | Supported: Maintenance LTS | Krypton | 2025-04-22 | 2028-04-30 | [...] Major Node.js versions currently enter Current release status for six months. Historically, up to Node.js 26, odd-numbered releases became unsupported after six months, while even-numbered releases moved to Active LTS. Starting with Node.js 27, Node.js is moving to an annual major-release cycle, and every major version is planned to move to LTS after its Current phase and an additional Alpha phase. LTS releases are generally supported for about 30 months, including Active LTS and Maintenance [...] | Unsupported: 25.x | Unsupported: End-of-Life | 2025-10-15 | 2026-06-01 |\\n| Latest version: 26.x | Latest version: Active LTS | Lithium | 2026-05-05 | 2029-04-30 |\\n| Preview version: 27.x | Preview version: Alpha | Ma\"},{\"id\":\"04a742-01\",\"claim_id\":\"c1\",\"url\":\"https://github.com/nodejs/node\",\"content\":\"Current: Under active development, no semver-major changes allowed. Node.js releases a new major version once a year, in April. Releases stay Current for 6 months, then convert to LTS (see below) each October. Their ABI may change between releases. They are intended for library authors and CI pipelines, not for production use. [...] Release lines up to and including Node.js 26 follow the previous schedule, where a new major version was released every 6 months and only even-numbered major versions became LTS. See the Node.js release schedule announcement for details.\\n\\nFor more information, see the Release README.\\n\\n### Download\\n\\nBinaries, installers, and source tarballs are available at .\\n\\n#### Current and LTS releases [...] LTS: Releases under Long Term Support, with a focus on stability and security. Only changes that have been on Alpha or Current release for two weeks can be backported to a typical LTS release. Every major version becomes an LTS release, and receives 30 months of LTS support, for a total of 36 months from its first Current release to End-of-Life. LTS release lines have alphabetically-ordered code names, beginning with Node.js 4 Argon.\"},{\"id\":\"e6e9b0-02\",\"claim_id\":\"c1\",\"url\":\"https://nodejs.org/en/download\",\"content\":\"Learn more about Node.js releases, including the release schedule and LTS status.\\n\\nLearn how to verify signed SHASUMS.\\n\\nLooking for Node.js source? Download a signed Node.js source tarball.\\n\\nCheck out our nightly binaries or all previous releases or the unofficial binaries for other platforms.\\n\\n## Proudly supported by the partners below:\\n\\nWe are able to serve Node.js's downloads and maintain our infrastructure proudly due to the support of these partners, and more. [...] Skip to content\\n\\n# Download Node.js®\\n\\nGet Node.js® for  using  with\\n\\nInfoWant new features sooner? Get the latest Node.js version instead and try the latest improvements!\\n\\nBash\\n\\n and their installation scripts are not maintained by the Node.js project. If you encounter any issues please visit 's website\\n\\nOr get a prebuilt Node.js® for  running a  architecture.\\n\\nN/A Installer (.gz)Standalone Binary (.gz)\\n\\nRead the changelog or blog post for this version.\"},{\"id\":\"150a20-00\",\"claim_id\":\"c2\",\"url\":\"https://discuss.python.org/t/end-of-life-eol-versions-usage/69601\",\"content\":\"### It’s time to stop using Python 3.8\\n\\nPython 3.8 will stop getting security updates in November 2024. You really should upgrade!\\n\\nI’m curious, is this to convince people who do not understand the implications from the lack of security updates?\\n\\nIn terms of educational uses I think it’s less about security and more about giving people an up-to-date education.\"},{\"id\":\"dc578d-01\",\"claim_id\":\"c2\",\"url\":\"https://www.herodevs.com/blog-posts/python-end-of-life-dates-every-versions-support-timeline\",\"content\":\"| Version | Release Date | Bug-Fix End | Security-Only End (EOL) | Status | Latest Release |\\n| 3.15 | ~Oct 2026 | ~Oct 2028 | ~Oct 2031 | Release candidate3.15.0rc2 |\\n| 3.14 | Oct 7, 2025 | ~Oct 2027 | Oct 31, 2030 | Bug-fix support | 3.14.7 |\\n| 3.13 | Oct 7, 2024 | ~Oct 2026 | Oct 31, 2029 | Bug-fix support | 3.13.15 |\\n| 3.12 | Oct 2, 2023 | Apr 2, 2025 | Oct 31, 2028 | Security-only | 3.12.14 |\\n| 3.11 | Oct 24, 2022 | Apr 1, 2024 | Oct 31, 2027 | Security-only | 3.11.16 | [...] | 3.10 | Oct 4, 2021 | Apr 5, 2023 | Oct 31, 2026 | Final weeks | 3.10.21 |\\n| 3.9 | Oct 5, 2020 | May 17, 2022 | Oct 31, 2025 | End of life | 3.9.25final |\\n| 3.8 | Oct 14, 2019 | May 3, 2021 | Oct 7, 2024 | End of life | 3.8.20final |\\n| 3.7 | Jun 27, 2018 | Jun 27, 2020 | Jun 27, 2023 | End of life | 3.7.17final |\\n| 3.6 | Dec 23, 2016 | Dec 24, 2018 | Dec 23, 2021 | End of life | 3.6.15final |\\n| 2.7 | Jul 3, 2010 | — | Jan 1, 2020 | End of life | 2.7.18final | [...] With Python 3.10 reaching end of life on October 31, 2026, just weeks from now, and Python 3.15 entering release candidate stage, the landscape is shifting fast. This guide covers the complete support timeline for every actively relevant Python\"},{\"id\":\"3ace72-02\",\"claim_id\":\"c2\",\"url\":\"https://github.com/aws-solutions/aws-control-tower-customizations/issues/193\",\"content\":\"As described in the Lambda runtime support policy , end of support for language runtimes in Lambda happens in several stages. Starting on October 14, 2024, Lambda will no longer apply security patches and other updates to the Python 3.8 runtime used by Lambda functions, and functions using Python 3.8 will no longer be eligible for technical support. Also, Python 3.8 will no longer be available in the AWS Console, although you can still create and update functions that use Python 3.8 via AWS [...] Python 3.8 via AWS CloudFormation, the AWS CLI, AWS SAM, or other tools. Starting February 28, 2025, you will no longer be able to create new Lambda functions using the Python 3.8 runtime. Starting March 31, 2025, you will no longer be able to update existing functions using the Python 3.8 runtime.\"},{\"id\":\"8cf691-00\",\"claim_id\":\"c3\",\"url\":\"https://hidekazu-konishi.com/entry/nodejs_release_and_eol_timeline.html\",\"content\":\"Only even-numbered major versions are promoted to Long Term Support (LTS). As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS), while Node.js 26 is the current Current release and is scheduled to become Active LTS on 2026-10-28. Odd-numbered versions (such as 23 and 25) never become LTS. Note that from Node.js 27 the odd/even distinction is being retired and every major will become LTS.  \\n\\n### How long is a Node.js LTS version supported? [...] Starting with Node.js 27, the release model changes in several ways: the odd/even distinction is retired and every major becomes LTS; there is one major release per year (in April) promoted to LTS in October; version numbers align with the calendar year of the initial Current release (27 in 2027, 28 in 2028); a new six-month Alpha channel is added before the Current phase; and each line is supported for about 36 months in total. Node.js 26 is the last line under the current model, and Node.js [...] The single most important structural fact about Node.js releases is the odd/even model. A new major is cut from the main branch every six months: even-numbered majors are released in April and odd-n\"},{\"id\":\"6af51d-01\",\"claim_id\":\"c3\",\"url\":\"https://nodejsdesignpatterns.com/blog/nodejs-release-schedule-changes\",\"content\":\"1. One major release a year, not two. Each new major lands every April and is promoted to LTS in October.\\n2. Year-based version numbers. Node.js 27 ships in 2027, Node.js 28 in 2028, Node.js 29 in 2029, and so on.\\n3. Every release becomes LTS. The odd/even distinction is gone. Node.js 27 will become LTS, and so will every release after it.\\n4. A new Alpha channel (for example `27.0.0-alpha.1`) gives library authors and CI pipelines a six-month window to test breaking changes early. [...] | Version | Alpha | Current | LTS | End of Life |\\n ---  --- \\n| 27.x | Oct 2026 | Apr 2027 | Oct 2027 | Apr 2030 |\\n| 28.x | Oct 2027 | Apr 2028 | Oct 2028 | Apr 2031 |\\n| 29.x | Oct 2028 | Apr 2029 | Oct 2029 | Apr 2032 |\\n| 30.x | Oct 2029 | Apr 2030 | Oct 2030 | Apr 2033 |\\n| 31.x | Oct 2030 | Apr 2031 | Oct 2031 | Apr 2034 |\\n| 32.x | Oct 2031 | Apr 2032 | Oct 2032 | Apr 2035 |\\n\\nIt is hard to overstate how much easier this is to plan around than “wait, is the next one odd or even?” [...] Starting in October 2026, Node.js moves from two major releases a year to one. A single major lands every April and is promoted to LTS every October. Every release now becomes LTS, so the old odd/even distinction goes\"},{\"id\":\"4d4fb6-02\",\"claim_id\":\"c3\",\"url\":\"https://www.herodevs.com/blog-posts/node-js-end-of-life-dates-you-should-be-aware-of\",\"content\":\"Node.js 24 is the Active LTS line (EOL April 30, 2028) and Node.js 22 is in Maintenance LTS (EOL April 30, 2027). Node.js 26, released in May 2026, is the Current line and is scheduled to enter LTS in October 2026.\\n\\n#### Why should I avoid odd-numbered Node.js versions in production?\\n\\nOdd-numbered releases (19, 21, 23, 25) never enter LTS. They stay Current for six months and then go straight to EOL, so they receive no long-term security support. Use even-numbered LTS lines for production.\"}]}"
+              }
+            ]
+          },
+          "output": "{\n  \"judgements\": [\n    {\n      \"claim_id\": \"c1\",\n      \"relation\": \"insufficient\",\n      \"citations\": []\n    },\n    {\n      \"claim_id\": \"c2\",\n      \"relation\": \"refute\",\n      \"citations\": [\n        {\n          \"evidence_id\": \"150a20-00\",\n          \"quote\": \"Python 3.8 will stop getting security updates in November 2024.\"\n        }\n      ]\n    },\n    {\n      \"claim_id\": \"c3\",\n      \"relation\": \"refute\",\n      \"citations\": [\n        {\n          \"evidence_id\": \"8cf691-00\",\n          \"quote\": \"As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)\"\n        }\n      ]\n    }\n  ]\n}",
+          "citationCheck": [
+            {
+              "claim_id": "c2",
+              "evidence_id": "150a20-00",
+              "quote": "Python 3.8 will stop getting security updates in November 2024.",
+              "passed": true
+            },
+            {
+              "claim_id": "c3",
+              "evidence_id": "8cf691-00",
+              "quote": "As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "step": "fix:c2",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 652,
+          "usage": {
+            "prompt_tokens": 67,
+            "prompt_tokens_details": {
+              "text_tokens": 67,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 23,
+            "total_tokens": 90
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "Rewrite the refuted claim so it matches the cited evidence. Return JSON only: {\"fix\":\"...\"}. Do not add facts that are not in the evidence."
+              },
+              {
+                "role": "user",
+                "content": "{\"claim\":\"Python 3.8 is still receiving security updates\",\"evidence\":[\"Python 3.8 will stop getting security updates in November 2024.\"]}"
+              }
+            ]
+          },
+          "output": "{\"fix\": \"Python 3.8 will stop getting security updates in November 2024.\"}"
+        },
+        {
+          "step": "fix:c3",
+          "requestedModel": "gemini/gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "responseModel": "gemini-3.5-flash-lite",
+          "latencyMs": 1204,
+          "usage": {
+            "prompt_tokens": 89,
+            "prompt_tokens_details": {
+              "text_tokens": 89,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0
+            },
+            "completion_tokens": 38,
+            "total_tokens": 127
+          },
+          "input": {
+            "model": "gemini/gemini-3.5-flash-lite",
+            "messages": [
+              {
+                "role": "system",
+                "content": "Rewrite the refuted claim so it matches the cited evidence. Return JSON only: {\"fix\":\"...\"}. Do not add facts that are not in the evidence."
+              },
+              {
+                "role": "user",
+                "content": "{\"claim\":\"Node.js 18 is the newest LTS line\",\"evidence\":[\"As of 2026-07-24 the supported LTS lines are Node.js 24 (Active LTS) and Node.js 22 (Maintenance LTS)\"]}"
+              }
+            ]
+          },
+          "output": "{\"fix\": \"As of 2026-07-24, the supported LTS lines are Node.js 24 and Node.js 22.\"}"
+        }
+      ],
+      "errors": []
+    }
+  }
+}

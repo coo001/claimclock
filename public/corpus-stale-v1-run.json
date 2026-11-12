@@ -1,0 +1,662 @@
+{
+  "schemaVersion": 1,
+  "mode": "corpus-judge-stage-measurement",
+  "corpus": "corpus-stale-v1.json",
+  "promptVersion": 2,
+  "evalDate": "2026-11-12",
+  "ranAt": "2026-11-12T01:43:51.000Z",
+  "executionPath": "Gemini extract/judge/fix through the local Bifrost virtual key; search step answered from the stored primary-source excerpt",
+  "tavilyRequestsMade": 0,
+  "retrievalTested": false,
+  "summary": {
+    "answers": 19,
+    "runsWithErrors": 0,
+    "byLabel": {
+      "stale-status": {
+        "n": 9,
+        "flagged": 6,
+        "allSupported": 1
+      },
+      "stale-relative-time": {
+        "n": 3,
+        "flagged": 2,
+        "allSupported": 0
+      },
+      "still-valid": {
+        "n": 7,
+        "flagged": 0,
+        "allSupported": 6
+      }
+    },
+    "skippable": {
+      "allSupported": 7,
+      "ofWhichStale": 1
+    },
+    "staleInTopRanked": {
+      "top": 12,
+      "stale": 10
+    },
+    "pipelineSeconds": {
+      "median": 2.379,
+      "max": 8.475,
+      "total": 55.51599999999999
+    },
+    "geminiRequests": 48
+  },
+  "rankedIds": [
+    "so-75867650",
+    "so-77993035",
+    "so-77750366",
+    "so-75479544",
+    "so-75977557",
+    "so-78745656",
+    "so-77468125",
+    "so-76336081",
+    "so-76691103",
+    "so-76300789",
+    "so-76182141",
+    "so-76547876",
+    "so-77106579",
+    "so-77233866",
+    "so-75150938",
+    "so-78229388",
+    "so-76774926",
+    "so-77421147",
+    "so-78279867"
+  ],
+  "rows": [
+    {
+      "id": "so-76691103",
+      "url": "https://stackoverflow.com/a/76691103",
+      "answeredOn": "2023-07-14",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 65,
+      "counts": {
+        "claims": 2,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 1
+      },
+      "seconds": 2.031,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "distutils was deprecated in 3.10",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        },
+        {
+          "text": "distutils was removed in 3.12",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "PEP 632 : Remove the distutils package."
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-77233866",
+      "url": "https://stackoverflow.com/a/77233866",
+      "answeredOn": "2023-10-05",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 40,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.743,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "You can still use distutils on Python 3.12+ by installing setuptools",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "The third-party Setuptools package continues to provide distutils , if you still require it in Python 3.12 and beyond."
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-76300789",
+      "url": "https://stackoverflow.com/a/76300789",
+      "answeredOn": "2023-05-21",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 65,
+      "counts": {
+        "claims": 1,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 1
+      },
+      "seconds": 1.724,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Most developers use the Node.js LTS version (currently version 18).",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-75867650",
+      "url": "https://stackoverflow.com/a/75867650",
+      "answeredOn": "2023-03-28",
+      "label": "stale-status",
+      "flagged": true,
+      "allSupported": false,
+      "maxScore": 80,
+      "counts": {
+        "claims": 4,
+        "supported": 1,
+        "refuted": 1,
+        "insufficient": 2
+      },
+      "seconds": 3.089,
+      "geminiRequests": 3,
+      "claims": [
+        {
+          "text": "in Ubuntu 22.04 LTS curl is version 7.81.0",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "jammy (22.04LTS) » web » curl [ jammy ] [ jammy-updates ] [ noble ] [ noble-updates ] [ resolute ] [ resolute-updates ] [ stonking ] [ stonking-updates ] [ tenacious ] [ Source: curl ] Package: curl (7.81.0-1ubuntu1.30 and others)"
+          ]
+        },
+        {
+          "text": "curl version 7.81.0 fails in case of unexpected EOF with OpenSSL 3.0.x",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        },
+        {
+          "text": "The latest curl is 7.88.1",
+          "relation": "Refuted",
+          "fix": "The latest curl is 8.23.0",
+          "quotes": [
+            "Version: 8.23.0 Date: 2026-10-14"
+          ]
+        },
+        {
+          "text": "curl 7.88.1 apparently resolved the issue",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-77993035",
+      "url": "https://stackoverflow.com/a/77993035",
+      "answeredOn": "2024-02-14",
+      "label": "stale-status",
+      "flagged": true,
+      "allSupported": false,
+      "maxScore": 80,
+      "counts": {
+        "claims": 3,
+        "supported": 1,
+        "refuted": 1,
+        "insufficient": 1
+      },
+      "seconds": 2.756,
+      "geminiRequests": 3,
+      "claims": [
+        {
+          "text": "Node.js v20.11.0 is the current LTS release",
+          "relation": "Refuted",
+          "fix": "Node.js v20.11.0 is associated with the LTS release date of 2023-10-24",
+          "quotes": [
+            "\"v20\":{\"start\":\"2023-04-18\",\"lts\":\"2023-10-24\",\"maintenance\":\"2024-10-22\",\"end\":\"2026-04-30\",\"codename\":\"Iron\"}"
+          ]
+        },
+        {
+          "text": "ts-node v10.9.2 is the current release",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "\"name\":\"ts-node\",\"version\":\"10.9.2\""
+          ]
+        },
+        {
+          "text": "There are many incompatibilities between Node.js v20.11.0 and ts-node v10.9.2",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-75977557",
+      "url": "https://stackoverflow.com/a/75977557",
+      "answeredOn": "2023-04-10",
+      "label": "stale-status",
+      "flagged": true,
+      "allSupported": false,
+      "maxScore": 70,
+      "counts": {
+        "claims": 1,
+        "supported": 0,
+        "refuted": 1,
+        "insufficient": 0
+      },
+      "seconds": 2.53,
+      "geminiRequests": 3,
+      "claims": [
+        {
+          "text": "Java 25 is current now in 2024-09.",
+          "relation": "Refuted",
+          "fix": "Java 23 is current now in 2024-09.",
+          "quotes": [
+            "25 (GA 2025/09/16) 24 (GA 2025/03/18) 23 (GA 2024/09/17)"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-76547876",
+      "url": "https://stackoverflow.com/a/76547876",
+      "answeredOn": "2023-06-24",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 50,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.543,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Python 3.7 has since reached its end-of-life.",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "\"3.7\":{\"status\":\"end-of-life\",\"first_release\":\"2018-06-27\",\"end_of_life\":\"2023-06-27\"}"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-75150938",
+      "url": "https://stackoverflow.com/a/75150938",
+      "answeredOn": "2023-01-17",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 40,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 2.379,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "on Python 3.6, the newest NumPy version is v1.19.5",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "PyPI numpy 1.19.x releases: 1.19.0, 1.19.1, 1.19.2, 1.19.3, 1.19.4, 1.19.5"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-78279867",
+      "url": "https://stackoverflow.com/a/78279867",
+      "answeredOn": "2024-04-05",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 0,
+      "counts": {
+        "claims": 0,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 0.633,
+      "geminiRequests": 1,
+      "claims": [],
+      "errors": []
+    },
+    {
+      "id": "so-78745656",
+      "url": "https://stackoverflow.com/a/78745656",
+      "answeredOn": "2024-07-14",
+      "label": "stale-status",
+      "flagged": true,
+      "allSupported": false,
+      "maxScore": 70,
+      "counts": {
+        "claims": 2,
+        "supported": 1,
+        "refuted": 1,
+        "insufficient": 0
+      },
+      "seconds": 2.51,
+      "geminiRequests": 3,
+      "claims": [
+        {
+          "text": "The latest release LTS from Oracle at the time of writing is Java 21",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "21 (LTS) September 2023 September 2028**** September 2031**** Indefinite"
+          ]
+        },
+        {
+          "text": "the next LTS from Oracle is projected to be Java 25",
+          "relation": "Refuted",
+          "fix": "Java 25 is projected to be an LTS release from Oracle in September 2025.",
+          "quotes": [
+            "25 (LTS) September 2025 September 2030**** September 2033**** Indefinite"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-78229388",
+      "url": "https://stackoverflow.com/a/78229388",
+      "answeredOn": "2024-03-27",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 40,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.892,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "As of July 2022, Java 7 has ended its service life.",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "Java 7 LTS Jul 2011 Apr 2015 July 2022 (11 yrs) Jul 2022 / Dec 2029*"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-77750366",
+      "url": "https://stackoverflow.com/a/77750366",
+      "answeredOn": "2024-01-03",
+      "label": "stale-status",
+      "flagged": true,
+      "allSupported": false,
+      "maxScore": 80,
+      "counts": {
+        "claims": 1,
+        "supported": 0,
+        "refuted": 1,
+        "insufficient": 0
+      },
+      "seconds": 3.092,
+      "geminiRequests": 3,
+      "claims": [
+        {
+          "text": "Node V20 is the LTS",
+          "relation": "Refuted",
+          "fix": "Node V20 entered LTS on 2023-10-24",
+          "quotes": [
+            "\"v20\":{\"start\":\"2023-04-18\",\"lts\":\"2023-10-24\",\"maintenance\":\"2024-10-22\",\"end\":\"2026-04-30\",\"codename\":\"Iron\"}"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-77106579",
+      "url": "https://stackoverflow.com/a/77106579",
+      "answeredOn": "2023-09-14",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 50,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.708,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Ubuntu 22.10 has reached End of Life on July 20 2023",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "This is a follow-up to the End of Life warning sent earlier to confirm that as of July 20, 2023, Ubuntu 22.10 is no longer supported."
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-77468125",
+      "url": "https://stackoverflow.com/a/77468125",
+      "answeredOn": "2023-11-12",
+      "label": "stale-relative-time",
+      "flagged": true,
+      "allSupported": false,
+      "maxScore": 70,
+      "counts": {
+        "claims": 2,
+        "supported": 0,
+        "refuted": 2,
+        "insufficient": 0
+      },
+      "seconds": 8.475,
+      "geminiRequests": 4,
+      "claims": [
+        {
+          "text": "PHP 7.2 reached its end of life almost 3 years ago",
+          "relation": "Refuted",
+          "fix": "PHP 7.2 reached its end of life almost 5 years ago",
+          "quotes": [
+            "7.2 30 Nov 2020 (5 years, 11 months ago) 7.2.34"
+          ]
+        },
+        {
+          "text": "PHP 8.0 will reach end of life in about two weeks from now",
+          "relation": "Refuted",
+          "fix": "PHP 8.0 reached end of life on November 26, 2023.",
+          "quotes": [
+            "8.0 26 Nov 2023 (2 years, 11 months ago) 8.0.30"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-76774926",
+      "url": "https://stackoverflow.com/a/76774926",
+      "answeredOn": "2023-07-26",
+      "label": "still-valid",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 40,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 1.765,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Java 8 is a long-term support version not scheduled for end-of-life until 2030.",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "8 (LTS)** March 2014 March 2022 December 2030*****"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-76336081",
+      "url": "https://stackoverflow.com/a/76336081",
+      "answeredOn": "2023-05-25",
+      "label": "stale-status",
+      "flagged": true,
+      "allSupported": false,
+      "maxScore": 70,
+      "counts": {
+        "claims": 2,
+        "supported": 1,
+        "refuted": 1,
+        "insufficient": 0
+      },
+      "seconds": 3.675,
+      "geminiRequests": 3,
+      "claims": [
+        {
+          "text": "Java 20 is the latest Java version",
+          "relation": "Refuted",
+          "fix": "Java 20 is not the latest Java version",
+          "quotes": [
+            "Releases 28 (in development) 27 (GA 2026/09/15) 26 (GA 2026/03/17) 25 (GA 2025/09/16) 24 (GA 2025/03/18) 23 (GA 2024/09/17) 22 (GA 2024/03/19) 21 (GA 2023/09/19) 20 (GA 2023/03/21)"
+          ]
+        },
+        {
+          "text": "Java 8, 11, and 17 are Long-Term Support (LTS) versions",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "8 (LTS)** March 2014 March 2022 December 2030***** Indefinite",
+            "11 (LTS) September 2018 September 2023 January 2032***** Indefinite",
+            "17 (LTS) September 2021 September 2026**** September 2029**** Indefinite"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-76182141",
+      "url": "https://stackoverflow.com/a/76182141",
+      "answeredOn": "2023-05-05",
+      "label": "stale-relative-time",
+      "flagged": false,
+      "allSupported": false,
+      "maxScore": 65,
+      "counts": {
+        "claims": 1,
+        "supported": 0,
+        "refuted": 0,
+        "insufficient": 1
+      },
+      "seconds": 1.652,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "Rails 4.1.6 reached end-of-life about 7 years ago",
+          "relation": "Insufficient evidence",
+          "fix": null,
+          "quotes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-75479544",
+      "url": "https://stackoverflow.com/a/75479544",
+      "answeredOn": "2023-02-17",
+      "label": "stale-relative-time",
+      "flagged": true,
+      "allSupported": false,
+      "maxScore": 80,
+      "counts": {
+        "claims": 2,
+        "supported": 0,
+        "refuted": 2,
+        "insufficient": 0
+      },
+      "seconds": 5.568,
+      "geminiRequests": 5,
+      "claims": [
+        {
+          "text": "Ruby 2.6 hit end-of-life nearly a year ago",
+          "relation": "Refuted",
+          "fix": "Ruby 2.6 reached its end-of-life on April 12, 2022",
+          "quotes": [
+            "Ruby 2.6 status: eol release date: 2018-12-25 normal maintenance until: 2021-04-01 EOL: 2022-04-12"
+          ]
+        },
+        {
+          "text": "Ruby 2.7 will do the same in about a month",
+          "relation": "Refuted",
+          "fix": "Ruby 2.7 reached its end of life (EOL) on 2023-03-31",
+          "quotes": [
+            "Ruby 2.7 status: eol release date: 2019-12-25 normal maintenance until: 2022-04-01 EOL: 2023-03-31"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "so-77421147",
+      "url": "https://stackoverflow.com/a/77421147",
+      "answeredOn": "2023-11-04",
+      "label": "stale-status",
+      "flagged": false,
+      "allSupported": true,
+      "maxScore": 40,
+      "counts": {
+        "claims": 1,
+        "supported": 1,
+        "refuted": 0,
+        "insufficient": 0
+      },
+      "seconds": 6.751,
+      "geminiRequests": 2,
+      "claims": [
+        {
+          "text": "It is still possible to get a paid support contract for Java 6 from Azul, but only until 2027.",
+          "relation": "Supported",
+          "fix": null,
+          "quotes": [
+            "Java 6 LTS Dec 2006 Apr 2013 Dec 2018 (12 yrs) Dec 2018 / Dec 2029* (12 yrs) / (23 yrs)* Apr 2017 (11 yrs)"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 1,
+  "name": "ClaimClock small real-answer corpus v1",
+  "collectedOn": "2026-11-12",
+  "labelsAsOf": "2026-11-12",
+  "selection": {
+    "source": "Public Stack Exchange API (api.stackexchange.com 2.3, site=stackoverflow), /search/excerpts, answers created 2023-01-01 to 2024-12-31, sort=votes, pagesize=40",
+    "queries": [
+      "latest LTS version",
+      "current LTS",
+      "end of life version",
+      "latest stable version is",
+      "currently supported versions",
+      "still supported until"
+    ],
+    "pipeline": "153 distinct answers returned; a fixed regex kept answers with a sentence that names a product with a version number and a time-sensitive word (latest, current, still, now, end of life, supported until, …): 25 answers. Each was read; 6 were excluded for the reasons listed, 19 were labeled.",
+    "notASample": "This is a keyword-selected convenience set, deliberately enriched for version and support-status wording. The stale share below describes these 19 answers only; it is not an estimate for Stack Overflow or for answers in general."
+  },
+  "labeling": {
+    "by": "Assigned during development with an AI coding assistant by comparing the quoted sentence with the primary source excerpt stored in each row; there was no second, independent human annotator.",
+    "rule": "stale-status: a stated current/latest/supported status or date is no longer true on the label date. stale-relative-time: the underlying dates were right, but a relative phrase (\"about a month from now\", \"almost 3 years ago\") is now wrong. still-valid: everything quoted still holds."
+  },
+  "license": "Quoted sentences are short excerpts of Stack Overflow answers (CC BY-SA 4.0), attributed by URL. Answer text is the current revision; lastEditedOn shows when it last changed.",
+  "items": [
+    {
+      "id": "so-76691103",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 76691103,
+        "url": "https://stackoverflow.com/a/76691103",
+        "answeredOn": "2023-07-14",
+        "lastEditedOn": "2025-01-19",
+        "scoreWhenCollected": 276
+      },
+      "quote": "distutils was deprecated in 3.10 and removed in 3.12.",
+      "label": "still-valid",
+      "labelBasis": "Removal in 3.12 is a past event recorded in the official changelog.",
+      "primary": [
+        {
+          "url": "https://docs.python.org/3/whatsnew/3.12.html",
+          "title": "What's New In Python 3.12",
+          "excerpt": "PEP 632 : Remove the distutils package. See the migration guide for advice replacing the APIs it provided. The third-party Setuptools package continues to provide distutils , if you still require it in Python 3.12 and beyond."
+        }
+      ]
+    },
+    {
+      "id": "so-77233866",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 77233866,
+        "url": "https://stackoverflow.com/a/77233866",
+        "answeredOn": "2023-10-05",
+        "lastEditedOn": "2023-10-14",
+        "scoreWhenCollected": 100
+      },
+      "quote": "You can still use distutils on Python 3.12+ by installing setuptools .",
+      "label": "still-valid",
+      "labelBasis": "The official 3.12 notes say Setuptools continues to provide distutils.",
+      "primary": [
+        {
+          "url": "https://docs.python.org/3/whatsnew/3.12.html",
+          "title": "What's New In Python 3.12",
+          "excerpt": "PEP 632 : Remove the distutils package. See the migration guide for advice replacing the APIs it provided. The third-party Setuptools package continues to provide distutils , if you still require it in Python 3.12 and beyond."
+        }
+      ]
+    },
+    {
+      "id": "so-76300789",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 76300789,
+        "url": "https://stackoverflow.com/a/76300789",
+        "answeredOn": "2023-05-21",
+        "lastEditedOn": "2023-08-02",
+        "scoreWhenCollected": 47
+      },
+      "quote": "Most developers use the Node.js LTS version (currently version 18).",
+      "label": "stale-status",
+      "labelBasis": "Node.js 18 reached end-of-life on 2025-04-30; the LTS lines are now 22, 24 and 26.",
+      "primary": [
+        {
+          "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+          "title": "Node.js release schedule (schedule.json)",
+          "excerpt": "\"v18\":{\"start\":\"2022-04-19\",\"lts\":\"2022-10-25\",\"maintenance\":\"2023-10-18\",\"end\":\"2025-04-30\",\"codename\":\"Hydrogen\"} \"v20\":{\"start\":\"2023-04-18\",\"lts\":\"2023-10-24\",\"maintenance\":\"2024-10-22\",\"end\":\"2026-04-30\",\"codename\":\"Iron\"} \"v22\":{\"start\":\"2024-04-24\",\"lts\":\"2024-10-29\",\"maintenance\":\"2025-10-21\",\"end\":\"2027-04-30\",\"codename\":\"Jod\"} \"v24\":{\"start\":\"2025-05-06\",\"lts\":\"2025-10-28\",\"maintenance\":\"2026-10-20\",\"end\":\"2028-04-30\",\"codename\":\"Krypton\"} \"v26\":{\"start\":\"2026-05-05\",\"lts\":\"2026-10-28\",\"maintenance\":\"2027-10-20\",\"end\":\"2029-04-30\",\"codename\":\"Lithium\"}"
+        }
+      ]
+    },
+    {
+      "id": "so-75867650",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 75867650,
+        "url": "https://stackoverflow.com/a/75867650",
+        "answeredOn": "2023-03-28",
+        "lastEditedOn": null,
+        "scoreWhenCollected": 39
+      },
+      "quote": "Currently, in Ubuntu 22.04 LTS curl is version 7.81.0, and fails in case of unexpected EOF with OpenSSL 3.0.x. The latest curl is 7.88.1, and apparently resolved the issue",
+      "label": "stale-status",
+      "labelBasis": "Ubuntu 22.04 still ships curl 7.81.0 (valid), but the latest curl is 8.23.0, not 7.88.1 (stale).",
+      "primary": [
+        {
+          "url": "https://packages.ubuntu.com/jammy/curl",
+          "title": "Ubuntu packages: curl in jammy (22.04 LTS)",
+          "excerpt": "jammy (22.04LTS) » web » curl [ jammy ] [ jammy-updates ] [ noble ] [ noble-updates ] [ resolute ] [ resolute-updates ] [ stonking ] [ stonking-updates ] [ tenacious ] [ Source: curl ] Package: curl (7.81.0-1ubuntu1.30 and others)"
+        },
+        {
+          "url": "https://curl.se/info",
+          "title": "curl release info",
+          "excerpt": "Version: 8.23.0 Date: 2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "so-77993035",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 77993035,
+        "url": "https://stackoverflow.com/a/77993035",
+        "answeredOn": "2024-02-14",
+        "lastEditedOn": "2024-11-13",
+        "scoreWhenCollected": 27
+      },
+      "quote": "There are many incompatiblities with Node.js v20.11.0 (current LTS release) and ts-node v10.9.2 (current release).",
+      "label": "stale-status",
+      "labelBasis": "Node.js 20 left Active LTS on 2024-10-22 and reached end-of-life on 2026-04-30 (stale). ts-node 10.9.2 is still the latest release (valid).",
+      "primary": [
+        {
+          "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+          "title": "Node.js release schedule (schedule.json)",
+          "excerpt": "\"v18\":{\"start\":\"2022-04-19\",\"lts\":\"2022-10-25\",\"maintenance\":\"2023-10-18\",\"end\":\"2025-04-30\",\"codename\":\"Hydrogen\"} \"v20\":{\"start\":\"2023-04-18\",\"lts\":\"2023-10-24\",\"maintenance\":\"2024-10-22\",\"end\":\"2026-04-30\",\"codename\":\"Iron\"} \"v22\":{\"start\":\"2024-04-24\",\"lts\":\"2024-10-29\",\"maintenance\":\"2025-10-21\",\"end\":\"2027-04-30\",\"codename\":\"Jod\"} \"v24\":{\"start\":\"2025-05-06\",\"lts\":\"2025-10-28\",\"maintenance\":\"2026-10-20\",\"end\":\"2028-04-30\",\"codename\":\"Krypton\"} \"v26\":{\"start\":\"2026-05-05\",\"lts\":\"2026-10-28\",\"maintenance\":\"2027-10-20\",\"end\":\"2029-04-30\",\"codename\":\"Lithium\"}"
+        },
+        {
+          "url": "https://registry.npmjs.org/ts-node/latest",
+          "title": "npm registry: ts-node latest",
+          "excerpt": "\"name\":\"ts-node\",\"version\":\"10.9.2\""
+        }
+      ]
+    },
+    {
+      "id": "so-75977557",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 75977557,
+        "url": "https://stackoverflow.com/a/75977557",
+        "answeredOn": "2023-04-10",
+        "lastEditedOn": "2026-01-24",
+        "scoreWhenCollected": 15
+      },
+      "quote": "Java 25 is current now in 2024-09.",
+      "label": "stale-status",
+      "labelBasis": "JDK 27 reached GA on 2026-09-15, so Java 25 is no longer the current release. The answer was last edited 2026-01-24 and is stale again.",
+      "primary": [
+        {
+          "url": "https://openjdk.org/projects/jdk/",
+          "title": "OpenJDK JDK Project releases",
+          "excerpt": "Releases 28 (in development) 27 (GA 2026/09/15) 26 (GA 2026/03/17) 25 (GA 2025/09/16) 24 (GA 2025/03/18) 23 (GA 2024/09/17) 22 (GA 2024/03/19) 21 (GA 2023/09/19) 20 (GA 2023/03/21)"
+        }
+      ]
+    },
+    {
+      "id": "so-76547876",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 76547876,
+        "url": "https://stackoverflow.com/a/76547876",
+        "answeredOn": "2023-06-24",
+        "lastEditedOn": null,
+        "scoreWhenCollected": 12
+      },
+      "quote": "Python 3.7 has since reached its end-of-life.",
+      "label": "still-valid",
+      "labelBasis": "Python 3.7 end-of-life 2023-06-27; a past event.",
+      "primary": [
+        {
+          "url": "https://peps.python.org/api/release-cycle.json",
+          "title": "Python release cycle (release-cycle.json)",
+          "excerpt": "\"3.7\":{\"status\":\"end-of-life\",\"first_release\":\"2018-06-27\",\"end_of_life\":\"2023-06-27\"}"
+        }
+      ]
+    },
+    {
+      "id": "so-75150938",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 75150938,
+        "url": "https://stackoverflow.com/a/75150938",
+        "answeredOn": "2023-01-17",
+        "lastEditedOn": "2023-04-07",
+        "scoreWhenCollected": 10
+      },
+      "quote": "on Python 3.6 , this scenario can't be encountered, since the newest (built) NumPy version is v1.19.5 .",
+      "label": "still-valid",
+      "labelBasis": "NumPy 1.20.0 dropped Python 3.6 and 1.19.5 is the last 1.19.x release.",
+      "primary": [
+        {
+          "url": "https://numpy.org/doc/stable/release/1.20.0-notes.html",
+          "title": "NumPy 1.20.0 release notes; PyPI release list",
+          "excerpt": "The Python versions supported for this release are 3.7-3.9, support for Python 3.6 has been dropped. … PyPI numpy 1.19.x releases: 1.19.0, 1.19.1, 1.19.2, 1.19.3, 1.19.4, 1.19.5 (1.19.5 requires_python >=3.6; 1.20.0 requires_python >=3.7)"
+        }
+      ]
+    },
+    {
+      "id": "so-78279867",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 78279867,
+        "url": "https://stackoverflow.com/a/78279867",
+        "answeredOn": "2024-04-05",
+        "lastEditedOn": "2024-04-06",
+        "scoreWhenCollected": 10
+      },
+      "quote": "Two vendors provide editions of their JDK/JRE products for Java 17, 21, and current 22",
+      "label": "stale-status",
+      "labelBasis": "Java 22 (GA 2024-03-19) is no longer current; JDK 27 is.",
+      "primary": [
+        {
+          "url": "https://openjdk.org/projects/jdk/",
+          "title": "OpenJDK JDK Project releases",
+          "excerpt": "Releases 28 (in development) 27 (GA 2026/09/15) 26 (GA 2026/03/17) 25 (GA 2025/09/16) 24 (GA 2025/03/18) 23 (GA 2024/09/17) 22 (GA 2024/03/19) 21 (GA 2023/09/19) 20 (GA 2023/03/21)"
+        }
+      ]
+    },
+    {
+      "id": "so-78745656",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 78745656,
+        "url": "https://stackoverflow.com/a/78745656",
+        "answeredOn": "2024-07-14",
+        "lastEditedOn": "2026-02-14",
+        "scoreWhenCollected": 8
+      },
+      "quote": "The latest release LTS from Oracle at the time of writing is Java 21 , and the next LTS from Oracle is projected to be Java 25.",
+      "label": "stale-status",
+      "labelBasis": "Java 25 (LTS) reached GA in September 2025, so 21 is no longer the latest LTS. Hedged with \"at the time of writing\" but a reader today is told the wrong version. Last edited 2026-02-14.",
+      "primary": [
+        {
+          "url": "https://www.oracle.com/java/technologies/java-se-support-roadmap.html",
+          "title": "Oracle Java SE Support Roadmap (updated October 20, 2026)",
+          "excerpt": "Release GA Date Premier Support Until Extended Support Until Sustaining Support 8 (LTS)** March 2014 March 2022 December 2030***** Indefinite 9 - 10 (non-LTS) September 2017 - March 2018 March 2018 - September 2018 Not Available Indefinite 11 (LTS) September 2018 September 2023 January 2032***** Indefinite 12 - 16 (non-LTS) March 2019 - March 2021 September 2019 - September 2021 Not Available Indefinite 17 (LTS) September 2021 September 2026**** September 2029**** Indefinite 18 - 20 (non-LTS) March 2022 - March 2023 September 2022 - September 2023 Not Available Indefinite 21 (LTS) September 2023 September 2028**** September 2031**** Indefinite 22 - 24 (non-LTS) March 2024 - March 2025 September 2024 - September 2025 Not Available Indefinite 25 (LTS) September 2025 September 2030**** September 2033**** Indefinite 26 (non-LTS) March 2026 September 2026"
+        }
+      ]
+    },
+    {
+      "id": "so-78229388",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 78229388,
+        "url": "https://stackoverflow.com/a/78229388",
+        "answeredOn": "2024-03-27",
+        "lastEditedOn": "2024-03-27",
+        "scoreWhenCollected": 7
+      },
+      "quote": "As of July 2022, Java 7 has ended its service life.",
+      "label": "still-valid",
+      "labelBasis": "Past event. Oracle roadmap no longer lists Java 7; the Azul roadmap lists July 2022 as the end of Oracle Java SE 7 commercial support (secondary source for the Oracle date).",
+      "primary": [
+        {
+          "url": "https://www.azul.com/products/azul-support-roadmap/",
+          "title": "Azul Support Roadmap",
+          "excerpt": "Java SE Release Azul Lifecycle Title Java SE GA Date Oracle End of Free Commercial Use Oracle Java SE Azul Core Azul Prime Current Offerings Java 6 LTS Dec 2006 Apr 2013 Dec 2018 (12 yrs) Dec 2018 / Dec 2029* (12 yrs) / (23 yrs)* Apr 2017 (11 yrs) Java 7 LTS Jul 2011 Apr 2015 July 2022 (11 yrs) Jul 2022 / Dec 2029* (11 yrs) / (18 yrs)* Dec 2021 (10.5 yrs) Java 8 LTS Mar 2014 Jan 2019 Dec 2030"
+        }
+      ]
+    },
+    {
+      "id": "so-77750366",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 77750366,
+        "url": "https://stackoverflow.com/a/77750366",
+        "answeredOn": "2024-01-03",
+        "lastEditedOn": "2024-03-29",
+        "scoreWhenCollected": 6
+      },
+      "quote": "At the current time of writing, Node V20 is the LTS so I would recommend upgrading to that",
+      "label": "stale-status",
+      "labelBasis": "Node.js 20 reached end-of-life on 2026-04-30.",
+      "primary": [
+        {
+          "url": "https://raw.githubusercontent.com/nodejs/Release/main/schedule.json",
+          "title": "Node.js release schedule (schedule.json)",
+          "excerpt": "\"v18\":{\"start\":\"2022-04-19\",\"lts\":\"2022-10-25\",\"maintenance\":\"2023-10-18\",\"end\":\"2025-04-30\",\"codename\":\"Hydrogen\"} \"v20\":{\"start\":\"2023-04-18\",\"lts\":\"2023-10-24\",\"maintenance\":\"2024-10-22\",\"end\":\"2026-04-30\",\"codename\":\"Iron\"} \"v22\":{\"start\":\"2024-04-24\",\"lts\":\"2024-10-29\",\"maintenance\":\"2025-10-21\",\"end\":\"2027-04-30\",\"codename\":\"Jod\"} \"v24\":{\"start\":\"2025-05-06\",\"lts\":\"2025-10-28\",\"maintenance\":\"2026-10-20\",\"end\":\"2028-04-30\",\"codename\":\"Krypton\"} \"v26\":{\"start\":\"2026-05-05\",\"lts\":\"2026-10-28\",\"maintenance\":\"2027-10-20\",\"end\":\"2029-04-30\",\"codename\":\"Lithium\"}"
+        }
+      ]
+    },
+    {
+      "id": "so-77106579",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 77106579,
+        "url": "https://stackoverflow.com/a/77106579",
+        "answeredOn": "2023-09-14",
+        "lastEditedOn": null,
+        "scoreWhenCollected": 5
+      },
+      "quote": "Ubuntu 22.10 has reached End of Life on July 20 2023 .",
+      "label": "still-valid",
+      "labelBasis": "Confirmed by the ubuntu-announce end-of-life notice; a past event.",
+      "primary": [
+        {
+          "url": "https://lists.ubuntu.com/archives/ubuntu-announce/2023-July/000293.html",
+          "title": "ubuntu-announce: Ubuntu 22.10 End of Life",
+          "excerpt": "This is a follow-up to the End of Life warning sent earlier to confirm that as of July 20, 2023, Ubuntu 22.10 is no longer supported."
+        }
+      ]
+    },
+    {
+      "id": "so-77468125",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 77468125,
+        "url": "https://stackoverflow.com/a/77468125",
+        "answeredOn": "2023-11-12",
+        "lastEditedOn": null,
+        "scoreWhenCollected": 4
+      },
+      "quote": "PHP 7.2 reached its end of life almost 3 years ago (that is the point in time from which no more security updates are released). Even PHP 8.0 will reach that point pretty soon (in about two weeks from now).",
+      "label": "stale-relative-time",
+      "labelBasis": "The dates were right (7.2 EOL 2020-11-30; 8.0 EOL 2023-11-26) but the relative phrases are wrong for a reader today: 7.2 ended almost 6 years ago and 8.0 has already ended.",
+      "primary": [
+        {
+          "url": "https://www.php.net/eol.php",
+          "title": "PHP: Unsupported Branches",
+          "excerpt": "8.0 26 Nov 2023 (2 years, 11 months ago) 8.0.30 … 7.2 30 Nov 2020 (5 years, 11 months ago) 7.2.34"
+        }
+      ]
+    },
+    {
+      "id": "so-76774926",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 76774926,
+        "url": "https://stackoverflow.com/a/76774926",
+        "answeredOn": "2023-07-26",
+        "lastEditedOn": null,
+        "scoreWhenCollected": 4
+      },
+      "quote": "I would consider Java 8, which, though a bit old, is a long-term support version not scheduled for end-of-life until 2030.",
+      "label": "still-valid",
+      "labelBasis": "Oracle roadmap: Java 8 extended support until December 2030.",
+      "primary": [
+        {
+          "url": "https://www.oracle.com/java/technologies/java-se-support-roadmap.html",
+          "title": "Oracle Java SE Support Roadmap (updated October 20, 2026)",
+          "excerpt": "Release GA Date Premier Support Until Extended Support Until Sustaining Support 8 (LTS)** March 2014 March 2022 December 2030***** Indefinite 9 - 10 (non-LTS) September 2017 - March 2018 March 2018 - September 2018 Not Available Indefinite 11 (LTS) September 2018 September 2023 January 2032***** Indefinite 12 - 16 (non-LTS) March 2019 - March 2021 September 2019 - September 2021 Not Available Indefinite 17 (LTS) September 2021 September 2026**** September 2029**** Indefinite 18 - 20 (non-LTS) March 2022 - March 2023 September 2022 - September 2023 Not Available Indefinite 21 (LTS) September 2023 September 2028**** September 2031**** Indefinite 22 - 24 (non-LTS) March 2024 - March 2025 September 2024 - September 2025 Not Available Indefinite 25 (LTS) September 2025 September 2030**** September 2033**** Indefinite 26 (non-LTS) March 2026 September 2026"
+        }
+      ]
+    },
+    {
+      "id": "so-76336081",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 76336081,
+        "url": "https://stackoverflow.com/a/76336081",
+        "answeredOn": "2023-05-25",
+        "lastEditedOn": "2023-05-25",
+        "scoreWhenCollected": 4
+      },
+      "quote": "Use either the latest, Java 20, or one of the Long-Term Support (LTS) versions: 8, 11, 17 (and likely 21).",
+      "label": "stale-status",
+      "labelBasis": "Java 20 is long past; JDK 27 is the latest and 21 and 25 are LTS.",
+      "primary": [
+        {
+          "url": "https://openjdk.org/projects/jdk/",
+          "title": "OpenJDK JDK Project releases",
+          "excerpt": "Releases 28 (in development) 27 (GA 2026/09/15) 26 (GA 2026/03/17) 25 (GA 2025/09/16) 24 (GA 2025/03/18) 23 (GA 2024/09/17) 22 (GA 2024/03/19) 21 (GA 2023/09/19) 20 (GA 2023/03/21)"
+        },
+        {
+          "url": "https://www.oracle.com/java/technologies/java-se-support-roadmap.html",
+          "title": "Oracle Java SE Support Roadmap (updated October 20, 2026)",
+          "excerpt": "Release GA Date Premier Support Until Extended Support Until Sustaining Support 8 (LTS)** March 2014 March 2022 December 2030***** Indefinite 9 - 10 (non-LTS) September 2017 - March 2018 March 2018 - September 2018 Not Available Indefinite 11 (LTS) September 2018 September 2023 January 2032***** Indefinite 12 - 16 (non-LTS) March 2019 - March 2021 September 2019 - September 2021 Not Available Indefinite 17 (LTS) September 2021 September 2026**** September 2029**** Indefinite 18 - 20 (non-LTS) March 2022 - March 2023 September 2022 - September 2023 Not Available Indefinite 21 (LTS) September 2023 September 2028**** September 2031**** Indefinite 22 - 24 (non-LTS) March 2024 - March 2025 September 2024 - September 2025 Not Available Indefinite 25 (LTS) September 2025 September 2030**** September 2033**** Indefinite 26 (non-LTS) March 2026 September 2026"
+        }
+      ]
+    },
+    {
+      "id": "so-76182141",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 76182141,
+        "url": "https://stackoverflow.com/a/76182141",
+        "answeredOn": "2023-05-05",
+        "lastEditedOn": null,
+        "scoreWhenCollected": 4
+      },
+      "quote": "Rails 4.1.6 reached end-of-life about 7 years ago",
+      "label": "stale-relative-time",
+      "labelBasis": "Rails 4.1 became unsupported when 5.0 shipped on 2016-06-30; that is now about 10 years ago, not 7.",
+      "primary": [
+        {
+          "url": "https://rubyonrails.org/2016/6/30/Rails-5-0-final",
+          "title": "Rails 5.0 release announcement",
+          "excerpt": "Thursday, June 30, 2016 Rails 5.0 … This means 4.1.x and below will essentially be unsupported!"
+        }
+      ]
+    },
+    {
+      "id": "so-75479544",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 75479544,
+        "url": "https://stackoverflow.com/a/75479544",
+        "answeredOn": "2023-02-17",
+        "lastEditedOn": null,
+        "scoreWhenCollected": 4
+      },
+      "quote": "Ruby 2.6 hit end-of-life nearly a year ago and 2.7 will do the same in about a month",
+      "label": "stale-relative-time",
+      "labelBasis": "Ruby 2.6 EOL 2022-04-12 and 2.7 EOL 2023-03-31: the dates were right, the relative phrases are wrong today.",
+      "primary": [
+        {
+          "url": "https://www.ruby-lang.org/en/downloads/branches/",
+          "title": "Ruby Maintenance Branches",
+          "excerpt": "Ruby 2.7 status: eol release date: 2019-12-25 normal maintenance until: 2022-04-01 EOL: 2023-03-31 Ruby 2.6 status: eol release date: 2018-12-25 normal maintenance until: 2021-04-01 EOL: 2022-04-12"
+        }
+      ]
+    },
+    {
+      "id": "so-77421147",
+      "source": {
+        "site": "Stack Overflow",
+        "answerId": 77421147,
+        "url": "https://stackoverflow.com/a/77421147",
+        "answeredOn": "2023-11-04",
+        "lastEditedOn": "2023-11-04",
+        "scoreWhenCollected": 3
+      },
+      "quote": "It is still possible to get a paid support contract for Java 6 from Azul, but only until 2027.",
+      "label": "stale-status",
+      "labelBasis": "The Azul roadmap now lists Java 6 extended support to December 2029, so the stated end year changed.",
+      "primary": [
+        {
+          "url": "https://www.azul.com/products/azul-support-roadmap/",
+          "title": "Azul Support Roadmap",
+          "excerpt": "Java SE Release Azul Lifecycle Title Java SE GA Date Oracle End of Free Commercial Use Oracle Java SE Azul Core Azul Prime Current Offerings Java 6 LTS Dec 2006 Apr 2013 Dec 2018 (12 yrs) Dec 2018 / Dec 2029* (12 yrs) / (23 yrs)* Apr 2017 (11 yrs) Java 7 LTS Jul 2011 Apr 2015 July 2022 (11 yrs) Jul 2022 / Dec 2029* (11 yrs) / (18 yrs)* Dec 2021 (10.5 yrs) Java 8 LTS Mar 2014 Jan 2019 Dec 2030"
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "answerId": 77941425,
+      "url": "https://stackoverflow.com/a/77941425",
+      "reason": "Regex false positive (\"the current system\"); no time-sensitive status claim."
+    },
+    {
+      "answerId": 76490909,
+      "url": "https://stackoverflow.com/a/76490909",
+      "reason": "About the asker's own library version; no time-sensitive status claim."
+    },
+    {
+      "answerId": 75578911,
+      "url": "https://stackoverflow.com/a/75578911",
+      "reason": "Third-party package; the answer already carries its own dated update, so the label is ambiguous."
+    },
+    {
+      "answerId": 76584374,
+      "url": "https://stackoverflow.com/a/76584374",
+      "reason": "No specific, checkable version-status claim."
+    },
+    {
+      "answerId": 75130272,
+      "url": "https://stackoverflow.com/a/75130272",
+      "reason": "Lombok support for Java 6: no primary-source statement was located, so it was not labeled."
+    },
+    {
+      "answerId": 76121044,
+      "url": "https://stackoverflow.com/a/76121044",
+      "reason": "Hosted-service environment (Google Colab base image), not a product lifecycle claim; not labeled."
+    }
+  ]
+}

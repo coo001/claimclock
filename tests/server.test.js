@@ -75,6 +75,29 @@ test('GET /live-run-python-bifrost.json serves the second real Bifrost example',
   assert.doesNotMatch(JSON.stringify(body), /\bsk-[A-Za-z0-9]|AIza[0-9A-Za-z_-]{20,}|tvly-[A-Za-z0-9]/);
 });
 
+test('GET /live-run-stale-bifrost.json serves the live run that refuted stale claims and suggested fixes', async () => {
+  const res = await fetch(`${base}/live-run-stale-bifrost.json`);
+  assert.equal(res.status, 200);
+  const body = await res.json();
+  assert.equal(body.mode, 'recorded-live');
+  assert.equal(body.actualExternalRun, true);
+  assert.match(body.executionPath, /virtual key/);
+  assert.equal(body.input.answerText, body.result.answerText);
+  assert.ok(body.result.runLog.counts.tavily <= 3);
+  const refuted = body.result.claims.filter((c) => c.relation === '반박');
+  assert.ok(refuted.length >= 1);
+  assert.ok(refuted.every((c) => c.fix && c.evidence.some((e) => e.citationOk)));
+  assert.doesNotMatch(JSON.stringify(body), /\bsk-[A-Za-z0-9]|AIza[0-9A-Za-z_-]{20,}|tvly-[A-Za-z0-9]/);
+});
+
+test('every listed static file exists and the app lists each recorded run it replays', async () => {
+  const app = await (await fetch(`${base}/app.js`)).text();
+  for (const file of ['live-run-stale-bifrost.json', 'live-run-python-bifrost.json', 'live-run-deno-bifrost.json']) {
+    assert.ok(app.includes(`'./${file}', 'Recorded live run'`), file);
+    assert.equal((await fetch(`${base}/${file}`)).status, 200, file);
+  }
+});
+
 test('GET routes serve evaluation, Bifrost, and direct Gemini run records', async () => {
   for (const [route, mode] of [
     ['/live-evaluation-pre.json', 'recorded-live-evaluation-pre-tuning'],

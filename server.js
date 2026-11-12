@@ -14,6 +14,7 @@ const STATIC = new Map([
   ['/style.css', ['public/style.css', 'text/css; charset=utf-8']],
   ['/live-run.json', ['public/live-run.json', 'application/json; charset=utf-8']],
   ['/live-run-python-bifrost.json', ['public/live-run-python-bifrost.json', 'application/json; charset=utf-8']],
+  ['/live-run-stale-bifrost.json', ['public/live-run-stale-bifrost.json', 'application/json; charset=utf-8']],
   ['/live-run-deno-bifrost.json', ['public/live-run-deno-bifrost.json', 'application/json; charset=utf-8']],
   ['/live-evaluation-pre.json', ['public/live-evaluation-pre.json', 'application/json; charset=utf-8']],
   ['/live-run-bifrost.json', ['public/live-run-bifrost.json', 'application/json; charset=utf-8']],
@@ -67,8 +68,16 @@ export function createServer({ env = process.env, fetchImpl = fetch } = {}) {
     try {
       if (req.method === 'GET' && STATIC.has(url.pathname)) {
         const [file, type] = STATIC.get(url.pathname);
+        // Read first: a listed-but-missing file must become a 404, not a crash after headers are sent.
+        let data;
+        try {
+          data = await readFile(path.join(ROOT, file));
+        } catch {
+          sendJson(res, 404, { error: 'NOT_FOUND' });
+          return;
+        }
         res.writeHead(200, { 'content-type': type, 'cache-control': 'no-store' });
-        res.end(await readFile(path.join(ROOT, file)));
+        res.end(data);
         return;
       }
       if (req.method === 'GET' && url.pathname === '/api/status') {
